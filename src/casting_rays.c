@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   casting_rays.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/02/22 12:44:30 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   casting_rays.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 10:34:29 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/02/22 16:41:07 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	casting_rays(mlx_image_t *img, int width, int height)
 			mlx_put_pixel(img, xi, yi++, 0xf08080ff);
 		xi++;
 	}
-	
 }

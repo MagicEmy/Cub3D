@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D_defines.h                                    :+:      :+:    :+:   */
+/*   cube_map_validation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:49:34 by emlicame         ###   ########.fr       */
+/*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
+/*   Updated: 2023/02/22 16:51:00 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3D.h"
 
-#ifndef CUB3D_DEFINES_H
-# define CUB3D_DEFINES_H
+static void	cube_check_extension(char *argv)
+{
+	int	len;
 
-# define WIDTH 512
-# define HEIGHT 512
+	len = ft_strlen(argv);
+	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
+		error_exit(ERROR_MAP_EXTENSION);
+}
 
-# define ERROR_ARGS				"Amount of arguments not valid."
-# define ERROR_MALLOC			"Memory allocation failed."
-# define ERROR_MAP_EXTENSION	"Wrong map extension."
-# define ERROR_EMPTY_FILE		"Empty file."
-
-#endif
+void	cube_map_validation(char *argv, t_data *data)
+{
+	(void)data;
+	cube_check_extension(argv);
+}
