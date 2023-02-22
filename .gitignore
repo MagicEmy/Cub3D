@@ -1,0 +1,11 @@
+./cub3D
+cub3D
+.vscode
+*.swp
+*.out
+.DS_Store
+*.o
+obj
+*.a
+*.dSYM
+.nfs*
