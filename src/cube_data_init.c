@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D_defines.h                                    :+:      :+:    :+:   */
+/*   cube_data_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:49:34 by emlicame         ###   ########.fr       */
+/*   Created: 2023/02/22 16:42:39 by emlicame          #+#    #+#             */
+/*   Updated: 2023/02/22 16:42:40 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef CUB3D_DEFINES_H
-# define CUB3D_DEFINES_H
+#include "cub3D.h"
 
-# define WIDTH 512
-# define HEIGHT 512
+t_data	*cube_data_init(void)
+{
+	t_data	*data;
 
-# define ERROR_ARGS				"Amount of arguments not valid."
-# define ERROR_MALLOC			"Memory allocation failed."
-# define ERROR_MAP_EXTENSION	"Wrong map extension."
-# define ERROR_EMPTY_FILE		"Empty file."
-
-#endif
+	data = malloc(sizeof(t_data));
+	if (!data)
+		error_exit(ERROR_MALLOC);
+	data->map = NULL;
+	return (data);
+}
