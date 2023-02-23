@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/02/22 12:50:03 by dmalacov      ########   odam.nl          #
+#    Updated: 2023/02/23 19:11:22 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,11 @@ NAME		:=	cub3D
 HEADERS		:=	include/cub3D.h	 \
 				include/cub3D_defines.h \
 				include/colors.h
+
 SRC			:=	main.c \
-				casting_rays.c
+				casting_rays.c \
+				casting_utils.c
+				
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
@@ -25,7 +28,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-# CFLAGS 		+= -g -fsanitize=address
+CFLAGS 		+= -g -fsanitize=address
 
 #//= Colors =//#
 BOLD	:= \033[1m

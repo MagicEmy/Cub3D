@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/02/22 12:38:51 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/02/23 17:23:38 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "cub3D_defines.h"
+# include "cub3D_structures.h"
 # include "colors.h"
 
 # include "MLX42/MLX42.h"
@@ -24,6 +25,9 @@
 # include <stdlib.h>
 # include <memory.h>
 
-void	casting_rays(mlx_image_t *img, int width, int height);
+/* casting_rays.c */
+void	casting_rays(t_data *data, t_goat *goat);
+/* casting_utils.c */
+double	to_rad(double angle);
 
 #endif
