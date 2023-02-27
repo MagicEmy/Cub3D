@@ -6,18 +6,21 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/02/22 16:46:16 by emlicame         ###   ########.fr        #
+#    Updated: 2023/02/27 15:40:20 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	cub3D
 HEADERS		:=	include/cub3D.h	 		\
 				include/cub3D_defines.h \
-				include/colors.h
+				include/colors.h		\
+				include/cub3D_structures.h
 
 SRC			:=	main.c					\
 				cube_data_init.c		\
 				cube_map_validation.c	\
+				get_next_line.c			\
+				get_next_line_utils.c	\
 				casting_rays.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)

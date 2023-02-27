@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:42:39 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:42:40 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:49:54 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_data	*cube_data_init(void)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		error_exit(ERROR_MALLOC);
-	data->map = NULL;
+	// data->map = NULL;
 	return (data);
 }

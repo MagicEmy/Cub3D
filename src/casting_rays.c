@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:34:29 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/02/22 16:41:07 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:49:25 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	casting_rays(mlx_image_t *img, int width, int height)
 		// do some calculations
 		yi = 0;
 		while ((int32_t)yi < height / 3)
-			mlx_put_pixel(img, xi, yi++, 0x800080ff);
+			mlx_put_pixel(img, xi, yi++, 0xE39710ff);
 		while ((int32_t)yi < 2 * height / 3)
-			mlx_put_pixel(img, xi, yi++, 0x008080ff);
+			mlx_put_pixel(img, xi, yi++, 0x044D59ff);
 		while ((int32_t)yi < height)
-			mlx_put_pixel(img, xi, yi++, 0xf08080ff);
+			mlx_put_pixel(img, xi, yi++, 0x80002Aff);
 		xi++;
 	}
 }

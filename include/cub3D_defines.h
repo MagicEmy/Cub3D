@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:49:34 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:13:31 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
 
-# define WIDTH 512
-# define HEIGHT 512
+# define BUFFER_SIZE			1
+# define WIDTH 					512
+# define HEIGHT 				512
 
 # define ERROR_ARGS				"Amount of arguments not valid."
 # define ERROR_MALLOC			"Memory allocation failed."

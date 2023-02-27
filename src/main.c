@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:48:02 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:33:46 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int32_t	main(int argc, char **argv)
 	if (!mlx)
 		return (EXIT_FAILURE);
 	data->mlx = mlx;
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	casting_rays(img, WIDTH, HEIGHT);
 	mlx_image_to_window(mlx, img, 0, 0);
