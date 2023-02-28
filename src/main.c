@@ -25,9 +25,9 @@ void	hooks(void *param)
 
 void	init(t_data *data, t_goat *goat)
 {
-	goat->x = 5;
-	goat->y = 1;
-	goat->angle = 180;
+	goat->x = 14;
+	goat->y = 5;
+	goat->angle = 0;
 	data->map = NULL;
 	data->map_width = 30;
 	data->map_height = 10;

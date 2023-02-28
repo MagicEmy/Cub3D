@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/02/23 19:11:02 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/02/28 13:32:42 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,51 @@
 #include <math.h>
 #include <stdio.h>
 
-void	get_wall_xy(t_point *ray, t_data *data, t_goat *goat, double angle)
+void	get_first_step(t_point *first_step, double angle, int axis, t_goat *goat)
 {
-	double	step_x;
-	double	step_y;
+	if (axis == X_AXIS)
+	{
+		if (angle > M_PI_2 && angle < M_PI_2 * 3)
+			first_step->x = floor(goat->x) - goat->x;
+		else if (angle < M_PI_2 || angle > M_PI_2 * 3)
+			first_step->x = ceil(goat->x) - goat->x;
+		first_step->y = get_y(first_step->x, angle);
+	}
+	else
+	{
+		if ((angle > 0 && angle < M_PI) || angle > 2 * M_PI)
+			first_step->y = floor(goat->y) - goat->y;
+		else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
+			first_step->y = ceil(goat->y) - goat->y;
+		first_step->x = get_x(first_step->y, angle);
+	}
+}
+
+void	get_steps(t_point *step, double angle, int axis)
+{
+	if (axis == X_AXIS)
+	{
+		if (angle > M_PI_2 && angle < M_PI_2 * 3)
+			step->x = -1;
+		else if (angle < M_PI_2 || angle > M_PI_2 * 3)
+			step->x = 1;
+		step->y = get_y(step->x, angle);
+	}
+	else
+	{
+		if ((angle > 0 && angle < M_PI) || angle > 2 * M_PI)
+			step->y = -1;
+		else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
+			step->y = 1;
+		step->x = get_x(step->y, angle);
+	}
+}
+
+/* Digital Differential Analysis - walking along the y-axis */
+int	dda_y_axis(t_point *ns, t_data *data, t_goat *goat, double angle)
+{
+	t_point	step;
+	t_point	first_step;
 	size_t	i;
 	const char	map[10][31] = \
 	{"111111111111111111111111111111", \
@@ -33,38 +74,44 @@ void	get_wall_xy(t_point *ray, t_data *data, t_goat *goat, double angle)
 	"100000000000000000000000000001", \
 	"100000000000000000000000000001", \
 	"111111111111111111111111111111"};
-	
-	step_x = cos(angle);
-	step_y = -1 * sin(angle);	// step.x, step.y can be a t_point
+
+	if (angle == 0 || angle == M_PI)
+		return (PARALLEL);
+	data->map = NULL;	// DELETE
+	printf("\n*** Y AXIS ***");
 	i = 0;
-	if (fabs(sin(angle)) < fabs(cos(angle)))	// x steps are smaller, start with x axis
-		i = 1; // else start with y axis
-	ray->x = goat->x; // 	DELETE! IS NONSENSE
-	while (1)
+	get_first_step(&first_step, angle, Y_AXIS, goat);
+	get_steps(&step, angle, Y_AXIS);
+	printf("FS.x = %f, FS.y = %f, S.x = %f, S.y = %f\n", first_step.x, first_step.y, step.x, step.y);
+	while (is_inside_map(ns, data))
 	{
-/* 
-	DAA algorithm
-	steps in direction +/- 1 along either x or y axis
-		sqrt(1ˆ2 + (dy/dx)^2) for dy
-		sqrt(1ˆ2 + (dx/dy)^2) for dx
-	keep track of steps taken
-	check every time whether we hit a wall (also which wall - orientation)
-	
- */
+		if (i == 0)
+		{
+			ns->x = goat->x + first_step.x;
+			ns->y = goat->y + first_step.y;
+		}
+		else
+		{
+			ns->x = goat->x + first_step.x + i * step.x;
+			ns->y = goat->y + first_step.y + i * step.y;
+		}
+		printf("Round %zu: ns->x = %f, ns->y = %f\n", i, ns->x, ns->y);
+		printf("map[%d][%d] is %c\n", (int)round(ns->y), (int)ns->x, map[(int)round(ns->y)][(int)ns->x]);
+		if (map[(int)round(ns->y)][(int)ns->x] == '1' && step.y > 0)
+			return (SOUTH);
+		else if (map[(int)round(ns->y)][(int)ns->x] == '1')
+			return (NORTH);
 		i++;
-		if (ray->x < 0 || ray->x >= data->map_width || ray->y < 0 || \
-			ray->y >= data->map_height)
-			break;
 	}
-	// else if (fabs(sin(angle)) < fabs(cos(angle)))
-	// 	step_y *= fabs(tan(angle));
-	
+	return (1);
 }
 
-double	calc_distance_from_wall(t_data *data, t_goat *goat, double ray_angle)
+/* Digital Differential Analysis - walking along the x-axis */
+int	dda_x_axis(t_point *ew, t_data *data, t_goat *goat, double angle)
 {
-	t_point	ray;
-	double	angle;
+	t_point	step;
+	t_point	first_step;
+	size_t	i;
 	const char	map[10][31] = \
 	{"111111111111111111111111111111", \
 	"100000000000000000000000000001", \
@@ -76,18 +123,50 @@ double	calc_distance_from_wall(t_data *data, t_goat *goat, double ray_angle)
 	"100000000000000000000000000001", \
 	"100000000000000000000000000001", \
 	"111111111111111111111111111111"};
+
+	if (angle == M_PI_2 || angle == 3 * M_PI_2)
+		return (PARALLEL);
+	data->map = NULL;	// DELETE
+	printf("\n*** X AXIS ***");
+	i = 0;
+	printf("angle is %f\n", angle);
+	get_first_step(&first_step, angle, X_AXIS, goat);
+	get_steps(&step, angle, X_AXIS);
+	printf("FS.x = %f, FS.y = %f, S.x = %f, S.y = %f\n", first_step.x, first_step.y, step.x, step.y);
+	while (is_inside_map(ew, data))
+	{
+		if (i == 0)
+		{
+			ew->x = goat->x + first_step.x;
+			ew->y = goat->y + first_step.y;
+		}
+		else
+		{
+			ew->x = goat->x + first_step.x + i * step.x;
+			ew->y = goat->y + first_step.y + i * step.y;
+		}
+		printf("Round %zu: ew->x = %f, ew->y = %f\n", i, ew->x, ew->y);
+		printf("map[%d][%d] is %c\n", (int)round(ew->y), (int)ew->x, map[(int)round(ew->y)][(int)ew->x]);
+		if (map[(int)round(ew->y)][(int)ew->x] == '1' && step.x > 0)
+			return (EAST);
+		else if (map[(int)round(ew->y)][(int)ew->x] == '1')
+			return (WEST);
+		i++;
+	}
+	return (PARALLEL);
+}
+
+double	calc_distance_from_wall(t_data *data, t_goat *goat, double ray_angle)
+{
+	t_point	ew;
+	t_point	ns;
 	
-	get_wall_xy(&ray, data, goat, to_rad(goat->angle + ray_angle));
-	// step_x = 1 * cos(angle) / fabs(cos(angle));
-	// step_y = -1 * sin(angle) / fabs(sin(angle));
-	// printf("goat standing on %c\t steps x: %f, step y %f\n:", map[ray.y][ray.x], step_x, step_y);
-	// printf("goat->y: %d, goat->x %d\n", goat->y, goat->x);
-	printf("angle: %f\t", ray_angle);
-	// printf("ray.y [%d] ray.x [%d], map[y][x] is %c\n", ray.y, ray.x, map[ray.y][ray.x]);
-	printf("distance is %f\t\t", sqrt(pow(ray.x - goat->x, 2) + pow(ray.y - goat->y, 2)));
-	printf("corrected : %f\n", sqrt(pow(ray.x - goat->x, 2) + pow(ray.y - goat->y, 2)) * cos(to_rad(ray_angle)));
-	return (sqrt(pow(ray.x - goat->x, 2) + pow(ray.y - goat->y, 2)) * cos(to_rad(ray_angle)));
-	// return (sqrt(pow(ray.x - goat->x, 2) + pow(ray.y - goat->y, 2)));
+	ew.facing = dda_x_axis(&ew, data, goat, to_rad(goat->angle + ray_angle));
+	ns.facing = dda_y_axis(&ns, data, goat, to_rad(goat->angle + ray_angle));
+	if (dist_to_wall(ew, goat) > dist_to_wall(ns, goat))
+		return (sqrt(pow(ns.x - goat->x, 2) + pow(ns.y - goat->y, 2)) * cos(to_rad(ray_angle)));
+	else
+		return (sqrt(pow(ew.x - goat->x, 2) + pow(ew.y - goat->y, 2)) * cos(to_rad(ray_angle)));
 }
 
 void	casting_rays(t_data *data, t_goat *goat)
@@ -99,11 +178,13 @@ void	casting_rays(t_data *data, t_goat *goat)
 	double	distance;
 	
 	xi = 0;
-	while (xi < WIDTH)
+	// while (xi < WIDTH)
+	while (xi < 1)
 	{
 		distance = calc_distance_from_wall(data, goat, FOV / 2 - (double)xi * FOV / (WIDTH - 1));
+		printf("dist is %f\n", distance);	// delete
 		yi = 0;
-		
+
 		top_wall = HEIGHT / 2 - (HEIGHT / 2 / distance);
 		bottom_wall = HEIGHT / 2 + (HEIGHT / 2 / distance);
 		// printf("top wall: %zu, bottom wall: %zu\n", top_wall, bottom_wall);

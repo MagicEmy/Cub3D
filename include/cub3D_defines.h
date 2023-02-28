@@ -17,9 +17,22 @@
 # define WIDTH 640
 # define HEIGHT 480
 
+# define X_AXIS 0
+# define Y_AXIS 1
+
 # define FOV 60
 
 # define WALL_HEIGHT HEIGHT/3
+
+# define PARALLEL -1
+
+enum	e_wall_sides
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+};
 
 # define ERROR_MALLOC			"Memory allocation failed."
 # define ERROR_MAP_EXTENSION	"Wrong map extension."

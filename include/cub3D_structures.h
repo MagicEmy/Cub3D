@@ -19,8 +19,8 @@
 
 typedef struct s_goat
 {
-	int32_t	x;
-	int32_t	y;
+	double	x;
+	double	y;
 	double	angle;
 }	t_goat;
 
@@ -28,6 +28,7 @@ typedef struct s_point
 {
 	double	x;
 	double	y;
+	int		facing;
 }	t_point;
 
 typedef struct s_data
