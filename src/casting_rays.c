@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/02/28 19:22:06 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/02 17:19:17 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ int	dda_y_axis(t_ray *ns, t_data *data, t_goat *goat, double angle)
 	"111111111111111111111111111111"};
 
 	if (angle == 0 || angle == M_PI)
+	{
+		ns->dist = -1;
 		return (PARALLEL);
+	}
 	data->map = NULL;	// DELETE
 	// printf("\n*** Y AXIS ***\n");
 	i = 0;
 	get_first_step(&first_step, angle, Y_AXIS, goat);
 	get_steps(&step, angle, Y_AXIS);
+	ns->facing = facing_what(&step, Y_AXIS);
 	// printf("FS.x = %f, FS.y = %f, S.x = %f, S.y = %f\n", first_step.x, first_step.y, step.x, step.y);
 	ns->x = goat->x + first_step.x;
 	ns->y = goat->y + first_step.y;
-	ns->dist = dist_to_wall(ns, goat);
+	ns->dist = dist_to_wall(ns, goat, step);
 	while (is_inside_map(ns, data))
 	{
 		// printf("Round %zu: ns->x = %f, ns->y = %f\n", i, ns->x, ns->y);
@@ -56,7 +60,7 @@ int	dda_y_axis(t_ray *ns, t_data *data, t_goat *goat, double angle)
 			return (NORTH);
 		ns->x = goat->x + first_step.x + i * step.x;
 		ns->y = goat->y + first_step.y + i * step.y;
-		ns->dist = dist_to_wall(ns, goat);
+		ns->dist = dist_to_wall(ns, goat, step);
 		i++;
 	}
 	return (1);
@@ -81,17 +85,21 @@ int	dda_x_axis(t_ray *ew, t_data *data, t_goat *goat, double angle)
 	"111111111111111111111111111111"};
 
 	if (angle == M_PI_2 || angle == 3 * M_PI_2)
+	{
+		ew->dist = -1;
 		return (PARALLEL);
+	}
 	data->map = NULL;	// DELETE
 	// printf("\n*** X AXIS ***\n");
 	i = 1;
 	// printf("angle is %f\n", angle);
 	get_first_step(&first_step, angle, X_AXIS, goat);
 	get_steps(&step, angle, X_AXIS);
+	ew->facing = facing_what(&step, X_AXIS);
 	// printf("FS.x = %f, FS.y = %f, S.x = %f, S.y = %f\n", first_step.x, first_step.y, step.x, step.y);
 	ew->x = goat->x + first_step.x;
 	ew->y = goat->y + first_step.y;
-	ew->dist = dist_to_wall(ew, goat);
+	ew->dist = dist_to_wall(ew, goat, step);
 	while (is_inside_map(ew, data))
 	{
 		// printf("Round %zu: ew->x = %f, ew->y = %f\n", i, ew->x, ew->y);
@@ -102,29 +110,43 @@ int	dda_x_axis(t_ray *ew, t_data *data, t_goat *goat, double angle)
 			return (WEST);
 		ew->x = goat->x + first_step.x + i * step.x;
 		ew->y = goat->y + first_step.y + i * step.y;
-		ew->dist = dist_to_wall(ew, goat);
+		ew->dist = dist_to_wall(ew, goat, step);
 		i++;
 	}
 	return (PARALLEL);
 }
 
-double	calc_distance_from_wall(t_data *data, t_goat *goat, double ray_angle)
+t_ray	*calc_distance_from_wall(t_data *data, t_goat *goat, double ray_angle)
 {
-	t_ray	ew;
-	t_ray	ns;
+	t_ray	*ew;
+	t_ray	*ns;
 	
-	ew.facing = dda_x_axis(&ew, data, goat, to_rad(goat->angle + ray_angle));
-	ns.facing = dda_y_axis(&ns, data, goat, to_rad(goat->angle + ray_angle));
-	if (ew.dist > ns.dist)
+	ew = malloc(sizeof(t_ray));
+	ns = malloc(sizeof(t_ray));
+	if (!ew || !ns)
+		exit(1);	// include error handling
+	ew->facing = dda_x_axis(ew, data, goat, to_rad(goat->angle + ray_angle));
+	ns->facing = dda_y_axis(ns, data, goat, to_rad(goat->angle + ray_angle));
+	if (ew->dist < 0 || ns->dist < 0)
+		printf("[ew] [%f,%f], goat [%f,%f], facing %d, distance %f\n", ew->x, ew->y, goat->x, goat->y, ew->facing, ew->dist);
+		printf("[ns] [%f,%f], goat [%f,%f], facing %d, distance %f\n", ns->x, ns->y, goat->x, goat->y, ns->facing, ns->dist);
+	if (ew->dist > ns->dist)
 	{
-		// printf("[ns] wall touched at [%f, %f], wall type %d\t", ns.x, ns.y, ns.facing);
-		return (ns.dist * cos(to_rad(ray_angle)));
+		ns->dist *= cos(to_rad(ray_angle));
+		// if (ns->facing == NORTH)
+		// 	ns->dist += 1;
+		return (free(ew), ns);
 	}
 	else
 	{
-		// printf("[ew] wall touched at [%f, %f], wall type %d\t", ew.x, ew.y, ew.facing);
-		return (ew.dist * cos(to_rad(ray_angle)));
+		ew->dist *= cos(to_rad(ray_angle));
+		// if (ew->facing == WEST)
+		// 	ew->dist += 1;
+		return (free(ns), ew);
 	}
+	// else	// only for debugging
+	// 	printf("Sth went wrong - both ray distances are negative!");
+	// exit (1);
 }
 
 void	casting_rays(t_data *data, t_goat *goat)
@@ -133,21 +155,22 @@ void	casting_rays(t_data *data, t_goat *goat)
 	int32_t	yi;
 	int32_t	top_wall;
 	int32_t	bottom_wall;
-	double	distance;
+	t_ray	*ray;
 	
 	xi = 0;
 	while (xi < WIDTH)
 	{
-		distance = calc_distance_from_wall(data, goat, FOV / 2 - (double)xi * FOV / (WIDTH - 1));
-		printf("xi: %d - dist is %f\n", xi, distance);	// delete
+		ray = calc_distance_from_wall(data, goat, FOV / 2 - \
+		(double)xi * FOV / (WIDTH - 1));
+		printf("xi: %d - dist is %f\n", xi, ray->dist);	// delete
 		yi = 0;
 
-		top_wall = HEIGHT / 2 - (HEIGHT / 2 / distance);
-		bottom_wall = HEIGHT / 2 + (HEIGHT / 2 / distance);
-		// printf("top wall: %zu, bottom wall: %zu\n", top_wall, bottom_wall);
-		while (yi < top_wall)
+		top_wall = HEIGHT / 2 - ceil(HEIGHT / 2 / ray->dist);
+		bottom_wall = HEIGHT / 2 + ceil(HEIGHT / 2 / ray->dist);
+		printf("top wall: %d, bottom wall: %d\n", top_wall, bottom_wall);
+		while ((int32_t)yi < top_wall)
 			mlx_put_pixel(data->img, xi, yi++, 0x8FFFFDff);
-		while (yi < bottom_wall)
+		while ((int32_t)yi < bottom_wall)
 		{
 			// printf("about to put pixel [%zu][%zu]\n", yi, xi);
 			mlx_put_pixel(data->img, xi, yi++, 0xE78421ff);

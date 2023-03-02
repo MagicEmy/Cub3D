@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/02/28 18:47:54 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/02 16:58:59 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void	casting_rays(t_data *data, t_goat *goat);
 /* casting_utils.c */
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
-double	dist_to_wall(t_ray *ray, t_goat *goat);
+double	dist_to_wall(t_ray *ray, t_goat *goat, t_point step);
 int		is_wall(t_data *data, int x, int y);
+int		facing_what(t_point *step, int axis);
 /* casting_get.c */
 double	get_x(double y_side, double angle);
 double	get_y(double x_side, double angle);
