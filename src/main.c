@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/23 16:33:46 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:05:27 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(char *text)
 {
-	ft_putstr_fd(C_RED"E"C_YELLOW"RR"C_VIOLET"OR\t"C_BLUE, 2);
+	ft_putstr_fd(C_RED"\nE"C_YELLOW"RR"C_VIOLET"OR\t"C_BLUE, 2);
 	ft_putendl_fd(text, 2);
 	ft_putendl_fd(C_RESET, 2);
 	exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/02/27 15:40:20 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/06 18:24:30 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-# CFLAGS 		+= -g -fsanitize=address
+CFLAGS 		+= -g -fsanitize=address
 
 #//= Colors =//#
 BOLD	:= \033[1m
