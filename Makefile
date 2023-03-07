@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/06 18:24:30 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/07 17:36:21 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ HEADERS		:=	include/cub3D.h	 		\
 
 SRC			:=	main.c					\
 				cube_data_init.c		\
-				cube_map_validation.c	\
+				parsing.c				\
 				get_next_line.c			\
 				get_next_line_utils.c	\
+				info_validation.c		\
 				casting_rays.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)

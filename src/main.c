@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/05 15:05:27 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:56:39 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int32_t	main(int argc, char **argv)
 	if (!argv || argc != 2)
 		error_exit(ERROR_ARGS);
 	data = cube_data_init();
-	cube_map_validation(argv[1], data);
+	info_map_parsing(argv[1], data);
 	mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!mlx)
 		return (EXIT_FAILURE);

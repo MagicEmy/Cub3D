@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/06 18:56:52 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:58:55 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@
 
 void	error_exit(char *text);
 t_data	*cube_data_init(void);
-void	cube_map_validation(char *argv, t_data *data);
+
+char	*get_line(char *argv, t_data *data);
+void	info_map_parsing(char *argv, t_data *data);
+void	rgb_validation(t_data *data);
 
 void	casting_rays(mlx_image_t *img, int width, int height);
 
 //get_next_line
-char	*get_line(char *argv, t_data *data);
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
 int		check_where_newline(char *buff, int c);

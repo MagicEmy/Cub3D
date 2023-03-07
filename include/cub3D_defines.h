@@ -6,10 +6,9 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/06 18:59:48 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:37:24 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
@@ -23,5 +22,7 @@
 # define ERROR_MAP_EXTENSION	"Wrong map extension."
 # define ERROR_EMPTY_MAP		"Empty map."
 # define ERROR_EMPTY_FILE		"Empty file."
+# define ERROR_NO_RGB			"RGB input missing."
+# define ERROR_RGB_ERR			"wrong RGB input."
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:19:12 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/06 14:36:21 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:48:18 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_free(char *s1, char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	**ft_split_multi(char const *s, char *set);

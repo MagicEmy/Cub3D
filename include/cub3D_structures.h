@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/06 16:14:16 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:29:38 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ typedef struct s_data
 	char		*we_path;
 	char		*ea_path;
 	char		*floor;
+	int			floor_red;
+	int			floor_green;
+	int			floor_blue;
 	char		*ceiling;
+	int			ceiling_red;
+	int			ceiling_green;
+	int			ceiling_blue;
 	int			counter;
 	char		**info_file;
 	char		**map;
