@@ -6,7 +6,7 @@
 /*   By: darina <darina@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/28 13:16:58 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/02/28 13:24:32 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/07 20:14:13 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,19 @@ void	get_steps(t_point *step, double angle, int axis)
 		else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
 			step->y = 1;
 		step->x = get_x(step->y, angle);
+	}
+}
+
+void	get_line_steps(t_point *step, t_point a, t_point b, int32_t axis)
+{
+	if (axis == X_AXIS)
+	{
+		step->x = (b.x - a.x) / fabs(b.x - a.x);
+		step->y = (b.y - a.y) / fabs((b.y - a.y) / (b.x - a.x));
+	}
+	else
+	{
+		step->x = (b.x - a.x) / fabs((b.x - a.x) / (b.y - a.y));
+		step->y = (b.y - a.y) / fabs(b.y - a.y);
 	}
 }
