@@ -13,6 +13,7 @@
 #ifndef CUB3D_STRUCTURES_H
 # define CUB3D_STRUCTURES_H
 
+
 # include "MLX42/MLX42.h"
 # include <stdint.h>
 
