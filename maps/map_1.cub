@@ -1,21 +1,20 @@
 
 
-	NO  ./path_to_the_north_texture		     
+	NO  ./textures/boss.png	     
 				
 
-			SO 		./path_to_the_south_texture
+			SO 		./textures/fool.png
 				
-		WE 	   ./path_to_the_west_texture
+		WE 	   ./textures/noo.png
 
-   EA   ./path_to_the_east_texture
+   EA   ./textures/orange-wood.png
 
    C 220,30,0
 
-   F 220,600,0
+   	F 220,100,0
 	
 
-
-  11111
-111111
-1CPE11
-11111
+					111111
+					 1100011
+					110011
+				   111111

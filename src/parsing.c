@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/07 17:32:50 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:53:30 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	get_file_info(char *line, t_data *data)
 
 char	*get_line(char *argv, t_data *data)
 {
+	int		fd;
 	char	*line;
 	char	*map_line;
-	int		fd;
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		error_exit("File opening failed.");
+		error_exit(ERROR_OPEN_FAIL);
 	map_line = ft_strdup("");
 	if (!map_line)
 		error_exit(ERROR_MALLOC);
@@ -106,7 +106,10 @@ void	info_map_parsing(char *argv, t_data *data)
 	free(map_line);
 	if (!data->map)
 		error_exit(ERROR_MALLOC);
+	texture_acquisition(data);
 	rgb_validation(data);
+	check_map_syntax(data);
+	// map_validation(data);
 	while (data->map[i])
 		printf("%s\n", data->map[i++]);
 	while (1)
@@ -114,15 +117,8 @@ void	info_map_parsing(char *argv, t_data *data)
 }
 
 /*
-x make a split function that get more than 1 char to check all kind of spaces
-	x split by every kind of space and store in struct
-x read lines and check if all the necessary info have been provided and stored 
-	in the designated struct, if not error
 x parse the map
 	x get the line, split (regular) the content and store in struct;
 	- map is the last object to be written in the file, if not error
 	-check if path is valid and if there is garbage before it
-- check value of info
-	path to texture is valid
-	rgb is nummer and if it is within 0 and 255
 */

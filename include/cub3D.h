@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/07 16:58:55 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:49:25 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_data	*cube_data_init(void);
 
 char	*get_line(char *argv, t_data *data);
 void	info_map_parsing(char *argv, t_data *data);
+void	texture_acquisition(t_data *data);
 void	rgb_validation(t_data *data);
 
 void	casting_rays(mlx_image_t *img, int width, int height);

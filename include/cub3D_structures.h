@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/07 17:29:38 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:44:25 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,22 @@ typedef struct s_file_info
 	char	**map;
 }	t_file_info;
 
+typedef struct s_texture
+{
+	mlx_texture_t		*north;
+	mlx_texture_t		*south;
+	mlx_texture_t		*east;
+	mlx_texture_t		*west;
+}	t_texture;
+
 typedef struct s_data
 {
 	mlx_t		*mlx;
 	// t_file_info	file_info;
 	char		*no_path;
 	char		*so_path;
-	char		*we_path;
 	char		*ea_path;
+	char		*we_path;
 	char		*floor;
 	int			floor_red;
 	int			floor_green;
@@ -53,6 +61,7 @@ typedef struct s_data
 	int			counter;
 	char		**info_file;
 	char		**map;
+	t_texture	texture;
 }	t_data;
 
 #endif
