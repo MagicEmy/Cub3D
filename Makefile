@@ -11,19 +11,25 @@
 # **************************************************************************** #
 
 NAME		:=	cub3D
-HEADERS		:=	include/cub3D.h	 \
+HEADERS		:=	include/cub3D.h	 		\
 				include/cub3D_defines.h \
-				include/colors.h
+				include/colors.h \
+        include/cub3D_structures.h
 
 SRC			:=	main.c \
-				casting_rays.c \
+				cube_data_init.c		\
+				parsing.c				\
+				get_next_line.c			\
+				get_next_line_utils.c	\
+				info_validation.c		\
+        casting_rays.c \
 				casting_utils.c \
 				casting_get.c \
 				drawing.c \
 				drawing_bonus.c \
 				hooks.c
 # to do: deal with bonus files
-				
+
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
@@ -51,12 +57,12 @@ all:	$(NAME)
 	@echo "$(BOLD)$(CYAN)Cube3D Done $(RESET)$(BOLD)$(YELLOW)It's just a 🐐$(RESET)"
 
 #  commented out - version including references to LIBFT
-# $(NAME): $(OBJ) $(HEADERS) $(MLX) $(LIBFT)
-# 	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJ) $(HEADERS) $(MLX) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
 
 #  without LIBFT - to be deleted once LIBFT is in place
-$(NAME): $(OBJ) $(HEADERS) #$(MLX)
-	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) -o $(NAME) 
+# $(NAME): $(OBJ) $(HEADERS) $(MLX)
+# 	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) -o $(NAME) 
 
 obj/%.o: src/%.c $(HEADERS)
 	@mkdir -p obj
@@ -71,7 +77,7 @@ $(LIBFT):
 clean:
 	@rm -rf obj
 # @rm -rf $(MLX_DIR)/build
-# $(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	
 fclean: clean
 	rm -f $(NAME)

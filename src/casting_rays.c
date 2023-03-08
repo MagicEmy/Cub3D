@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   casting_rays.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 17:22:47 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   casting_rays.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 10:34:29 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/02/23 16:49:25 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
 	}
 	else if (ew->dist >= 0)
 	{
+
 		ew->dist *= cos(to_rad(ray_angle));
 		return (free(ns), ew);
 	}

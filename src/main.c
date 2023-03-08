@@ -14,10 +14,20 @@
 #include "cub3D_structures.h"
 #include <stdlib.h>
 #include <math.h>
-#include <stdio.h> 	//DELETE
+
+
+void	error_exit(char *text)
+{
+	ft_putstr_fd(C_RED"\nE"C_YELLOW"RR"C_VIOLET"OR\t"C_BLUE, 2);
+	ft_putendl_fd(text, 2);
+	ft_putendl_fd(C_RESET, 2);
+	exit(EXIT_FAILURE);
+}
+
 
 void    key_hooks(mlx_key_data_t keydata, void *param)
 {
+
 	t_data  *data;
 	data = (t_data *)param;
 	if (keydata.action != MLX_PRESS && keydata.action != MLX_REPEAT)
@@ -48,16 +58,16 @@ void	init(t_data *data, t_goat *goat)
 	data->goat = goat;
 }
 
-int	main(int argc, char** argv)
+int32_t	main(int argc, char **argv)
 {
 	t_goat		goat;
 	t_data		data;
 	
-	if (!argv || argc < 1)	// adjust!!!!!
-		return (EXIT_SUCCESS);
+	if (!argv || argc != 2)
+		error_exit(ERROR_ARGS);
 	
 	init(&data, &goat);
-	
+	info_map_parsing(argv[1], data);
 	if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
 		return (EXIT_FAILURE);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
@@ -67,5 +77,8 @@ int	main(int argc, char** argv)
 	mlx_key_hook(data.mlx, key_hooks, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
+  
+	// free what needs to be freed
+	
 	return (EXIT_SUCCESS);
 }

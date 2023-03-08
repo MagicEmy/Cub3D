@@ -18,12 +18,13 @@
 # include "colors.h"
 
 # include "MLX42/MLX42.h"
-// # include "libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <memory.h>
+
 
 /* casting_rays.c */
 void	casting_rays(t_data *data);
@@ -48,4 +49,19 @@ void	draw_minimap(t_data *data, t_point goat);
 void	go_left_right(int key, t_data *data);
 void	go_up_down(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
+
+void	error_exit(char *text);
+t_data	*cube_data_init(void);
+
+char	*get_line(char *argv, t_data *data);
+void	info_map_parsing(char *argv, t_data *data);
+void	texture_acquisition(t_data *data);
+void	rgb_validation(t_data *data);
+
+//get_next_line
+char	*get_next_line(int fd);
+char	*gnl_ft_strjoin_free(char *s1, char *s2);
+int		check_where_newline(char *buff, int c);
+
+
 #endif
