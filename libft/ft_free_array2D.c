@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube_map_validation.c                              :+:      :+:    :+:   */
+/*   ft_free_array2D.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:51:00 by emlicame         ###   ########.fr       */
+/*   Created: 2023/03/06 14:33:02 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/06 14:35:56 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-static void	cube_check_extension(char *argv)
+void	ft_free_double_arr(char **arr)
 {
-	int	len;
+	int	i;
 
-	len = ft_strlen(argv);
-	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
-		error_exit(ERROR_MAP_EXTENSION);
-}
-
-void	cube_map_validation(char *argv, t_data *data)
-{
-	(void)data;
-	cube_check_extension(argv);
+	i = 0;
+	if (arr == NULL)
+		return ;
+	while (arr[i])
+		free(arr[i++]);
+	free (arr);
 }

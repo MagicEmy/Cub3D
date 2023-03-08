@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/02/22 16:48:02 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:56:39 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(char *text)
 {
-	ft_putstr_fd(C_RED"E"C_YELLOW"RR"C_VIOLET"OR\t"C_BLUE, 2);
+	ft_putstr_fd(C_RED"\nE"C_YELLOW"RR"C_VIOLET"OR\t"C_BLUE, 2);
 	ft_putendl_fd(text, 2);
 	ft_putendl_fd(C_RESET, 2);
 	exit(EXIT_FAILURE);
@@ -38,11 +38,12 @@ int32_t	main(int argc, char **argv)
 	if (!argv || argc != 2)
 		error_exit(ERROR_ARGS);
 	data = cube_data_init();
-	cube_map_validation(argv[1], data);
+	info_map_parsing(argv[1], data);
 	mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!mlx)
 		return (EXIT_FAILURE);
 	data->mlx = mlx;
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	casting_rays(img, WIDTH, HEIGHT);
 	mlx_image_to_window(mlx, img, 0, 0);

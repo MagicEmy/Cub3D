@@ -6,18 +6,22 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/02/22 16:46:16 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/07 17:36:21 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	cub3D
 HEADERS		:=	include/cub3D.h	 		\
 				include/cub3D_defines.h \
-				include/colors.h
+				include/colors.h		\
+				include/cub3D_structures.h
 
 SRC			:=	main.c					\
 				cube_data_init.c		\
-				cube_map_validation.c	\
+				parsing.c				\
+				get_next_line.c			\
+				get_next_line_utils.c	\
+				info_validation.c		\
 				casting_rays.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)
@@ -29,7 +33,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-# CFLAGS 		+= -g -fsanitize=address
+CFLAGS 		+= -g -fsanitize=address
 
 #//= Colors =//#
 BOLD	:= \033[1m

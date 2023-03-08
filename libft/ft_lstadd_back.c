@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube_data_init.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:42:39 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/07 16:53:51 by emlicame         ###   ########.fr       */
+/*   Created: 2021/12/13 17:10:51 by emlicame          #+#    #+#             */
+/*   Updated: 2022/10/10 15:04:53 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-t_data	*cube_data_init(void)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_data	*data;
+	t_list	*addlast;
 
-	data = malloc(sizeof(t_data));
-	if (!data)
-		error_exit(ERROR_MALLOC);
-	data->map = NULL;
-	data->info_file = NULL;
-	data->no_path = NULL;
-	data->so_path = NULL;
-	data->ea_path = NULL;
-	data->we_path = NULL;
-	data->ceiling = NULL;
-	data->floor = NULL;
-	data->counter = 0;
-	return (data);
+	addlast = NULL;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	else
+	{
+		addlast = ft_lstlast(*lst);
+		addlast->next = new;
+	}
 }
