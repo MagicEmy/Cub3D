@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube_data_init.c                                   :+:      :+:    :+:   */
+/*   ft_char_set.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:42:39 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/07 16:53:51 by emlicame         ###   ########.fr       */
+/*   Created: 2023/03/02 15:22:44 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/02 15:22:56 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-t_data	*cube_data_init(void)
+int	ft_char_set(char c, char *set)
 {
-	t_data	*data;
+	int	i;
 
-	data = malloc(sizeof(t_data));
-	if (!data)
-		error_exit(ERROR_MALLOC);
-	data->map = NULL;
-	data->info_file = NULL;
-	data->no_path = NULL;
-	data->so_path = NULL;
-	data->ea_path = NULL;
-	data->we_path = NULL;
-	data->ceiling = NULL;
-	data->floor = NULL;
-	data->counter = 0;
-	return (data);
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
