@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/07 19:59:38 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 15:24:42 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ double	get_x(double y_side, double angle);
 double	get_y(double x_side, double angle);
 void	get_first_step(t_point *first_step, double angle, int axis, t_goat *goat);
 void	get_steps(t_point *step, double angle, int axis);
+void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
 void	draw_scene(t_data *data, t_ray *ray, t_point idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);

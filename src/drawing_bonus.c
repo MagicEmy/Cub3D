@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/07 19:59:10 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 17:22:58 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	wipe_everything(mlx_image_t *img)
 	size_t	y;
 
 	y = 0;
-	while (y < HEIGHT)
+	while (y < HEIGHT / 4)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < WIDTH / 2)
 		{
 			mlx_put_pixel(img, x, y, 0x000000FF);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/07 19:55:37 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 17:22:47 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 #include <math.h>
 #include <stdio.h>
 
-/* Digital Differential Analysis - walking along the y-axis */
-double	dda_y_axis(t_ray *ns, t_data *data, double angle)
+int	hits_wall(t_data *data, t_ray *ray)
 {
-	t_point	step;
-	t_point	first_step;
-	size_t	i;
 	const char	map[10][31] = \
 	{"111111111111111111111111111111", \
 	"100000000000000000000000000001", \
@@ -34,6 +30,25 @@ double	dda_y_axis(t_ray *ns, t_data *data, double angle)
 	"100000000000000000000000000001", \
 	"100000000000000000000000000001", \
 	"111111111111111111111111111111"};
+	
+	(void)data;	// remove
+	if (ray->facing == NORTH && map[(int)ray->y - 1][(int)floor(ray->x)] == '1')
+		return (TRUE);
+	if (ray->facing == WEST && map[(int)floor(ray->y)][(int)ray->x - 1] == '1')
+		return (TRUE);
+	if ((ray->facing == EAST || ray->facing == SOUTH) && \
+	map[(int)floor(ray->y)][(int)floor(ray->x)] == '1')
+		return (TRUE);
+	else
+		return (FALSE);
+}
+
+/* Digital Differential Analysis - walking along the y-axis */
+double	dda_y_axis(t_ray *ns, t_data *data, double angle)
+{
+	t_point	step;
+	t_point	first_step;
+	size_t	i;
 
 	if (angle == 0 || angle == M_PI)
 		return (PARALLEL);
@@ -47,13 +62,14 @@ double	dda_y_axis(t_ray *ns, t_data *data, double angle)
 	ns->dist = dist_to_wall(ns, data->goat, step);
 	while (is_inside_map(ns, data))
 	{
-		if (map[(int)(ns->y)][(int)floor(ns->x)] == '1')
-			return (ns->dist);
+		if (hits_wall(data, ns))
+			break ;
 		ns->x = data->goat->x + first_step.x + i * step.x;
 		ns->y = data->goat->y + first_step.y + i * step.y;
 		ns->dist = dist_to_wall(ns, data->goat, step);
 		i++;
 	}
+	return (ns->dist);
 }
 
 /* Digital Differential Analysis - walking along the x-axis */
@@ -62,17 +78,6 @@ double	dda_x_axis(t_ray *ew, t_data *data, double angle)
 	t_point	step;
 	t_point	first_step;
 	size_t	i;
-	const char	map[10][31] = \
-	{"111111111111111111111111111111", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"111111111111111111111111111111"};
 
 	if (angle == M_PI_2 || angle == 3 * M_PI_2)
 		return (PARALLEL);
@@ -86,13 +91,14 @@ double	dda_x_axis(t_ray *ew, t_data *data, double angle)
 	ew->dist = dist_to_wall(ew, data->goat, step);
 	while (is_inside_map(ew, data))
 	{
-		if (map[(int)floor(ew->y)][(int)ew->x] == '1')
-			return (ew->dist);
+		if (hits_wall(data, ew))
+			break ;
 		ew->x = data->goat->x + first_step.x + i * step.x;
 		ew->y = data->goat->y + first_step.y + i * step.y;
 		ew->dist = dist_to_wall(ew, data->goat, step);
 		i++;
 	}
+	return (ew->dist);
 }
 
 t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
@@ -128,7 +134,7 @@ void	casting_rays(t_data *data)
 	t_point	idx;
 	t_ray	*ray;
 	t_point	goat;
-	// t_point	wall;
+	t_point	wall;
 	
 	idx.x = 0;
 	idx.y = 0;
@@ -140,16 +146,16 @@ void	casting_rays(t_data *data)
 		ray = calc_distance_from_wall(data, FOV / 2 - \
 		(double)idx.x * FOV / (WIDTH - 1));
 		// printf("xi: %f - dist is %f\n", idx.x, ray->dist);	// delete
-		// wall.x = PADDING + PPU * ray->x;
-		// wall.y = PADDING + PPU * ray->y;
-		// if (wall.x >= WIDTH || wall.y >= HEIGHT)
-		// {
+		wall.x = PADDING + PPU * ray->x;
+		wall.y = PADDING + PPU * ray->y;
+		if (wall.x >= WIDTH || wall.y >= HEIGHT)
+		{
 			// printf("ray angle: %f, ray hits at [%f,%f]\n", FOV / 2 - \
 			// (double)idx.x * FOV / (WIDTH - 1), ray->x, ray->y);
-			// exit(1);
-		// }
-		// draw_line(data->img, goat, wall, 0xFFC300FF);
+			exit(1);	// include error handling
+		}
 		draw_scene(data, ray, idx);
+		draw_line(data->img, goat, wall, 0xFFC300FF);
 		idx.x++;
 	}
 }

@@ -6,13 +6,17 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/07 17:52:11 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 15:18:45 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef CUB3D_DEFINES_H
 # define CUB3D_DEFINES_H
+
+/* general stuff */
+# define TRUE 1
+# define FALSE 0
 
 # define WIDTH 640 * 2
 # define HEIGHT 480 * 2

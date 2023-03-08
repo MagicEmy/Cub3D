@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/07 20:17:30 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 17:21:10 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,52 +36,39 @@ void	draw_scene(t_data *data, t_ray *ray, t_point idx)
 		mlx_put_pixel(data->img, idx.x, idx.y++, 0x25A703ff);
 }
 
-void	st_line_along_x(mlx_image_t *img, t_point a, t_point step, int32_t clr)
+static int	st_is_inside_window(double x, double y)
 {
-	// WORK IN PROGRESS
-	// WON'T WORK WITHOUT PT B
-		while ((dir.x < 0 && a.x + dir.x * i >= b.x) || \
-		(dir.x > 0 && a.x + dir.x * i <= b.x))
-		{
-			if (a.x + dir.x * i >= 0 && a.x + dir.x * i < WIDTH && \
-			a.y + dir.y * i * fabs(delta.y/delta.x) >= 0 && \
-			a.y + dir.y * i * fabs(delta.y/delta.x) < HEIGHT)
-				mlx_put_pixel(img, a.x + dir.x * i, \
-				a.y + dir.y * i * fabs(delta.y / delta.x), clr);
-			i++;
-		}
-}
-void	st_line_along_y(mlx_image_t *img, t_point a, t_point step, int32_t clr)
-{
-	// WORK IN PROGRESS
-	// WON'T WORK WITHOUT PT B
-		while ((dir.y < 0 && a.y + dir.y * i >= b.y) || \
-		(dir.y > 0 && a.y + dir.y * i <= b.y))
-		{
-			if (a.x + dir.x * i * fabs(delta.x/delta.y) >= 0 && \
-			a.x + dir.x * i * fabs(delta.x/delta.y) < WIDTH && \
-			a.y + dir.y * i >= 0 && a.y + dir.y * i < HEIGHT)
-				mlx_put_pixel(img, a.x + dir.x * i * fabs(delta.x / delta.y), \
-				a.y + dir.y * i, clr);
-			i++;
-		}
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+		return (TRUE);
+	else
+		return (FALSE);
 }
 
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr)
 {
 	t_point	step;
-	t_point	delta;
 	size_t	i;
-
+	
 	i = 0;
-	if (fabs(delta.x) >= fabs(delta.y))
+	get_line_steps(&step, a, b);
+	if (fabs(b.x - a.x) >= fabs(b.y - a.y))
 	{
-		get_line_steps(&step, a, b, X_AXIS);
-		st_line_along_x(img, a, step, clr);	
+		while ((step.x < 0 && a.x + step.x * i >= b.x) || \
+		(step.x > 0 && a.x + step.x * i <= b.x))
+		{
+			if (st_is_inside_window(a.x + step.x * i, a.y + step.y * i))
+				mlx_put_pixel(img, a.x + step.x * i, a.y + step.y * i, clr);
+			i++;
+		}
 	}
 	else
 	{
-		get_line_steps(&step, a, b, Y_AXIS);
-		st_line_along_y(img, a, step, clr);
+		while ((step.y < 0 && a.y + step.y * i >= b.y) || \
+		(step.y > 0 && a.y + step.y * i <= b.y))
+		{
+			if (st_is_inside_window(a.x + step.x * i, a.y + step.y * i))
+				mlx_put_pixel(img, a.x + step.x * i, a.y + step.y * i, clr);
+			i++;
+		}
 	}
 }
