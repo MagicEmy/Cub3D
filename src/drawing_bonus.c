@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 17:22:58 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 18:09:35 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,27 +78,16 @@ void	draw_wall_block(mlx_image_t *img, t_point pt)
 void	draw_minimap(t_data *data, t_point goat_pos)
 {
 	t_point	idx;
-	const char	map[10][31] = \
-	{"111111111111111111111111111111", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"111111111111111111111111111111"};
 
 	idx.y = 0;
 	// wipe_everything(data->img);
 	draw_goat(data->img, goat_pos, to_rad(data->goat->angle));
-	while (idx.y < data->map_height)
+	while (data->map[(int)idx.y])
 	{
 		idx.x = 0;	
-		while (idx.x < data->map_width)
+		while (data->map[(int)idx.y][(int)idx.x])
 		{
-			if (map[(int)idx.y][(int)idx.x] == '1')
+			if (data->map[(int)idx.y][(int)idx.x] == '1')
 				draw_wall_block(data->img, idx);
 			idx.x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 11:04:01 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/07 17:40:24 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 18:59:29 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,7 @@ int	facing_what(t_point *step, int axis)
 
 int	is_wall(t_data *data, double x, double y)
 {
-	const char	map[10][31] = \
-	{"111111111111111111111111111111", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"111111111111111111111111111111"};
-	
-	// printf("* is wall: map is %c\n", map[(int)round(data->goat->y) + y][(int)round(data->goat->x) + x]);
-	if (map[(int)floor(data->goat->y + y)][(int)floor(data->goat->x + x)] \
+	if (data->map[(int)floor(data->goat->y + y)][(int)floor(data->goat->x + x)] \
 	== '1')
 		return (1);
 	else

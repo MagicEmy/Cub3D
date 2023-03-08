@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   casting_rays.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 10:34:29 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/02/23 16:49:25 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   casting_rays.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/08 18:46:58 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,12 @@
 
 int	hits_wall(t_data *data, t_ray *ray)
 {
-	const char	map[10][31] = \
-	{"111111111111111111111111111111", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000010000000000001", \
-	"100000000000000000000000000001", \
-	"100000000000000000000000000001", \
-	"111111111111111111111111111111"};
-	
-	(void)data;	// remove
-	if (ray->facing == NORTH && map[(int)ray->y - 1][(int)floor(ray->x)] == '1')
+	if (ray->facing == NORTH && data->map[(int)ray->y - 1][(int)floor(ray->x)] == '1')
 		return (TRUE);
-	if (ray->facing == WEST && map[(int)floor(ray->y)][(int)ray->x - 1] == '1')
+	if (ray->facing == WEST && data->map[(int)floor(ray->y)][(int)ray->x - 1] == '1')
 		return (TRUE);
 	if ((ray->facing == EAST || ray->facing == SOUTH) && \
-	map[(int)floor(ray->y)][(int)floor(ray->x)] == '1')
+	data->map[(int)floor(ray->y)][(int)floor(ray->x)] == '1')
 		return (TRUE);
 	else
 		return (FALSE);
@@ -52,7 +39,6 @@ double	dda_y_axis(t_ray *ns, t_data *data, double angle)
 
 	if (angle == 0 || angle == M_PI)
 		return (PARALLEL);
-	data->map = NULL;	// DELETE
 	i = 0;
 	get_first_step(&first_step, angle, Y_AXIS, data->goat);
 	get_steps(&step, angle, Y_AXIS);
@@ -81,7 +67,6 @@ double	dda_x_axis(t_ray *ew, t_data *data, double angle)
 
 	if (angle == M_PI_2 || angle == 3 * M_PI_2)
 		return (PARALLEL);
-	data->map = NULL;	// DELETE
 	i = 1;
 	get_first_step(&first_step, angle, X_AXIS, data->goat);
 	get_steps(&step, angle, X_AXIS);

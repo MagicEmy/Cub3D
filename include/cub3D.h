@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 15:24:42 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 18:13:54 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*get_line(char *argv, t_data *data);
 void	info_map_parsing(char *argv, t_data *data);
 void	texture_acquisition(t_data *data);
 void	rgb_validation(t_data *data);
+void	check_map_syntax(t_data *data);
 
 //get_next_line
 char	*get_next_line(int fd);
