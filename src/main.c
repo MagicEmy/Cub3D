@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/07 18:49:50 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/08 19:00:16 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void    key_hooks(mlx_key_data_t keydata, void *param)
 
 void	init(t_data *data, t_goat *goat)
 {
-	goat->x = 19.5;
-	goat->y = 7.5;
-	goat->angle = 270;
+	goat->x = 16.5;
+	goat->y = 5.5;
+	goat->angle = 90;
 	data->map = NULL;
-	data->map_width = 30;
-	data->map_height = 10;
+	data->map_width = 23;
+	data->map_height = 11;
 	data->floor_clr = 0x25A703ff;
 	data->sky_clr = 0x8FFFFDff;
 	data->goat = goat;
@@ -67,7 +67,7 @@ int32_t	main(int argc, char **argv)
 		error_exit(ERROR_ARGS);
 	
 	init(&data, &goat);
-	info_map_parsing(argv[1], data);
+	info_map_parsing(argv[1], &data);
 	if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
 		return (EXIT_FAILURE);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);

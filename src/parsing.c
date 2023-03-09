@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/08 16:53:30 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/22 16:40:34 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/08 18:15:32 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,10 @@ void	info_map_parsing(char *argv, t_data *data)
 		error_exit(ERROR_MALLOC);
 	texture_acquisition(data);
 	rgb_validation(data);
-	check_map_syntax(data);
+	// check_map_syntax(data);
 	// map_validation(data);
 	while (data->map[i])
 		printf("%s\n", data->map[i++]);
-	while (1)
-		;
 }
 
 /*
