@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 20:37:10 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:37:39 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,6 @@ void	info_map_parsing(char *argv, t_data *data)
 	while (data->map[i])
 		printf("%s\n", data->map[i++]);
 	remove_empty_lines(data);
-	check_map_syntax(data);
-	// map_validation(data);
 	while (1)
 		;
 }

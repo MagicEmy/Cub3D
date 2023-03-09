@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 20:34:10 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:34:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ void	rgb_validation(t_data *data);
 void	check_map_syntax(t_data *data);
 void	remove_empty_lines(t_data *data);
 
-void	casting_rays(mlx_image_t *img, int width, int height);
 
 #endif
