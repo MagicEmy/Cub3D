@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/08 17:22:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:08:37 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,52 @@ void	check_map_syntax(t_data *data)
 {
 	int	x;
 	int	y;
+	int	orientation;
 
 	x = 0;
 	y = 0;
+	orientation = 0;
 	while (data->map[y])
 	{
 		while (data->map[y][x])
 		{
-			if (!ft_strchr(" 01NSEW\n", data->map[y][x]))
+			if (!ft_strchr("01NSEW", data->map[y][x]) && \
+				!ft_is_space(data->map[y][x]))
 				error_exit(ERROR_INVALID_CHAR);
+			if (ft_strchr("NSEW", data->map[y][x]))
+				orientation++;
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	if (orientation > 1)
+		error_exit(ERROR_PLAYER_COUNT);
+}
+
+void	remove_empty_lines(t_data *data)
+{
+	int	x;
+	int	y;
+	int	i;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	while (data->map[y])
+	{
+		while (data->map[y][x])
+		{
+			if (!ft_is_space(data->map[y][x]))
+				break ;
 			x++;
 		}
 		x = 0;
 		y++;
 	}
 }
+
+/*
+make ft_isspace.c
+check the map for spaces (any before and after)
+*/

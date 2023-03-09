@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/08 16:53:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:08:03 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,11 @@ void	get_file_info(char *line, t_data *data)
 	ft_free_double_arr(data->info_file);
 }
 
-char	*get_line(char *argv, t_data *data)
+char	*get_line(int fd, t_data *data)
 {
-	int		fd;
 	char	*line;
 	char	*map_line;
 
-	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-		error_exit(ERROR_OPEN_FAIL);
 	map_line = ft_strdup("");
 	if (!map_line)
 		error_exit(ERROR_MALLOC);
@@ -74,7 +70,10 @@ char	*get_line(char *argv, t_data *data)
 		if (data->counter < 6)
 			get_file_info(line, data);
 		else
-			map_line = gnl_ft_strjoin_free(map_line, line);
+		{
+			if (!ft_str_is_space(line))
+				map_line = gnl_ft_strjoin_free(map_line, line);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -95,11 +94,15 @@ static void	cube_check_extension(char *argv)
 void	info_map_parsing(char *argv, t_data *data)
 {
 	int		i;
+	int		fd;
 	char	*map_line;
 
 	i = 0;
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		error_exit(ERROR_OPEN_FAIL);
 	cube_check_extension(argv);
-	map_line = get_line(argv, data);
+	map_line = get_line(fd, data);
 	if (ft_strncmp(map_line, "", 1) == 0)
 		error_exit(ERROR_EMPTY_MAP);
 	data->map = ft_split(map_line, '\n');
@@ -108,10 +111,11 @@ void	info_map_parsing(char *argv, t_data *data)
 		error_exit(ERROR_MALLOC);
 	texture_acquisition(data);
 	rgb_validation(data);
-	check_map_syntax(data);
-	// map_validation(data);
 	while (data->map[i])
 		printf("%s\n", data->map[i++]);
+	remove_empty_lines(data);
+	check_map_syntax(data);
+	// map_validation(data);
 	while (1)
 		;
 }

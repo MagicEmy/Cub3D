@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/08 16:50:37 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:07:06 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 # define ERROR_RGB_ERR			"wrong RGB input."
 # define ERROR_PATH_TEXTURE		"invalid path to texture."
 # define ERROR_INVALID_CHAR		"Invalid char in map."
+# define ERROR_PLAYER_COUNT		"Amount of Player starting position is not 1."
 
 #endif
