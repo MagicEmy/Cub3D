@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 15:23:59 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:07:43 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,5 @@ void	check_map_syntax(t_data *data);
 void	remove_empty_lines(t_data *data);
 
 void	casting_rays(mlx_image_t *img, int width, int height);
-
-//get_next_line
-char	*get_next_line(int fd);
-char	*gnl_ft_strjoin_free(char *s1, char *s2);
-int		check_where_newline(char *buff, int c);
 
 #endif
