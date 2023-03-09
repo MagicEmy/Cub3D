@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 15:18:45 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/09 19:31:42 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define WIDTH 640 * 2
 # define HEIGHT 480 * 2
+# define HALF_HEIGHT HEIGHT / 2
 
 # define IMG_WIDTH 640
 # define IMG_HEIGHT 480

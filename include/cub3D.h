@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 18:13:54 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/09 19:36:35 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
 void	draw_minimap(t_data *data, t_point goat);
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
-void	go_up_down(int key, t_data *data);
+void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
 
 void	error_exit(char *text);

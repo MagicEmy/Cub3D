@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 17:21:10 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/09 19:34:48 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,14 @@
 
 void	draw_scene(t_data *data, t_ray *ray, t_point idx)
 {
-	int32_t	top_wall;
-	int32_t	bottom_wall;
-	
-	top_wall = HEIGHT / 2 - ceil(HEIGHT / 2 / ray->dist);
-	bottom_wall = HEIGHT / 2 + ceil(HEIGHT / 2 / ray->dist);
-	// printf("top wall: %d, bottom wall: %d\n", top_wall, bottom_wall);
-	while (idx.y < top_wall && idx.y < HEIGHT)
-		mlx_put_pixel(data->img, idx.x, idx.y++, 0x8FFFFDff);
-	while (idx.y < bottom_wall && idx.y < HEIGHT)
-	{
-		// printf("about to put pixel [%f][%f]\n", idx.y, idx.x);
-		mlx_put_pixel(data->img, idx.x, idx.y++, 0xE78421ff);
-	}
+	while (idx.y < (int)round(HALF_HEIGHT - HALF_HEIGHT / ray->dist) && \
+	idx.y < HEIGHT)
+		mlx_put_pixel(data->img, idx.x, idx.y++, data->sky_clr);
+	while (idx.y < (int)round(HALF_HEIGHT + HALF_HEIGHT / ray->dist) && \
+	idx.y < HEIGHT)
+		mlx_put_pixel(data->img, idx.x, idx.y++, data->nsew_clr[ray->facing]);
 	while (idx.y < HEIGHT)
-		mlx_put_pixel(data->img, idx.x, idx.y++, 0x25A703ff);
+		mlx_put_pixel(data->img, idx.x, idx.y++, data->floor_clr);
 }
 
 static int	st_is_inside_window(double x, double y)

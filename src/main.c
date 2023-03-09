@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 19:00:16 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/09 19:51:50 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ void    key_hooks(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_A)
 		go_left_right(keydata.key, data);
 	if (keydata.key == MLX_KEY_W  || keydata.key == MLX_KEY_S)
-		go_up_down(keydata.key, data);
+		go_fwd_bck(keydata.key, data);
 	if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_LEFT)
 		look_left_right(keydata.key, data);
-	casting_rays(data);
 	// printf("Goat coordinates: %f, %f\n", data->goat->x, data->goat->y);
 	// printf("Goat angle: %f\n", data->goat->angle);
 }
@@ -48,14 +47,18 @@ void    key_hooks(mlx_key_data_t keydata, void *param)
 void	init(t_data *data, t_goat *goat)
 {
 	goat->x = 16.5;
-	goat->y = 5.5;
+	goat->y = 2.5;
 	goat->angle = 90;
 	data->map = NULL;
 	data->map_width = 23;
 	data->map_height = 11;
-	data->floor_clr = 0x25A703ff;
-	data->sky_clr = 0x8FFFFDff;
+	data->floor_clr = 0x74A15Aff;
+	data->sky_clr = 0xCAEAFFff;
 	data->goat = goat;
+	data->nsew_clr[NORTH] = 0xC474EFFF;
+	data->nsew_clr[SOUTH] = 0xEF74DDFF;
+	data->nsew_clr[EAST] = 0xEF749FFF;
+	data->nsew_clr[WEST] = 0xEF8774FF;
 }
 
 int32_t	main(int argc, char **argv)
