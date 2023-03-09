@@ -1,28 +1,34 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/07 17:36:21 by emlicame         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: emlicame <emlicame@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
+#    Updated: 2023/03/07 20:18:28 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	cub3D
 HEADERS		:=	include/cub3D.h	 		\
 				include/cub3D_defines.h \
-				include/colors.h		\
-				include/cub3D_structures.h
+				include/colors.h \
+        include/cub3D_structures.h
 
-SRC			:=	main.c					\
+SRC			:=	main.c \
 				cube_data_init.c		\
 				parsing.c				\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				info_validation.c		\
-				casting_rays.c
+        casting_rays.c \
+				casting_utils.c \
+				casting_get.c \
+				drawing.c \
+				drawing_bonus.c \
+				hooks.c
+# to do: deal with bonus files
 
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
