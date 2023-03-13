@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 11:49:56 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 16:51:00 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # define WIDTH 640
 # define HEIGHT 480
-# define HALF_HEIGHT HEIGHT / 2
 
 # define IMG_WIDTH 640
 # define IMG_HEIGHT 480
@@ -30,7 +29,7 @@
 # define FOV 60
 
 /* walls */
-# define WALL_HEIGHT HEIGHT/3
+# define WALL_HEIGHT 120
 # define PARALLEL -1
 
 # define WALL_CLR 0x4302C7FF
@@ -60,5 +59,6 @@ enum	e_wall_sides
 # define ERROR_RGB_ERR			"wrong RGB input."
 # define ERROR_PATH_TEXTURE		"invalid path to texture."
 # define ERROR_INVALID_CHAR		"Invalid char in map."
+# define ERROR_RAYCAST			"Something went wrong while casting rays."
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 15:43:08 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 18:45:42 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "cub3D_structures.h"
 #include <stdlib.h>
 #include <math.h>
-
 
 void	error_exit(char *text)
 {
@@ -24,11 +23,10 @@ void	error_exit(char *text)
 	exit(EXIT_FAILURE);
 }
 
-
-void    key_hooks(mlx_key_data_t keydata, void *param)
+void	key_hooks(mlx_key_data_t keydata, void *param)
 {
+	t_data	*data;
 
-	t_data  *data;
 	data = (t_data *)param;
 	if (keydata.action != MLX_PRESS && keydata.action != MLX_REPEAT)
 		return ;
@@ -36,7 +34,7 @@ void    key_hooks(mlx_key_data_t keydata, void *param)
 		return (mlx_close_window(data->mlx));
 	if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_A)
 		go_left_right(keydata.key, data);
-	if (keydata.key == MLX_KEY_W  || keydata.key == MLX_KEY_S)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_S)
 		go_fwd_bck(keydata.key, data);
 	if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_LEFT)
 		look_left_right(keydata.key, data);
@@ -59,17 +57,42 @@ void	init(t_data *data, t_goat *goat)
 	data->nsew_clr[SOUTH] = 0xEF74DDFF;
 	data->nsew_clr[EAST] = 0xEF749FFF;
 	data->nsew_clr[WEST] = 0xEF8774FF;
+	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
 }
+
+/* this is a work in progress function that I used for understanding textures */
+// void	show_textures(t_data *data)
+// {
+// 	size_t			i;
+// 	unsigned int	colour;
+
+// 	i = 0;
+// 	// printf("NO w %d h %d\n", data->texture.north->width, data->texture.north->height);
+// 	// printf("SO w %d h %d\n", data->texture.south->width, data->texture.south->height);
+// 	// printf("WE w %d h %d\n", data->texture.west->width, data->texture.west->height);
+// 	// printf("EA w %d h %d\n", data->texture.east->width, data->texture.east->height);
+// 	while (i < data->texture.south->width * data->texture.south->height * \
+// 	data->texture.south->bytes_per_pixel)
+// 	{
+// 		colour = get_rgba(data->texture.south->pixels[i], \
+// 		data->texture.south->pixels[i + 1], data->texture.south->pixels[i + 2], \
+// 		data->texture.south->pixels[i + 3]);
+// 		printf("%u, ", colour);
+// 		i += data->texture.south->bytes_per_pixel;
+// 		if ((i / data->texture.south->bytes_per_pixel) % data->texture.south->width == 0)
+// 			printf("\n");
+// 	}
+// }
 
 int32_t	main(int argc, char **argv)
 {
 	t_goat		goat;
 	t_data		data;
-	
+
 	if (!argv || argc != 2)
 		error_exit(ERROR_ARGS);
-	
-	if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
+	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
+	if (!data.mlx)
 		return (EXIT_FAILURE);
 	init(&data, &goat);
 	info_map_parsing(argv[1], &data);
@@ -78,17 +101,14 @@ int32_t	main(int argc, char **argv)
 	data.img_mm = mlx_new_image(data.mlx, WIDTH / 2, HEIGHT / 4);
 	draw_minimap(&data);
 	casting_rays(&data);
+	// show_textures(&data);
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
 	mlx_image_to_window(data.mlx, data.img_mm, PADDING, data.mlx->height - \
 	data.img_mm->height - PADDING);
-	mlx_set_mouse_pos(data.mlx, 100, 100);
-	mlx_get_mouse_pos(data.mlx, &data.cursor_x, &data.cursor_y);
 	mlx_key_hook(data.mlx, key_hooks, &data);
-	mlx_cursor_hook(data.mlx, mouse_hook, &data);	// bonus
+	mlx_cursor_hook(data.mlx, mouse_hook, &data);	// move to bonus
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
-  
 	// free what needs to be freed
-	
 	return (EXIT_SUCCESS);
 }

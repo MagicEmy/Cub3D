@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/07 20:18:28 by dmalacov      ########   odam.nl          #
+#    Updated: 2023/03/13 18:03:40 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,13 @@ SRC			:=	main.c \
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				info_validation.c		\
-        casting_rays.c \
+        		casting_rays.c \
 				casting_utils.c \
 				casting_get.c \
 				drawing.c \
 				drawing_bonus.c \
-				hooks.c
+				hooks.c \
+				textures.c
 # to do: deal with bonus files
 
 OBJ			:= $(SRC:%.c=obj/%.o)
