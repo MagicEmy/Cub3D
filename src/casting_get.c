@@ -6,7 +6,7 @@
 /*   By: darina <darina@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/28 13:16:58 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 15:58:10 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 16:26:54 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ double	get_y(double x_side, double angle)
 	return (x_side * tan(angle) * -1);
 }
 
-void	get_first_step(t_point *first_step, double angle, int axis, t_goat *goat)
+void	get_first_step(t_point *first_step, double angle, int axis, \
+t_goat *goat)
 {
 	if (axis == X_AXIS)
 	{

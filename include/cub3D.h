@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 14:50:33 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 18:46:04 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@
 # include <stdlib.h>
 # include <memory.h>
 
-
 /* casting_rays.c */
 void	casting_rays(t_data *data);
 /* casting_utils.c */
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
-double	dist_to_wall(t_ray *ray, t_goat *goat, t_point step);
+double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_wall(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
 /* casting_get.c */
 double	get_x(double y_side, double angle);
 double	get_y(double x_side, double angle);
-void	get_first_step(t_point *first_step, double angle, int axis, t_goat *goat);
+void	get_first_step(t_point *first_step, double angle, int axis, \
+		t_goat *goat);
 void	get_steps(t_point *step, double angle, int axis);
 void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
@@ -50,14 +50,18 @@ void	draw_rays(t_data *data, t_ray *ray);
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
-void	mouse_hook(double xpos, double ypos, void* param);
-void	print_goat_info(t_data *data);	// for debugging
-
+void	mouse_hook(double xpos, double ypos, void *param);
+void	print_goat_info(t_data *data);	// for debugging only
+/* textures.c */
+int32_t	get_rgba(int r, int g, int b, int a);
+/* main.c */
 void	error_exit(char *text);
+/* cube_data_init.c */
 t_data	*cube_data_init(void);
-
+/* parsing.c */
 char	*get_line(char *argv, t_data *data);
 void	info_map_parsing(char *argv, t_data *data);
+/* info_validation.c */
 void	texture_acquisition(t_data *data);
 void	rgb_validation(t_data *data);
 void	check_map_syntax(t_data *data);
@@ -66,6 +70,5 @@ void	check_map_syntax(t_data *data);
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
 int		check_where_newline(char *buff, int c);
-
 
 #endif

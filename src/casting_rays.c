@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/13 15:41:16 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 17:47:30 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 
 int	hits_wall(t_data *data, t_ray *ray)
 {
-	if (ray->facing == NORTH && data->map[(int)ray->y - 1][(int)floor(ray->x)] == '1')
+	if (ray->facing == NORTH && data->map[(int)ray->y - 1] \
+	[(int)floor(ray->x)] == '1')
 		return (TRUE);
-	if (ray->facing == WEST && data->map[(int)floor(ray->y)][(int)ray->x - 1] == '1')
+	if (ray->facing == WEST && data->map[(int)floor(ray->y)] \
+	[(int)ray->x - 1] == '1')
 		return (TRUE);
 	if ((ray->facing == EAST || ray->facing == SOUTH) && \
 	data->map[(int)floor(ray->y)][(int)floor(ray->x)] == '1')
@@ -45,14 +47,14 @@ double	dda_y_axis(t_ray *ns, t_data *data, double angle)
 	ns->facing = facing_what(&step, Y_AXIS);
 	ns->x = data->goat->x + first_step.x;
 	ns->y = data->goat->y + first_step.y;
-	ns->dist = dist_to_wall(ns, data->goat, step);
+	ns->dist = dist_to_wall(ns, data->goat);
 	while (is_inside_map(ns, data))
 	{
 		if (hits_wall(data, ns))
 			break ;
 		ns->x = data->goat->x + first_step.x + i * step.x;
 		ns->y = data->goat->y + first_step.y + i * step.y;
-		ns->dist = dist_to_wall(ns, data->goat, step);
+		ns->dist = dist_to_wall(ns, data->goat);
 		i++;
 	}
 	return (ns->dist);
@@ -73,14 +75,14 @@ double	dda_x_axis(t_ray *ew, t_data *data, double angle)
 	ew->facing = facing_what(&step, X_AXIS);
 	ew->x = data->goat->x + first_step.x;
 	ew->y = data->goat->y + first_step.y;
-	ew->dist = dist_to_wall(ew, data->goat, step);
+	ew->dist = dist_to_wall(ew, data->goat);
 	while (is_inside_map(ew, data))
 	{
 		if (hits_wall(data, ew))
 			break ;
 		ew->x = data->goat->x + first_step.x + i * step.x;
 		ew->y = data->goat->y + first_step.y + i * step.y;
-		ew->dist = dist_to_wall(ew, data->goat, step);
+		ew->dist = dist_to_wall(ew, data->goat);
 		i++;
 	}
 	return (ew->dist);
@@ -90,11 +92,11 @@ t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
 {
 	t_ray	*ew;
 	t_ray	*ns;
-	
+
 	ew = malloc(sizeof(t_ray));
 	ns = malloc(sizeof(t_ray));
 	if (!ew || !ns)
-		exit(1);	// include error handling
+		error_exit(ERROR_MALLOC);
 	ew->dist = dda_x_axis(ew, data, to_rad(data->goat->angle + ray_angle));
 	ns->dist = dda_y_axis(ns, data, to_rad(data->goat->angle + ray_angle));
 	if ((ew->dist > ns->dist || ew->dist < 0) && ns->dist >= 0)
@@ -104,25 +106,21 @@ t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
 	}
 	else if (ew->dist >= 0)
 	{
-
 		ew->dist *= cos(to_rad(ray_angle));
 		return (free(ns), ew);
 	}
-	else	// only for debugging; include error handling
-	{	
-		printf("Sth went wrong - both ray distances are negative!");
-		exit (1);
-	}
+	else
+		error_exit(ERROR_RAYCAST);
+	return (NULL);	// check
 }
 
 void	casting_rays(t_data *data)
 {
 	t_point	idx;
 	t_ray	*ray;
-	
+
 	idx.x = 0;
 	idx.y = 0;
-
 	while (idx.x < WIDTH)
 	{
 		ray = calc_distance_from_wall(data, FOV / 2 - \
