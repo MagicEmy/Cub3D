@@ -6,13 +6,14 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 20:37:39 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:16:38 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include <fcntl.h>
 
-void	info_sorting(char **path, t_data *data)
+static void	info_sorting(char **path, t_data *data)
 {
 	int		i;
 
@@ -54,11 +55,29 @@ void	get_file_info(char *line, t_data *data)
 	ft_free_double_arr(data->info_file);
 }
 
-char	*get_line(int fd, t_data *data)
+static void	check_if_valid_format(char	**line, char **map_line, \
+t_data *data)
 {
-	char	*line;
-	char	*map_line;
+	if (!ft_str_is_space(*line) && data->map_end)
+		error_exit(ERROR_INVALID_MAP);
+	else if (!ft_str_is_space(*line))
+	{
+		*map_line = gnl_ft_strjoin_free(*map_line, *line);
+		data->map_start = 1;
+	}
+	else if (ft_str_is_space(*line) && data->map_start)
+		data->map_end = 1;
+}
 
+char	*get_line(char *argv, t_data *data)
+{
+	int		fd;
+	char	*map_line;
+	char	*line;
+
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		error_exit(ERROR_OPEN_FAIL);
 	map_line = ft_strdup("");
 	if (!map_line)
 		error_exit(ERROR_MALLOC);
@@ -70,10 +89,7 @@ char	*get_line(int fd, t_data *data)
 		if (data->counter < 6)
 			get_file_info(line, data);
 		else
-		{
-			if (!ft_str_is_space(line))
-				map_line = gnl_ft_strjoin_free(map_line, line);
-		}
+			check_if_valid_format(&line, &map_line, data);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -82,47 +98,25 @@ char	*get_line(int fd, t_data *data)
 	return (map_line);
 }
 
-static void	cube_check_extension(char *argv)
-{
-	int	len;
-
-	len = ft_strlen(argv);
-	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
-		error_exit(ERROR_MAP_EXTENSION);
-}
-
 void	info_map_parsing(char *argv, t_data *data)
 {
 	int		i;
-	int		fd;
 	char	*map_line;
 
 	i = 0;
-	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-		error_exit(ERROR_OPEN_FAIL);
 	cube_check_extension(argv);
-	map_line = get_line(fd, data);
+	map_line = get_line(argv, data);
 	if (ft_strncmp(map_line, "", 1) == 0)
 		error_exit(ERROR_EMPTY_MAP);
 	data->map = ft_split(map_line, '\n');
 	free(map_line);
 	if (!data->map)
 		error_exit(ERROR_MALLOC);
+	check_map_syntax(data);
 	texture_acquisition(data);
 	rgb_validation(data);
-	check_map_syntax(data);
-	// map_validation(data);
+	map_validation(data);
 	while (data->map[i])
 		printf("%s\n", data->map[i++]);
-	remove_empty_lines(data);
-	while (1)
-		;
+	get_map_size(data);
 }
-
-/*
-x parse the map
-	x get the line, split (regular) the content and store in struct;
-	- map is the last object to be written in the file, if not error
-	-check if path is valid and if there is garbage before it
-*/

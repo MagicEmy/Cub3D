@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/08 12:44:25 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:49:48 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ typedef struct s_texture
 	mlx_texture_t		*west;
 }	t_texture;
 
+// t_file_info	file_info;
+
 typedef struct s_data
 {
 	mlx_t		*mlx;
-  mlx_image_t	*img;
-	// t_file_info	file_info;
+	mlx_image_t	*img;
 	char		*no_path;
 	char		*so_path;
 	char		*ea_path;
@@ -69,20 +70,22 @@ typedef struct s_data
 	char		*floor;
 	int32_t		floor_clr;
 	int32_t		sky_clr;
-  int			floor_red;
-	int			floor_green;
-	int			floor_blue;
+	int32_t		floor_red;
+	int32_t		floor_green;
+	int32_t		floor_blue;
 	char		*ceiling;
-	int			ceiling_red;
-	int			ceiling_green;
-	int			ceiling_blue;
-	int			counter;
+	int32_t		ceiling_red;
+	int32_t		ceiling_green;
+	int32_t		ceiling_blue;
+	int32_t		counter;
 	char		**info_file;
 	char		**map;
-  int32_t		map_width;
+	int32_t		map_width;
 	int32_t		map_height;
+	int32_t		map_start;
+	int32_t		map_end;
 	t_texture	texture;
-  t_goat		*goat;
+	t_goat		*goat;
 }	t_data;
 
 #endif

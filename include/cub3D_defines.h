@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 20:40:29 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:53:19 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ enum	e_wall_sides
 # define ERROR_RGB_ERR			"wrong RGB input."
 # define ERROR_PATH_TEXTURE		"invalid path to texture."
 # define ERROR_INVALID_CHAR		"Invalid char in map."
+# define ERROR_INVALID_MAP		"Invalid map format."
+# define ERROR_INVALID_MAP_W	"Invalid map, map is not enclosed in walls."
 # define ERROR_PLAYER_COUNT		"Amount of Player starting position is not 1."
 
 #endif

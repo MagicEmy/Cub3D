@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 20:40:41 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:53:38 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "cub3D_structures.h"
 #include <stdlib.h>
 #include <math.h>
-
 
 void	error_exit(char *text)
 {
@@ -24,11 +23,10 @@ void	error_exit(char *text)
 	exit(EXIT_FAILURE);
 }
 
-
-void    key_hooks(mlx_key_data_t keydata, void *param)
+void	key_hooks(mlx_key_data_t keydata, void *param)
 {
+	t_data	*data;
 
-	t_data  *data;
 	data = (t_data *)param;
 	if (keydata.action != MLX_PRESS && keydata.action != MLX_REPEAT)
 		return ;
@@ -56,29 +54,36 @@ void	init(t_data *data, t_goat *goat)
 	data->floor_clr = 0x25A703ff;
 	data->sky_clr = 0x8FFFFDff;
 	data->goat = goat;
+	data->info_file = NULL;
+	data->no_path = NULL;
+	data->so_path = NULL;
+	data->ea_path = NULL;
+	data->we_path = NULL;
+	data->ceiling = NULL;
+	data->floor = NULL;
+	data->map_start = 0;
+	data->map_end = 0;
+	data->counter = 0;
 }
 
 int32_t	main(int argc, char **argv)
 {
 	t_goat		goat;
 	t_data		data;
-	
+
 	if (!argv || argc != 2)
 		error_exit(ERROR_ARGS);
-	
 	init(&data, &goat);
 	info_map_parsing(argv[1], &data);
-	if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
+	// if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
 		return (EXIT_FAILURE);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	casting_rays(&data);
-	mlx_image_to_window(data.mlx, data.img, 0, 0);
+	// casting_rays(&data);
+	// mlx_image_to_window(data.mlx, data.img, 0, 0);
 	mlx_key_hook(data.mlx, key_hooks, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
-  
-	// free what needs to be freed
-	
 	return (EXIT_SUCCESS);
 }
+	// free what needs to be freed
