@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 18:46:58 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 15:41:16 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,29 +119,16 @@ void	casting_rays(t_data *data)
 {
 	t_point	idx;
 	t_ray	*ray;
-	t_point	goat;
-	t_point	wall;
 	
 	idx.x = 0;
 	idx.y = 0;
-	goat.x = PADDING + PPU * data->goat->x;
-	goat.y = PADDING + PPU * data->goat->y;
+
 	while (idx.x < WIDTH)
 	{
-		draw_minimap(data, goat);
 		ray = calc_distance_from_wall(data, FOV / 2 - \
 		(double)idx.x * FOV / (WIDTH - 1));
-		// printf("xi: %f - dist is %f\n", idx.x, ray->dist);	// delete
-		wall.x = PADDING + PPU * ray->x;
-		wall.y = PADDING + PPU * ray->y;
-		if (wall.x >= WIDTH || wall.y >= HEIGHT)
-		{
-			// printf("ray angle: %f, ray hits at [%f,%f]\n", FOV / 2 - \
-			// (double)idx.x * FOV / (WIDTH - 1), ray->x, ray->y);
-			exit(1);	// include error handling
-		}
 		draw_scene(data, ray, idx);
-		draw_line(data->img, goat, wall, 0xFFC300FF);
+		draw_rays(data, ray);
 		idx.x++;
 	}
 }

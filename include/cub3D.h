@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 18:13:54 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 14:50:33 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,14 @@ void	get_line_steps(t_point *step, t_point a, t_point b);
 void	draw_scene(t_data *data, t_ray *ray, t_point idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
 /* drawing_bonus.c */
-void	draw_minimap(t_data *data, t_point goat);
+void	draw_minimap(t_data *data);
+void	draw_rays(t_data *data, t_ray *ray);
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
-void	go_up_down(int key, t_data *data);
+void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
+void	mouse_hook(double xpos, double ypos, void* param);
+void	print_goat_info(t_data *data);	// for debugging
 
 void	error_exit(char *text);
 t_data	*cube_data_init(void);

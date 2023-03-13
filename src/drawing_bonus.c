@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 18:09:35 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 12:42:41 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	wipe_everything(mlx_image_t *img)
 	size_t	y;
 
 	y = 0;
-	while (y < HEIGHT / 4)
+	while (y < img->height)
 	{
 		x = 0;
-		while (x < WIDTH / 2)
+		while (x < img->width)
 		{
-			mlx_put_pixel(img, x, y, 0x000000FF);
+			mlx_put_pixel(img, x, y, 0x00000040);
 			x++;
 		}
 	y++;
@@ -75,20 +75,36 @@ void	draw_wall_block(mlx_image_t *img, t_point pt)
 	draw_line(img, a, c, WALL_CLR);
 }
 
-void	draw_minimap(t_data *data, t_point goat_pos)
+void	draw_rays(t_data *data, t_ray *ray)
+{
+	t_point	wall;
+	t_point	goat_pos;
+
+	goat_pos.x = PADDING + PPU * data->goat->x;
+	goat_pos.y = PADDING + PPU * data->goat->y;
+	wall.x = PADDING + PPU * ray->x;
+	wall.y = PADDING + PPU * ray->y;
+	draw_line(data->img_mm, goat_pos, wall, 0xFFC30050);
+
+}
+
+void	draw_minimap(t_data *data)
 {
 	t_point	idx;
+	t_point	goat_pos;
 
 	idx.y = 0;
-	// wipe_everything(data->img);
-	draw_goat(data->img, goat_pos, to_rad(data->goat->angle));
+	goat_pos.x = PADDING + PPU * data->goat->x;
+	goat_pos.y = PADDING + PPU * data->goat->y;
+	wipe_everything(data->img_mm);
+	draw_goat(data->img_mm, goat_pos, to_rad(data->goat->angle));
 	while (data->map[(int)idx.y])
 	{
 		idx.x = 0;	
 		while (data->map[(int)idx.y][(int)idx.x])
 		{
 			if (data->map[(int)idx.y][(int)idx.x] == '1')
-				draw_wall_block(data->img, idx);
+				draw_wall_block(data->img_mm, idx);
 			idx.x++;
 		}
 		idx.y++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_structures.h                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/08 12:44:25 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_structures.h                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/13 15:13:46 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,34 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	mlx_t		*mlx;
-  mlx_image_t	*img;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_image_t		*img_mm;	// minimap -> move to bonus
 	// t_file_info	file_info;
-	char		*no_path;
-	char		*so_path;
-	char		*ea_path;
-	char		*we_path;
-	char		*floor;
-	int32_t		floor_clr;
-	int32_t		sky_clr;
-  int			floor_red;
-	int			floor_green;
-	int			floor_blue;
-	char		*ceiling;
-	int			ceiling_red;
-	int			ceiling_green;
-	int			ceiling_blue;
-	int			counter;
-	char		**info_file;
-	char		**map;
-  int32_t		map_width;
-	int32_t		map_height;
-	t_texture	texture;
-  t_goat		*goat;
+	char			*no_path;
+	char			*so_path;
+	char			*ea_path;
+	char			*we_path;
+	char			*floor;
+	unsigned int	floor_clr;
+	unsigned int	sky_clr;
+	unsigned int	nsew_clr[4];		// for testing; will be deleted
+	int				floor_red;
+	int				floor_green;
+	int				floor_blue;
+	char			*ceiling;
+	int				ceiling_red;
+	int				ceiling_green;
+	int				ceiling_blue;
+	int				counter;
+	char			**info_file;
+	char			**map;
+	int32_t			map_width;
+	int32_t			map_height;
+	t_texture		texture;
+	t_goat			*goat;
+	int32_t			cursor_x;
+	int32_t			cursor_y;
 }	t_data;
 
 #endif

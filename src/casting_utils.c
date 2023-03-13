@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 11:04:01 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/08 18:59:29 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 11:59:25 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,11 @@ int	facing_what(t_point *step, int axis)
 
 int	is_wall(t_data *data, double x, double y)
 {
-	if (data->map[(int)floor(data->goat->y + y)][(int)floor(data->goat->x + x)] \
-	== '1')
+	if (data->map[(int)floor(data->goat->y + y / 2)]\
+	[(int)floor(data->goat->x + x / 2)] == '1')
+		return (1);
+	else if (data->map[(int)floor(data->goat->y + y)]\
+	[(int)floor(data->goat->x + x)] == '1')
 		return (1);
 	else
 		return (0);

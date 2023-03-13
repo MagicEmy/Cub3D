@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/08 15:18:45 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/13 11:49:56 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # define TRUE 1
 # define FALSE 0
 
-# define WIDTH 640 * 2
-# define HEIGHT 480 * 2
+# define WIDTH 640
+# define HEIGHT 480
+# define HALF_HEIGHT HEIGHT / 2
 
 # define IMG_WIDTH 640
 # define IMG_HEIGHT 480
@@ -43,7 +44,7 @@ enum	e_wall_sides
 };
 
 /* for drawing */
-# define PPU 15
+# define PPU 10			// bonus
 # define PADDING 10
 
 /* error handling */
