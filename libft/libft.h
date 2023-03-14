@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:19:12 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/07 12:48:18 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:19:48 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_is_space(char c);
+int		ft_str_is_space(char *str);
 size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 int		ft_toupper(int c);

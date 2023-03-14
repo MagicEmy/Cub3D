@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/08 17:22:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:43:41 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,7 @@ void	texture_acquisition(t_data *data)
 		error_exit(ERROR_PATH_TEXTURE);
 }
 
-/*
-needed?
-mlx_image_to_window(data->mlx, data->img.wall, \
-				TILE_SIZE * x, TILE_SIZE * y);
-to do:
-	draw_walls with texture
-*/
-
-void	rgb_range_check(t_data *data)
+static void	rgb_range_check(t_data *data)
 {
 	if (data->floor_red < 0 || data->floor_green < 0 || data->floor_blue < 0)
 		error_exit(ERROR_RGB_ERR);
@@ -80,18 +72,33 @@ void	check_map_syntax(t_data *data)
 {
 	int	x;
 	int	y;
+	int	orientation;
 
 	x = 0;
 	y = 0;
+	orientation = 0;
 	while (data->map[y])
 	{
 		while (data->map[y][x])
 		{
-			if (!ft_strchr(" 01NSEW\n", data->map[y][x]))
+			if (!ft_strchr(" 01NSEW", data->map[y][x]))
 				error_exit(ERROR_INVALID_CHAR);
+			if (ft_strchr("NSEW", data->map[y][x]))
+				orientation++;
 			x++;
 		}
 		x = 0;
 		y++;
 	}
+	if (orientation > 1)
+		error_exit(ERROR_PLAYER_COUNT);
+}
+
+void	cube_check_extension(char *argv)
+{
+	int	len;
+
+	len = ft_strlen(argv);
+	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
+		error_exit(ERROR_MAP_EXTENSION);
 }

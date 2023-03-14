@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_str_is_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:10:51 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 18:04:37 by emlicame         ###   ########.fr       */
+/*   Created: 2023/03/09 15:13:38 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/09 15:14:08 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_str_is_space(char *str)
 {
-	t_list	*addlast;
+	int	i;
 
-	addlast = NULL;
-	if (!*lst)
+	i = 0;
+	while (str[i])
 	{
-		*lst = new;
-		return ;
+		if (!ft_is_space(str[i]))
+			return (0);
+		i++;
 	}
-	else
-	{
-		addlast = ft_lstlast(*lst);
-		addlast->next = new;
-	}
+	return (1);
 }

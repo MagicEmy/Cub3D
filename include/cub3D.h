@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3D.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 18:46:04 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/14 15:43:46 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 # include "MLX42/MLX42.h"
 # include "libft.h"
 # include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
 # include <stdlib.h>
 # include <memory.h>
+# include <stdio.h>
 
 /* casting_rays.c */
 void	casting_rays(t_data *data);
@@ -38,6 +37,8 @@ double	get_x(double y_side, double angle);
 double	get_y(double x_side, double angle);
 void	get_first_step(t_point *first_step, double angle, int axis, \
 		t_goat *goat);
+void	get_first_step(t_point *first_step, double angle, \
+int axis, t_goat *goat);
 void	get_steps(t_point *step, double angle, int axis);
 void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
@@ -60,11 +61,17 @@ void	error_exit(char *text);
 t_data	*cube_data_init(void);
 /* parsing.c */
 char	*get_line(char *argv, t_data *data);
+// t_data	*cube_data_init(void);
+
+// char	*get_line(char *argv, t_data *data);
+void	cube_check_extension(char *argv);
 void	info_map_parsing(char *argv, t_data *data);
 /* info_validation.c */
 void	texture_acquisition(t_data *data);
 void	rgb_validation(t_data *data);
 void	check_map_syntax(t_data *data);
+void	map_validation(t_data *data);
+void	get_map_size(t_data *data);
 
 //get_next_line
 char	*get_next_line(int fd);

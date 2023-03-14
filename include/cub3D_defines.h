@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3D_defines.h                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 16:51:00 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3D_defines.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/14 15:41:11 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ enum	e_wall_sides
 # define ERROR_PATH_TEXTURE		"invalid path to texture."
 # define ERROR_INVALID_CHAR		"Invalid char in map."
 # define ERROR_RAYCAST			"Something went wrong while casting rays."
+# define ERROR_INVALID_MAP		"Invalid map format."
+# define ERROR_INVALID_MAP_W	"Invalid map, map is not enclosed in walls."
+# define ERROR_PLAYER_COUNT		"Amount of Player starting position is not 1."
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/13 18:45:42 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/14 15:44:18 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,16 @@ void	init(t_data *data, t_goat *goat)
 	data->nsew_clr[EAST] = 0xEF749FFF;
 	data->nsew_clr[WEST] = 0xEF8774FF;
 	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
+	data->info_file = NULL;
+	data->no_path = NULL;
+	data->so_path = NULL;
+	data->ea_path = NULL;
+	data->we_path = NULL;
+	data->ceiling = NULL;
+	data->floor = NULL;
+	data->map_start = 0;
+	data->map_end = 0;
+	data->counter = 0;
 }
 
 /* this is a work in progress function that I used for understanding textures */
@@ -112,3 +122,4 @@ int32_t	main(int argc, char **argv)
 	// free what needs to be freed
 	return (EXIT_SUCCESS);
 }
+	// free what needs to be freed

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:10:51 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/09 18:04:37 by emlicame         ###   ########.fr       */
+/*   Created: 2023/03/09 12:57:23 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/09 12:58:00 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_is_space(char c)
 {
-	t_list	*addlast;
-
-	addlast = NULL;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	else
-	{
-		addlast = ft_lstlast(*lst);
-		addlast->next = new;
-	}
+	if (c == ' ')
+		return (1);
+	if (c == '\t')
+		return (1);
+	if (c == '\n')
+		return (1);
+	if (c == '\v')
+		return (1);
+	if (c == '\f')
+		return (1);
+	if (c == '\r')
+		return (1);
+	return (0);
 }

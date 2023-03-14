@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: emlicame <emlicame@student.42.fr>            +#+                      #
-#                                                    +#+                       #
-#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/13 18:03:40 by dmalacov      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
+#    Updated: 2023/03/14 15:37:35 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC			:=	main.c \
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				info_validation.c		\
-        		casting_rays.c \
+				map_validation.c   		\
+        		asting_rays.c \
 				casting_utils.c \
 				casting_get.c \
 				drawing.c \
