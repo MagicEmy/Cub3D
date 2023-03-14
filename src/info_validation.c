@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/14 19:32:20 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:33:24 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ int	get_rgba(int r, int g, int b, int a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
 }
-/*
-int	get_color_from_pixel(u_int8_t *pixel)
-{
-	return (pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]);
-}
-*/
+
 
 void	texture_acquisition(t_data *data)
 {
@@ -39,57 +34,6 @@ void	texture_acquisition(t_data *data)
 	if (data->texture.west == NULL)
 		error_exit(ERROR_PATH_TEXTURE);
 }
-/*
-int	convert_rgb_to_int(t_rgb color)
-{
-	return (color.red << 24 | color.green << 16 | color.blue << 8 | 255);
-}
-
-int	get_colour_from_pixel(u_int8_t *pixel)
-{
-	return (pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]);
-}
-
-static int	get_texture_pixel_color(mlx_texture_t *texture, t_ray ray,
-	float current_height, int width_pixels)
-{
-	u_int8_t	*pixel;
-	int			pixel_texture_location;
-
-	pixel_texture_location = calculate_texture_height_pixels(texture, ray,
-			current_height);
-	pixel_texture_location += width_pixels;
-	pixel_texture_location *= texture->bytes_per_pixel;
-	pixel = &texture->pixels[pixel_texture_location];
-	return (get_colour_from_pixel(pixel));
-}
-void	draw_column(t_cub3d *cub3d, t_ray ray,
-	struct mlx_texture *texture, int x)
-{
-	int		width;
-	int		current_height;
-	int		color;
-	float	width_pixels;
-
-	x = x * WALL_STRIP_WIDTH;
-	width_pixels = calculate_texture_width_pixels(ray, texture->width);
-	current_height = 0;
-	while (ray.draw_start + current_height < ray.draw_end)
-	{
-		color = get_texture_pixel_color(texture, ray, current_height,
-				width_pixels);
-		width = 0;
-		while (width < WALL_STRIP_WIDTH)
-		{
-			mlx_put_pixel(cub3d->images.walls, x + width,
-				ray.draw_start + current_height, color);
-			width++;
-		}
-		current_height++;
-	}
-}
-
-*/
 
 static void	rgb_range_check(t_data *data)
 {
