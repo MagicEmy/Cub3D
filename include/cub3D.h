@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 18:17:05 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:11:33 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	rgb_validation(t_data *data);
 void	check_map_syntax(t_data *data);
 void	map_validation(t_data *data);
 void	get_map_size(t_data *data);
+void	map_equalizer(t_data *data);
 
 //get_next_line
 char	*get_next_line(int fd);

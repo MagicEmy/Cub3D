@@ -6,31 +6,12 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 18:17:54 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:12:22 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	get_map_size(t_data *data)
-{
-	int		y;
-	size_t	max;
-	size_t	len;
-
-	y = 0;
-	max = 0;
-	len = 0;
-	while (data->map[y])
-	{
-		len = ft_strlen(data->map[y]);
-		if (max < len)
-			max = len;
-		y++;
-	}
-	data->map_width = max;
-	data->map_height = y;
-}
+#include <stdlib.h>
 
 static int	ft_is_map_space(char c)
 {

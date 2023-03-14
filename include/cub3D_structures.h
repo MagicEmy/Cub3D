@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/13 14:49:48 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:42:43 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_STRUCTURES_H
 
 # include <stdint.h>
+# include <stdlib.h>
 # include "MLX42/MLX42.h"
 
 
@@ -80,8 +81,9 @@ typedef struct s_data
 	int32_t		counter;
 	char		**info_file;
 	char		**map;
-	int32_t		map_width;
-	int32_t		map_height;
+	char		**the_map;
+	size_t		map_width;
+	size_t		map_height;
 	int32_t		map_start;
 	int32_t		map_end;
 	t_texture	texture;
