@@ -6,36 +6,18 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 18:18:59 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:15:02 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include <stdlib.h>
 
-void	player_start_pos(t_data *data)
+static int	ft_is_map_space(char c)
 {
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (data->map[y])
-	{
-		while (data->map[y][x])
-		{
-			if (ft_strchr("NSEW", data->map[y][x]))
-			{
-				data->goat->x = x;
-				data->goat->y = y;
-				// data->goat->angle = ;
-				return ;
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	if (c == ' ' || c == '\n')
+		return (1);
+	return (0);
 }
 
 static void	check_walls_top_bottom(t_data *data, int y)
@@ -68,6 +50,19 @@ static void	check_walls_middle(t_data *data, int y, int x)
 {
 	if (ft_strchr("0NSEW", data->map[y][x]))
 	{
+		if (ft_strchr("NSEW", data->map[y][x]))
+		{
+			data->goat->x = x + 0.5;
+			data->goat->y = y + 0.5;
+			if (data->map[y][x] == 'E')
+				data->goat->angle = E;
+			if (data->map[y][x] == 'N')
+				data->goat->angle = N;
+			if (data->map[y][x] == 'W')
+				data->goat->angle = W;
+			if (data->map[y][x] == 'S')
+				data->goat->angle = S;
+		}
 		if (ft_is_map_space(data->map[y][x + 1]))
 			error_exit(ERROR_INVALID_MAP_W);
 		if (ft_is_map_space(data->map[y][x - 1]))
