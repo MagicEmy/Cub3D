@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 14:53:38 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:19:40 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ void	error_exit(char *text)
 	ft_putendl_fd(C_RESET, 2);
 	exit(EXIT_FAILURE);
 }
+
+// void	cube_check_extension(char *argv)
+// {
+// 	int	len;
+
+// 	len = ft_strlen(argv);
+// 	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
+// 		error_exit(ERROR_MAP_EXTENSION);
+// }
 
 void	key_hooks(mlx_key_data_t keydata, void *param)
 {
@@ -75,12 +84,12 @@ int32_t	main(int argc, char **argv)
 		error_exit(ERROR_ARGS);
 	init(&data, &goat);
 	info_map_parsing(argv[1], &data);
-	// if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
+	if (!(data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true)))
 		return (EXIT_FAILURE);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	// casting_rays(&data);
-	// mlx_image_to_window(data.mlx, data.img, 0, 0);
+	casting_rays(&data);
+	mlx_image_to_window(data.mlx, data.img, 0, 0);
 	mlx_key_hook(data.mlx, key_hooks, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);

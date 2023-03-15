@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/14 16:42:43 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:11:33 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include "MLX42/MLX42.h"
-
 
 typedef struct s_goat
 {

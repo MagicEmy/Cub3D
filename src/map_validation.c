@@ -6,12 +6,37 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/14 18:12:22 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:15:23 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include <stdlib.h>
+
+void	player_start_pos(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (data->map[y])
+	{
+		while (data->map[y][x])
+		{
+			if (ft_strchr("NSEW", data->map[y][x]))
+			{
+				data->goat->x = x;
+				data->goat->y = y;
+				// data->goat->angle = ;
+				return ;
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+}
 
 static int	ft_is_map_space(char c)
 {
