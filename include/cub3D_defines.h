@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/14 15:41:11 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:07:13 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ enum	e_wall_sides
 	EAST,
 	WEST,
 };
+
+# define E 0
+# define N 90
+# define W 180
+# define S 270
 
 /* for drawing */
 # define PPU 10			// bonus
