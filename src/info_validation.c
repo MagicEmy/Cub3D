@@ -6,11 +6,17 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 15:43:41 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:16:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+// 'Encodes' four individual bytes into an int.
+int	get_rgba(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
+}
 
 void	texture_acquisition(t_data *data)
 {
@@ -92,13 +98,4 @@ void	check_map_syntax(t_data *data)
 	}
 	if (orientation > 1)
 		error_exit(ERROR_PLAYER_COUNT);
-}
-
-void	cube_check_extension(char *argv)
-{
-	int	len;
-
-	len = ft_strlen(argv);
-	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
-		error_exit(ERROR_MAP_EXTENSION);
 }

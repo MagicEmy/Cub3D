@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 18:16:38 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:20:04 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,12 @@ char	*get_line(char *argv, t_data *data)
 
 void	info_map_parsing(char *argv, t_data *data)
 {
-	int		i;
 	char	*map_line;
+	int		len;
 
-	i = 0;
-	cube_check_extension(argv);
+	len = ft_strlen(argv);
+	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
+		error_exit(ERROR_MAP_EXTENSION);
 	map_line = get_line(argv, data);
 	if (ft_strncmp(map_line, "", 1) == 0)
 		error_exit(ERROR_EMPTY_MAP);
@@ -116,7 +117,13 @@ void	info_map_parsing(char *argv, t_data *data)
 	texture_acquisition(data);
 	rgb_validation(data);
 	map_validation(data);
-	while (data->map[i])
-		printf("%s\n", data->map[i++]);
 	get_map_size(data);
+	map_equalizer(data);
 }
+
+	// cube_check_extension(argv);
+	// int		i;
+
+	// i = 0;
+	// while (data->map[i])
+	// 	printf("%s\n", data->map[i++]);

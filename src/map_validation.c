@@ -6,30 +6,36 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/13 18:17:54 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:15:23 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include <stdlib.h>
 
-void	get_map_size(t_data *data)
+void	player_start_pos(t_data *data)
 {
-	int		y;
-	size_t	max;
-	size_t	len;
+	int	x;
+	int	y;
 
+	x = 0;
 	y = 0;
-	max = 0;
-	len = 0;
 	while (data->map[y])
 	{
-		len = ft_strlen(data->map[y]);
-		if (max < len)
-			max = len;
+		while (data->map[y][x])
+		{
+			if (ft_strchr("NSEW", data->map[y][x]))
+			{
+				data->goat->x = x;
+				data->goat->y = y;
+				// data->goat->angle = ;
+				return ;
+			}
+			x++;
+		}
+		x = 0;
 		y++;
 	}
-	data->map_width = max;
-	data->map_height = y;
 }
 
 static int	ft_is_map_space(char c)

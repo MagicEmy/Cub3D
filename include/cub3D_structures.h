@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/14 16:04:58 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:27:04 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_STRUCTURES_H
 
 # include <stdint.h>
+# include <stdlib.h>
 # include "MLX42/MLX42.h"
 
 typedef struct s_goat
@@ -74,8 +75,8 @@ typedef struct s_data
 	char			*ceiling;
 	char			**info_file;
 	char			**map;
-	int32_t			map_width;
-	int32_t			map_height;
+	size_t			map_width;
+	size_t			map_height;
 	t_texture		texture;
 	t_goat			*goat;
 	int32_t			cursor_x;
