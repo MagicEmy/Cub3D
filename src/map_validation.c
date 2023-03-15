@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 11:15:23 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:18:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ void	player_start_pos(t_data *data)
 	}
 }
 
-static int	ft_is_map_space(char c)
-{
-	if (c == ' ' || c == '\n')
-		return (1);
-	return (0);
-}
-
 static void	check_walls_top_bottom(t_data *data, int y)
 {
 	int	x;
@@ -53,11 +46,22 @@ static void	check_walls_top_bottom(t_data *data, int y)
 	while (data->map[y][x])
 	{
 		if (data->map[y][x] != ' ' && data->map[y][x] != '1')
+		{
+			printf ("%c\n", data->map[y][x]);
+			printf ("x %d y %d\n", x, y);
 			error_exit(ERROR_INVALID_MAP_W);
-		if (data->map[y][x] == ' ')
-			data->map[y][x] = '1';
+		}
+		// if (data->map[y][x] == ' ')
+		// 	data->map[y][x] = '@';
 		x++;
 	}
+}
+
+static int	ft_is_map_space(char c)
+{
+	if (c == ' ' || c == '\n')
+		return (1);
+	return (0);
 }
 
 static void	check_walls_middle(t_data *data, int y, int x)
@@ -89,8 +93,8 @@ void	map_validation(t_data *data)
 		while (data->map[y][x])
 		{
 			check_walls_middle(data, y, x);
-			if (data->map[y][x] == ' ')
-				data->map[y][x] = '1';
+			// if (data->map[y][x] == ' ')
+			// 	data->map[y][x] = '@';
 			x++;
 		}
 		y++;
