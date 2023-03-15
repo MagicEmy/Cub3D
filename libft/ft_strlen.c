@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:16:51 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:16:52 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:16:51 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-
-int main(void)
-{
-    const char *str;
-    
-    str = "Galaxy";
-    printf ("%lu", ft_strlen(str));
-    printf ("%lu", strlen(str));
-    return (0);
-}
-*/
 
 size_t	ft_strlen(const char *s)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlcat.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:16:13 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:16:14 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:16:13 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:20 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dsize)
 		return (d_len + s_len);
 	}
 }
-/*
-int  main(void)
-{
-    char src[] = "THIS IS THE SOURCE";
-    char dst[50] = "this is the destination";
-    // ft_strlcat(dst, src, 19);
-    printf("%zu\n", ft_strlcat(dst, src, sizeof(dst)));
-    printf("%s\n", dst);
-    return (0);
-}
-*/

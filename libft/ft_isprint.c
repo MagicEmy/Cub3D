@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isprint.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:09:43 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:09:44 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:09:43 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:38:07 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-int main(void)
-{
-	unsigned char print;
-		
-	print = '\n';
-	printf ("%d", ft_isprint(print));
-	printf ("%d", isprint(print));
-	return (0);
-}
-*/
 
 int	ft_isprint(int c)
 {

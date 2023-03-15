@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlcpy.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:16:17 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:16:34 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:16:17 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:28 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int main(void)
-{
-    char dst[8] = {0, 0, 0, 0, 0};
-    const char src[25] = "Party-time";
-    size_t len;
-    size_t dstsize;
-
-    len = 0;
-    dstsize = sizeof(dst);
-    printf("%s \t %lu", dst, ft_strlcpy(dst, src, 0));
-    return (0);
-}
-*/
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

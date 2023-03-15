@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_striteri.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:15:37 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:15:38 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:15:37 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:00 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-
-int		main(void)
-{
-	ft_striteri(s, f(ui, s[ui]));??
-	return (0);
-}
-*/
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {	

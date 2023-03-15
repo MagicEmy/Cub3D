@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memchr.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:12:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:12:56 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:12:55 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:39:28 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-void	*ft_memchr(const void *s, int c, size_t n);
-
-int	main(void)
-{
-	int			c;
-	size_t		n;
-	const char	*s;
-	char		*new;
-
-	c = 'p';
-	s = "Don'T panic";
-	n = ft_strlen(s);
-	new = ft_memchr(s, c, n);
-	printf ("%s", new);
-	system ("leaks a.out");
-	return (0);
-}
-*/
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

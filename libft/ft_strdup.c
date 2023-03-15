@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:15:22 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:15:25 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:15:22 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:40:55 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,3 @@ char	*ft_strdup(const char *s1)
 	dest[i] = '\0';
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char	*src;
-	char	*dest;
-	char	*redest;
-
-	src = "The Empire strikes back";
-	dest = ft_strdup(src);
-	printf("%s", dest);
-	redest = strdup(src);
-	printf("%s", redest);
-	system ("leaks a.out");
-	return (0);
-}
-*/

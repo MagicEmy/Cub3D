@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:09:51 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:10:37 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:09:51 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:38:18 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int		ft_n_count(int n);
-/*
-int	main(void)
-{
-	int		n;
-	char	*string;
-
-	n = -123;
-	string = ft_itoa(n);
-	printf("%s", string);
-}
-*/
 
 char	*ft_itoa(int n)
 {

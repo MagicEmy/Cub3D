@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isascii.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:09:24 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:09:26 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:09:24 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:37:57 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int main(void)
-{
-    unsigned char ascii;
-    
-    ascii = 220;
-    printf ("%d", ft_isascii(ascii));
-    printf ("%d", isascii(ascii));
-    return (0);
-}
-*/
 
 int	ft_isascii(int h)
 {

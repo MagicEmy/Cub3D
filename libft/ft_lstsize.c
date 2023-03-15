@@ -1,27 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstsize.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:12:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:12:49 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:12:48 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:39:24 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}t_list;
 
-Parameters #1. The beginning of the list.
-Counts the number of elements in a list.
-Return value Length of the list.
-*/
 int	ft_lstsize(t_list *lst)
 {
 	t_list	*current;

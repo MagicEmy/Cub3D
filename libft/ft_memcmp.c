@@ -1,33 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memcmp.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:13:03 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:13:04 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:13:03 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:39:33 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int	main(void)
-{
-	size_t		n;
-	const char	*s1;
-	const char	*s2;
-	int			ret;
 
-	s1 = "Don'T panic";
-	s2 = "Don'T what?";
-	n = ft_strlen(s1);
-	ret = ft_memcmp(s1, s2, n);
-	printf ("%d", ret);
-	system ("leaks a.out");
-	return (0);
-}
-*/
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*string1;

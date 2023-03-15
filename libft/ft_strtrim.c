@@ -6,18 +6,10 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:17:47 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/02 12:19:48 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:42:05 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#1. The string to be trimmed.
-#2. The reference set of characters to trim.
-Return value The trimmed string. NULL if the allocation fails.
-Description Allocates (with malloc(3)) and returns a copy of
-’s1’ with the characters specified in ’set’ removed
-from the beginning and the end of the string.
-*/
 #include "libft.h"
 
 int	ft_check_in_set(char c, char const *set)
@@ -60,17 +52,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed[i] = '\0';
 	return (trimmed);
 }
-
-/*
-int main(void)
-{
-	char *s1;
-    char *set;
-
-    s1 = "acbbrutteaacb";
-    set = "abc";
-    
-    printf("%s", ft_strtrim(s1, set));
-    return (0);
-}
-*/

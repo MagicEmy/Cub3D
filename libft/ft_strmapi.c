@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strmapi.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:17:01 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:17:02 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:17:01 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:39 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-int	main(void)
-{
-	char	*s;
-
-	s = "iteration";
-	ft_strmapi(s, (*f)(unsigned int, char));
-	return (0);
-}
-*/
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:17:08 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:17:13 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:17:08 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:45 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-/*
-int	main(void)
-{
-	int				result;
-	char			*first;
-	char			*second;
-	unsigned int	n;
-
-	n = 4;
-	first = "\200";
-	second = "HaryKrish";
-	result = ft_strncmp(first, second, n);
-	printf("%d", result);
-	result = strncmp(first, second, n);
-    printf("%d", result);
-	return (0);
-}
-*/

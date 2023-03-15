@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isalpha.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:08:58 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:09:10 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:08:58 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:37:52 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-int main(void)
-{
-    int alpha;
-    
-    alpha = 'e';
-    printf ("%d", ft_isalpha(alpha));
-    printf ("%d", isalpha(alpha));
-    return (0);
-}
-*/
 
 int	ft_isalpha(int c)
 {

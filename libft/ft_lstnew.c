@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstnew.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:12:20 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:12:21 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:12:20 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:39:16 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}t_list;
-*/
 
 t_list	*ft_lstnew(void *content)
 {
@@ -30,14 +23,3 @@ t_list	*ft_lstnew(void *content)
 	new_el -> next = NULL;
 	return (new_el);
 }
-/*
-int		main(void)
-{
-	char	str[] = "lorem ipsum dolor sit";
-
-	t_list	*elem;
-
-	elem = ft_lstnew((void *)str);
-	printf("%s\n", elem->content);
-}
-*/

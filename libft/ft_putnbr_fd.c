@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_putnbr_fd.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:14:33 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:14:34 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:14:33 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:40:07 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int	main(void)
-{
-	int	nb;
-
-	nb = -2147483648;
-	ft_putnbr_fd(nb, 1);
-	return (0);
-}
-*/
 
 void	ft_putnbr_fd(int n, int fd)
 {

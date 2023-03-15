@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/06 19:09:42 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:40:21 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,3 @@ char	**ft_split_multi(char const *s, char *set)
 		return (0);
 	return (split);
 }
-
-// int	main(void)
-// {
-// 	char		*set;
-// 	char const	*s;
-// 	char		**ptr;
-// 	int			x;
-
-// 	set = " \t\v\f\r";
-// 	x = 0;
-// 	s = "gg   gkgkgkuhi n	jhl  g	j 	 hkg g lkj k go";
-// 	ptr = ft_split_multi(s, set);
-// 	if (!ptr)
-// 		return (printf ("not ok\n"), 1);
-// 	while (ptr[x])
-// 		printf("|%s|\n", ptr[x++]);
-// 	system ("leaks -q a.out");
-// 	return (0);
-// }

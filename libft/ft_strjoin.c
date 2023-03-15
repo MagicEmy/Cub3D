@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strjoin.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:15:44 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 18:54:25 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:15:44 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:41:15 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int	main(void)
-{
-	char	*s1;
-	char	*s2;
 
-	s1 = "Do not ";
-	s2 = "disturb!";
-	system ("leaks a.out");
-	printf("%s", ft_strjoin(s1, s2));
-}
-*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_len;
@@ -47,9 +36,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new_string[i] = '\0';
 	return (new_string);
 }
-
-	/*
-	ft_strlcat(new_string, s1, s1_len);
-	ft_strlcat((new_string + s1_len), s2, s2_len);
-	new_string[total_len - 1] = '\0';
-	*/

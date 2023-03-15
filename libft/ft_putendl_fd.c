@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_putendl_fd.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:14:25 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:14:26 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:14:25 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:40:02 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-int	main(void)
-{
-	ft_putendl_fd("Don't panic", 1);
-	return (0);
-}
-*/
 
 void	ft_putendl_fd(char *s, int fd)
 {

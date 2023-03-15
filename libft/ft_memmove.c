@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memmove.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:13:35 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:13:37 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:13:35 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:39:43 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-void    *ft_memmove(void *dst, const void *src, size_t len);
-
-int main(void)
-{
-    char src[25] = "Don't Panic";
-    char src2[25] = "Don't Panic";
-    char dst[30];
-    char dst2[30];
-    
-    ft_memmove(dst, src, 5);
-    memmove(dst2, src2, 5);
-    printf("ft_memmove %s.\n", dst);
-    printf("memmove %s.", dst2);
-	system ("leaks a.out");
-    return (0);
-}
-*/
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

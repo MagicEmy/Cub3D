@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 15:00:36 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 15:01:22 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 15:00:36 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:37:26 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,4 @@ int	ft_atoi(const char *str)
 	}
 	return (number * sign);
 }
-/*
-//2147483647, -2147483648
-int	main(void)
-{
-	char	*text;
-	int		numeric;
 
-	text = " 	 -2147483648ab567";
-	numeric = ft_atoi(text);
-	printf("%d\n", numeric);
-	return (0);
-}
-*/

@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_tolower.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:18:51 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:18:52 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:18:51 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/15 11:42:18 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int main(void)
-{
-    int letter_l;
-    
-    letter_l = 'e';
-    printf ("ft_tolower %c\t", ft_tolower(letter_l));
-    printf ("tolower %c\n", tolower(letter_l));
-    return (0);
-}
-*/
 
 int	ft_tolower(int c)
 {
