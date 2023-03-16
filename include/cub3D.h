@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 11:28:00 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/16 16:57:13 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	casting_rays(t_data *data);
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
 double	dist_to_wall(t_ray *ray, t_goat *goat);
-int		is_wall(t_data *data, double x, double y);
+int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
 /* casting_get.c */
 double	get_x(double y_side, double angle);
@@ -44,6 +44,7 @@ void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
 void	draw_scene(t_data *data, t_ray *ray, t_point idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
+// void	draw_texture(t_data *data, t_ray *ray, int32_t wall_height, t_point idx); // perhaps static
 /* drawing_bonus.c */
 void	draw_minimap(t_data *data);
 void	draw_rays(t_data *data, t_ray *ray);

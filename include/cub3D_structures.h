@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_structures.h                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/15 11:27:04 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_structures.h                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/15 19:42:50 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_goat
 	double	x;
 	double	y;
 	double	angle;
+	double	dist_pp;
 }	t_goat;
 
 typedef struct s_point

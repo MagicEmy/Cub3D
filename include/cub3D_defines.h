@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_defines.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:19:05 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/14 15:41:11 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_defines.h                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/16 16:46:49 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 
 # define WIDTH 640
 # define HEIGHT 480
-
 # define IMG_WIDTH 640
 # define IMG_HEIGHT 480
+# define UNIT 125
 
 /* for calculations */
 # define X_AXIS 0
 # define Y_AXIS 1
 # define FOV 60
+# define STEP_LENGTH 0.05
 
 /* walls */
 # define WALL_HEIGHT 120

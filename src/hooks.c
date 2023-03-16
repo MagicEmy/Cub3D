@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 17:28:17 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/13 18:48:37 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/16 16:45:31 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	go_left_right(int key, t_data *data)
 		dir = 1;
 	else
 		dir = -1;
-	step.x = cos(to_rad(data->goat->angle - 90)) * dir;
-	step.y = sin(to_rad(data->goat->angle - 90)) * -1 * dir;
-	if (!is_wall(data, step.x, step.y))
+	step.x = cos(to_rad(data->goat->angle - 90)) * dir * STEP_LENGTH;
+	step.y = sin(to_rad(data->goat->angle - 90)) * -1 * dir * STEP_LENGTH;
+	if (is_accessible(data, step.x, step.y))
 	{
 		data->goat->x += step.x;
 		data->goat->y += step.y;
@@ -44,9 +44,9 @@ void	go_fwd_bck(int key, t_data *data)
 		dir = 1;
 	else
 		dir = -1;
-	step.x = cos(to_rad(data->goat->angle)) * dir;
-	step.y = sin(to_rad(data->goat->angle)) * -1 * dir;
-	if (!is_wall(data, step.x, step.y))
+	step.x = cos(to_rad(data->goat->angle)) * dir * STEP_LENGTH;
+	step.y = sin(to_rad(data->goat->angle)) * -1 * dir * STEP_LENGTH;
+	if (is_accessible(data, step.x, step.y))
 	{
 		data->goat->x += step.x;
 		data->goat->y += step.y;
@@ -59,13 +59,13 @@ void	look_left_right(int key, t_data *data)
 {
 	if (key == MLX_KEY_RIGHT)
 	{
-		data->goat->angle -= 15;
+		data->goat->angle -= 5;
 		if (data->goat->angle < 0)
 			data->goat->angle += 360;
 	}
 	else if (key == MLX_KEY_LEFT)
 	{
-		data->goat->angle += 15;
+		data->goat->angle += 5;
 		if (data->goat->angle >= 360)
 			data->goat->angle -= 360;
 	}
@@ -81,13 +81,13 @@ void	mouse_hook(double xpos, double ypos, void *param)	// move to bonus
 	if (xpos > 0 && ypos > 0 && xpos < data->img->width && \
 	ypos < data->img->height)
 	{
-		if (xpos > data->cursor_x)
+		if (xpos > data->cursor_x + 3)
 		{
 			data->goat->angle -= 1;
 			if (data->goat->angle < 0)
 				data->goat->angle += 360;
 		}
-		else if (xpos < data->cursor_x)
+		else if (xpos < data->cursor_x - 3)
 		{
 			data->goat->angle += 1;
 			if (data->goat->angle >= 360)
