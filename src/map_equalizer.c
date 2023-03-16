@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/14 18:20:25 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:17:07 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	copy_and_fill_map(t_data *data, char **new_map, int i)
 		x++;
 	}
 	while (new_map[i][x])
-		new_map[i][x++] = '1';
+		new_map[i][x++] = ' ';
 }
 
 void	map_equalizer(t_data *data)
