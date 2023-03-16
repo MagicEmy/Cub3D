@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 12:27:26 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:19:02 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	init(t_data *data, t_goat *goat)
 	data->we_path = NULL;
 	data->ceiling = NULL;
 	data->floor = NULL;
+	data->set = " \t\v\f\r\n";
 	data->map_start = 0;
 	data->map_end = 0;
 	data->counter = 0;

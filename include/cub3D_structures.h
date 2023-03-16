@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/15 11:27:04 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:18:14 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data
 	char			*ceiling;
 	char			**info_file;
 	char			**map;
+	char			*set;
 	size_t			map_width;
 	size_t			map_height;
 	t_texture		texture;
