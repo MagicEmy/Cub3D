@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 18:34:28 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/16 19:11:16 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,33 +65,33 @@ typedef struct s_data
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	mlx_image_t		*img_mm;	// minimap -> move to bonus
-	char			*no_path;
-	char			*so_path;
-	char			*ea_path;
-	char			*we_path;
-	char			*floor;
+	char			*no_path;	// these can be local variables (a struct perhaps)
+	char			*so_path;	// these can be local variables (a struct perhaps)
+	char			*ea_path;	// these can be local variables (a struct perhaps)
+	char			*we_path;	// these can be local variables (a struct perhaps)
+	char			*floor;		// these can be local variables (a struct perhaps)
 	unsigned int	floor_clr;
 	unsigned int	sky_clr;
 	unsigned int	nsew_clr[4];		// for testing; will be deleted
-	char			*ceiling;
+	char			*ceiling;	// these can be local variables (a struct perhaps)
 	char			**info_file;
 	char			**map;
-	char			*set;
+	char			*set;			// can be local var in the function
 	size_t			map_width;
 	size_t			map_height;
 	t_texture		texture;
 	t_goat			*goat;
 	int32_t			cursor_x;
 	int32_t			cursor_y;
-	int32_t			floor_red;
-	int32_t			floor_green;
-	int32_t			floor_blue;
-	int32_t			ceiling_red;
-	int32_t			ceiling_green;
-	int32_t			ceiling_blue;
-	int32_t			counter;
-	int32_t			map_start;
-	int32_t			map_end;
+	int32_t			floor_red;		// these can be local variables (struct perhaps)
+	int32_t			floor_green;	// these can be local variables (struct perhaps)
+	int32_t			floor_blue;		// these can be local variables (struct perhaps)
+	int32_t			ceiling_red;	// these can be local variables (struct perhaps)
+	int32_t			ceiling_green;	// these can be local variables (struct perhaps)
+	int32_t			ceiling_blue;	// these can be local variables (struct perhaps)
+	int32_t			counter;		// can be local var in the function
+	int32_t			map_start;		// can be local var in the function
+	int32_t			map_end;		// can be local var in the function
 }	t_data;
 
 #endif

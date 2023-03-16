@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 18:29:08 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/16 18:45:31 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 int	hits_wall(t_data *data, t_ray *ray)
 {
-	if (ray->facing == NORTH && data->map[(int)ray->y - 1] \
+	if (ray->facing == NORTH && ray->y > 0 && data->map[(int)ray->y - 1] \
 	[(int)floor(ray->x)] == '1')
 		return (TRUE);
-	if (ray->facing == WEST && data->map[(int)floor(ray->y)] \
+	if (ray->facing == WEST && ray->x > 0 && data->map[(int)floor(ray->y)] \
 	[(int)ray->x - 1] == '1')
 		return (TRUE);
 	if ((ray->facing == EAST || ray->facing == SOUTH) && \

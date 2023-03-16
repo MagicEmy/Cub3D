@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/16 16:57:13 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/16 19:30:39 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int32_t	get_rgba(int r, int g, int b, int a);
 /* main.c */
 void	error_exit(char *text);
 /* cube_data_init.c */
-t_data	*cube_data_init(void);
+t_data	*cube_data_init(void);	// currently not being used
 /* parsing.c */
 char	*get_line(char *argv, t_data *data);
 // t_data	*cube_data_init(void);
