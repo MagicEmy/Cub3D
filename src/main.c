@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 11:31:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:27:26 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,44 @@ void	init(t_data *data, t_goat *goat)
 	data->map_end = 0;
 	data->counter = 0;
 }
-
+// /**
+//  * Base object for disk loaded textures.
+//  * It contains rudementary information about the texture.
+//  * 
+//  * @param width The width of the texture.
+//  * @param height The height of the texture.
+//  * @param pixels The literal pixel data.
+//  * @param bytes_per_pixel The amounst of bytes in a pixel, always 4.
+//  */
+// typedef struct mlx_texture
+// {
+// 	uint32_t	width;
+// 	uint32_t	height;
+// 	uint8_t		bytes_per_pixel;
+// 	uint8_t*	pixels;
+// }	mlx_texture_t;
+// 	int32_t	get_rgba(int r, int g, int b, int a)
+// {
+// 	 return (r << 24 | g << 16 | b << 8 | a);
+// }
+//return (pixels[0] << 24 | pixels[1] << 16 | pixels[2] << 8 | pixels[3]);
 /* this is a work in progress function that I used for understanding textures */
+
 // void	show_textures(t_data *data)
 // {
 // 	size_t			i;
 // 	unsigned int	colour;
 
 // 	i = 0;
-// 	// printf("NO w %d h %d\n", data->texture.north->width, data->texture.north->height);
-// 	// printf("SO w %d h %d\n", data->texture.south->width, data->texture.south->height);
-// 	// printf("WE w %d h %d\n", data->texture.west->width, data->texture.west->height);
-// 	// printf("EA w %d h %d\n", data->texture.east->width, data->texture.east->height);
+// 	printf("NO w %d h %d\n", data->texture.north->width, data->texture.north->height);
+// 	printf("SO w %d h %d\n", data->texture.south->width, data->texture.south->height);
+// 	printf("WE w %d h %d\n", data->texture.west->width, data->texture.west->height);
+// 	printf("EA w %d h %d\n", data->texture.east->width, data->texture.east->height);
 // 	while (i < data->texture.south->width * data->texture.south->height * \
-// 	data->texture.south->bytes_per_pixel)
+// 		data->texture.south->bytes_per_pixel)
 // 	{
 // 		colour = get_rgba(data->texture.south->pixels[i], \
-// 		data->texture.south->pixels[i + 1], data->texture.south->pixels[i + 2], \
+// 		data->texture.south->pixels[i + 1], data->texture.south->pixels[i + 2],\
 // 		data->texture.south->pixels[i + 3]);
 // 		printf("%u, ", colour);
 // 		i += data->texture.south->bytes_per_pixel;
@@ -93,6 +114,7 @@ void	init(t_data *data, t_goat *goat)
 // 			printf("\n");
 // 	}
 // }
+
 
 int32_t	main(int argc, char **argv)
 {

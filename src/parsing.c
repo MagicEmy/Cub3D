@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 11:20:04 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:19:55 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,11 @@ void	info_map_parsing(char *argv, t_data *data)
 	check_map_syntax(data);
 	texture_acquisition(data);
 	rgb_validation(data);
-	map_validation(data);
 	get_map_size(data);
 	map_equalizer(data);
-}
-
-	// cube_check_extension(argv);
+	map_validation(data);
 	// int		i;
-
 	// i = 0;
 	// while (data->map[i])
 	// 	printf("%s\n", data->map[i++]);
+}
