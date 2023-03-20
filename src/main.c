@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/16 19:42:24 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 16:57:13 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,6 @@ void	error_exit(char *text)
 	ft_putendl_fd(text, 2);
 	ft_putendl_fd(C_RESET, 2);
 	exit(EXIT_FAILURE);
-}
-
-void	key_hooks(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		return (mlx_close_window(data->mlx));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
-		go_left_right(MLX_KEY_D, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
-		go_left_right(MLX_KEY_A, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
-		go_fwd_bck(MLX_KEY_W, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
-		go_fwd_bck(MLX_KEY_S, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		look_left_right(MLX_KEY_RIGHT, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		look_left_right(MLX_KEY_LEFT, data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_G))
-		print_goat_info(data);
 }
 
 void	init(t_data *data, t_goat *goat)

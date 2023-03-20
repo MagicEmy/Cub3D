@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/13 16:32:27 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 16:54:12 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <math.h>
 #include <stdio.h>
 
-void	draw_goat(mlx_image_t *img, t_point goat, double angle)
+static void	st_draw_goat(mlx_image_t *img, t_point goat, double angle)
 {
 	t_point	a;
 	t_point	b;
@@ -35,7 +35,7 @@ void	draw_goat(mlx_image_t *img, t_point goat, double angle)
 	draw_line(img, a, goat, 0xFF00FFFF);
 }
 
-void	wipe_everything(mlx_image_t *img)
+static void	st_wipe_everything(mlx_image_t *img)
 {
 	size_t	x;
 	size_t	y;
@@ -53,7 +53,7 @@ void	wipe_everything(mlx_image_t *img)
 	}
 }
 
-void	draw_wall_block(mlx_image_t *img, t_point pt)
+static void	st_draw_wall_block(mlx_image_t *img, t_point pt)
 {
 	t_point	a;
 	t_point	b;
@@ -93,15 +93,15 @@ void	draw_minimap(t_data *data)
 	idx.y = 0;
 	goat_pos.x = PADDING + PPU * data->goat->x;
 	goat_pos.y = PADDING + PPU * data->goat->y;
-	wipe_everything(data->img_mm);
-	draw_goat(data->img_mm, goat_pos, to_rad(data->goat->angle));
+	st_wipe_everything(data->img_mm);
+	st_draw_goat(data->img_mm, goat_pos, to_rad(data->goat->angle));
 	while (data->map[(int)idx.y])
 	{
 		idx.x = 0;
 		while (data->map[(int)idx.y][(int)idx.x])
 		{
 			if (data->map[(int)idx.y][(int)idx.x] == '1')
-				draw_wall_block(data->img_mm, idx);
+				st_draw_wall_block(data->img_mm, idx);
 			idx.x++;
 		}
 		idx.y++;

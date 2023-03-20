@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/15 11:27:37 by emlicame         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: emlicame <emlicame@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
+#    Updated: 2023/03/20 17:28:18 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC			:=	main.c \
 				casting_get.c \
 				drawing.c \
 				drawing_bonus.c \
-				hooks.c
+				hooks.c \
+				textures.c
 # to do: deal with bonus files
 
 OBJ			:= $(SRC:%.c=obj/%.o)

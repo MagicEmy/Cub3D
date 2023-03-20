@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/16 19:30:39 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:39:36 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
 /* casting_get.c */
-double	get_x(double y_side, double angle);
-double	get_y(double x_side, double angle);
+// double	get_x(double y_side, double angle);
+// double	get_y(double x_side, double angle);
 void	get_first_step(t_point *first_step, double angle, int axis, \
 		t_goat *goat);
 void	get_first_step(t_point *first_step, double angle, \
@@ -42,9 +42,8 @@ int axis, t_goat *goat);
 void	get_steps(t_point *step, double angle, int axis);
 void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
-void	draw_scene(t_data *data, t_ray *ray, t_point idx);
+void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
-// void	draw_texture(t_data *data, t_ray *ray, int32_t wall_height, t_point idx); // perhaps static
 /* drawing_bonus.c */
 void	draw_minimap(t_data *data);
 void	draw_rays(t_data *data, t_ray *ray);
@@ -53,9 +52,13 @@ void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
 void	mouse_hook(double xpos, double ypos, void *param);
+void	key_hooks(void *param);
 void	print_goat_info(t_data *data);	// for debugging only
 /* textures.c */
 int32_t	get_rgba(int r, int g, int b, int a);
+void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture);
+void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \
+		mlx_texture_t *tx);
 /* main.c */
 void	error_exit(char *text);
 /* cube_data_init.c */

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 18:45:31 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:38:43 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <math.h>
 #include <stdio.h>
 
-int	hits_wall(t_data *data, t_ray *ray)
+static int	st_hits_wall(t_data *data, t_ray *ray)
 {
 	if (ray->facing == NORTH && ray->y > 0 && data->map[(int)ray->y - 1] \
 	[(int)floor(ray->x)] == '1')
@@ -33,7 +33,7 @@ int	hits_wall(t_data *data, t_ray *ray)
 }
 
 /* Digital Differential Analysis - walking along the y-axis */
-double	dda_y_axis(t_ray *ns, t_data *data, double angle)
+static double	st_dda_y_axis(t_ray *ns, t_data *data, double angle)
 {
 	t_point	step;
 	t_point	first_step;
@@ -41,27 +41,30 @@ double	dda_y_axis(t_ray *ns, t_data *data, double angle)
 
 	if (angle == 0 || angle == M_PI)
 		return (PARALLEL);
-	i = 0;
+	i = 1;
 	get_first_step(&first_step, angle, Y_AXIS, data->goat);
 	get_steps(&step, angle, Y_AXIS);
 	ns->facing = facing_what(&step, Y_AXIS);
 	ns->x = data->goat->x + first_step.x;
 	ns->y = data->goat->y + first_step.y;
-	ns->dist = dist_to_wall(ns, data->goat);
+	dist_to_wall(ns, data->goat);
 	while (is_inside_map(ns, data))
 	{
-		if (hits_wall(data, ns))
+		if (st_hits_wall(data, ns))
 			break ;
 		ns->x = data->goat->x + first_step.x + i * step.x;
 		ns->y = data->goat->y + first_step.y + i * step.y;
-		ns->dist = dist_to_wall(ns, data->goat);
+		dist_to_wall(ns, data->goat);
 		i++;
 	}
-	return (ns->dist);
+	if (ns->dist > 0 && ns->dist < STEP_LENGTH / 5)
+		return (STEP_LENGTH / 5);
+	else
+		return (ns->dist);
 }
 
 /* Digital Differential Analysis - walking along the x-axis */
-double	dda_x_axis(t_ray *ew, t_data *data, double angle)
+static double	st_dda_x_axis(t_ray *ew, t_data *data, double angle)
 {
 	t_point	step;
 	t_point	first_step;
@@ -75,20 +78,23 @@ double	dda_x_axis(t_ray *ew, t_data *data, double angle)
 	ew->facing = facing_what(&step, X_AXIS);
 	ew->x = data->goat->x + first_step.x;
 	ew->y = data->goat->y + first_step.y;
-	ew->dist = dist_to_wall(ew, data->goat);
+	dist_to_wall(ew, data->goat);
 	while (is_inside_map(ew, data))
 	{
-		if (hits_wall(data, ew))
+		if (st_hits_wall(data, ew))
 			break ;
 		ew->x = data->goat->x + first_step.x + i * step.x;
 		ew->y = data->goat->y + first_step.y + i * step.y;
-		ew->dist = dist_to_wall(ew, data->goat);
+		dist_to_wall(ew, data->goat);
 		i++;
 	}
-	return (ew->dist);
+	if (ew->dist > 0 && ew->dist < STEP_LENGTH / 5)
+		return (STEP_LENGTH / 5);
+	else
+		return (ew->dist);
 }
 
-t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
+static t_ray	*st_calc_dist_from_wall(t_data *data, double ray_angle)
 {
 	t_ray	*ew;
 	t_ray	*ns;
@@ -97,8 +103,8 @@ t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
 	ns = malloc(sizeof(t_ray));
 	if (!ew || !ns)
 		error_exit(ERROR_MALLOC);
-	ew->dist = dda_x_axis(ew, data, to_rad(data->goat->angle + ray_angle));
-	ns->dist = dda_y_axis(ns, data, to_rad(data->goat->angle + ray_angle));
+	ew->dist = st_dda_x_axis(ew, data, to_rad(data->goat->angle + ray_angle));
+	ns->dist = st_dda_y_axis(ns, data, to_rad(data->goat->angle + ray_angle));
 	if ((ew->dist > ns->dist || ew->dist < 0) && ns->dist >= 0)
 	{
 		ns->dist *= cos(to_rad(ray_angle));
@@ -116,17 +122,17 @@ t_ray	*calc_distance_from_wall(t_data *data, double ray_angle)
 
 void	casting_rays(t_data *data)
 {
-	t_point	idx;
+	t_coord	idx;
 	t_ray	*ray;
 
 	idx.x = 0;
 	idx.y = 0;
 	while (idx.x < WIDTH)
 	{
-		ray = calc_distance_from_wall(data, FOV / 2 - \
+		ray = st_calc_dist_from_wall(data, FOV / 2 - \
 		(double)idx.x * FOV / (WIDTH - 1));
 		draw_scene(data, ray, idx);
-		draw_rays(data, ray);
+		// draw_rays(data, ray);	// bonus
 		idx.x++;
 	}
 }

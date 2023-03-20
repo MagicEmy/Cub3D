@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 11:04:01 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 18:30:27 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 16:29:46 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	is_inside_map(t_ray *ray, t_data *data)
 	return (TRUE);
 }
 
-double	dist_to_wall(t_ray *ray, t_goat *goat)
+void	dist_to_wall(t_ray *ray, t_goat *goat)
 {
 	double	dx;
 	double	dy;
 
 	dx = fabs(ray->x - goat->x);
 	dy = fabs(ray->y - goat->y);
-	return (sqrt(pow(dx, 2) + pow(dy, 2)));
+	ray->dist = sqrt(pow(dx, 2) + pow(dy, 2));
 }
 
 int	facing_what(t_point *step, int axis)

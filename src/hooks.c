@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 17:28:17 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 16:45:31 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 16:57:26 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,30 @@ void	mouse_hook(double xpos, double ypos, void *param)	// move to bonus
 	}
 }
 
-/* for debugging */
+void	key_hooks(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		return (mlx_close_window(data->mlx));
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		go_left_right(MLX_KEY_D, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		go_left_right(MLX_KEY_A, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+		go_fwd_bck(MLX_KEY_W, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+		go_fwd_bck(MLX_KEY_S, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		look_left_right(MLX_KEY_RIGHT, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		look_left_right(MLX_KEY_LEFT, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_G))
+		print_goat_info(data);
+}
+
+/* for debugging - to be deleted */
 void	print_goat_info(t_data *data)
 {
 	printf("Goat coordinates: %f, %f\n", data->goat->x, data->goat->y);

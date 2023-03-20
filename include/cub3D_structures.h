@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 19:11:16 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:42:16 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_point
 	double	x;
 	double	y;
 }	t_point;
+
+typedef struct s_coord
+{
+	int32_t	x;
+	int32_t	y;
+}	t_coord;
 
 typedef struct s_ray
 {
