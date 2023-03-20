@@ -2,15 +2,15 @@
 	NO  ./textures/boss.png	     
 				
 
-			SO 	
+			SO 	./textures/boss.png
 				
 		WE 	   ./textures/noo.png
 
    EA   ./textures/orange-wood.png
 
-   C 220,30,0
+   C 204,255,255
 
-   	F 220,100,0
+   	F 102,204,0
 
 
 111111111111111111111111111

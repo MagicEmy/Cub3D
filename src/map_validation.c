@@ -6,26 +6,21 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/16 12:13:02 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:39:45 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include <stdlib.h>
 
-static void	check_walls_top_bottom(t_data *data, int y)
+static void	check_walls_top_bottom(t_parsing *parsing, int y)
 {
 	int	x;
 
 	x = 0;
-	while (data->map[y][x])
+	while (parsing->map[y][x])
 	{
-		if (data->map[y][x] != ' ' && data->map[y][x] != '1')
-		{
-			printf ("%c\n", data->map[y][x]);
-			printf ("x %d y %d\n", x, y);
+		if (parsing->map[y][x] != ' ' && parsing->map[y][x] != '1')
 			error_exit(ERROR_INVALID_MAP_W);
-		}
 		x++;
 	}
 }
@@ -37,51 +32,51 @@ static int	ft_is_map_space(char c)
 	return (0);
 }
 
-static void	check_walls_middle(t_data *data, int y, int x)
+static void	check_walls_middle(t_parsing *parsing, int y, int x)
 {
-	if (ft_strchr("0NSEW", data->map[y][x]))
+	if (ft_strchr("0NSEW", parsing->map[y][x]))
 	{
-		if (ft_strchr("NSEW", data->map[y][x]))
+		if (ft_strchr("NSEW", parsing->map[y][x]))
 		{
-			data->goat->x = x + 0.5;
-			data->goat->y = y + 0.5;
-			if (data->map[y][x] == 'E')
-				data->goat->angle = E;
-			if (data->map[y][x] == 'N')
-				data->goat->angle = N;
-			if (data->map[y][x] == 'W')
-				data->goat->angle = W;
-			if (data->map[y][x] == 'S')
-				data->goat->angle = S;
+			parsing->player_x = x + 0.5;
+			parsing->player_y = y + 0.5;
+			if (parsing->map[y][x] == 'E')
+				parsing->player_angle = E;
+			if (parsing->map[y][x] == 'N')
+				parsing->player_angle = N;
+			if (parsing->map[y][x] == 'W')
+				parsing->player_angle = W;
+			if (parsing->map[y][x] == 'S')
+				parsing->player_angle = S;
 		}
-		if (ft_is_map_space(data->map[y][x + 1]))
+		if (ft_is_map_space(parsing->map[y][x + 1]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(data->map[y][x - 1]))
+		if (ft_is_map_space(parsing->map[y][x - 1]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(data->map[y - 1][x]))
+		if (ft_is_map_space(parsing->map[y - 1][x]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(data->map[y + 1][x]))
+		if (ft_is_map_space(parsing->map[y + 1][x]))
 			error_exit(ERROR_INVALID_MAP_W);
 	}
 }
 
-void	map_validation(t_data *data)
+void	map_validation(t_parsing *parsing)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	check_walls_top_bottom(data, y);
+	check_walls_top_bottom(parsing, y);
 	y = 1;
-	while (data->map[y + 1] != NULL)
+	while (parsing->map[y + 1] != NULL)
 	{
 		x = 0;
-		while (data->map[y][x])
+		while (parsing->map[y][x])
 		{
-			check_walls_middle(data, y, x);
+			check_walls_middle(parsing, y, x);
 			x++;
 		}
 		y++;
 	}
-	check_walls_top_bottom(data, y);
+	check_walls_top_bottom(parsing, y);
 }

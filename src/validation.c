@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info_validation.c                                  :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/19 18:48:46 by emlicame         ###   ########.fr       */
+/*   Created: 2023/03/19 18:50:25 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/19 18:52:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	texture_acquisition(t_parsing *parsing, t_data *data)
-{
-	data->textures[NORTH] = NULL;
-	data->textures[SOUTH] = NULL;
-	data->textures[EAST] = NULL;
-	data->textures[WEST] = NULL;
-	data->textures[NORTH] = mlx_load_png(parsing->no_path);
-	if (data->textures[NORTH] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[SOUTH] = mlx_load_png(parsing->so_path);
-	if (data->textures[SOUTH] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[EAST] = mlx_load_png(parsing->ea_path);
-	if (data->textures[EAST] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[WEST] = mlx_load_png(parsing->we_path);
-	if (data->textures[WEST] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-}
 
 static void	rgb_range_check(t_parsing *parsing)
 {
@@ -57,13 +37,15 @@ static void	rgb_range_check(t_parsing *parsing)
 void	rgb_validation(t_parsing *parsing)
 {
 	char	**rgb;
-
+	int		color;
+	
 	rgb = NULL;
 	rgb = ft_split(parsing->floor, ',');
 	if (!rgb)
 		error_exit(ERROR_MALLOC);
 	if (!rgb[0] || !rgb[1] || !rgb[2])
 		error_exit(ERROR_RGB_ERR);
+	color = get_rgba(rgb[0], rgb[1], rgb[2], 255);
 	parsing->floor_red = ft_atoi(rgb[0]);
 	parsing->floor_green = ft_atoi(rgb[1]);
 	parsing->floor_blue = ft_atoi(rgb[2]);
@@ -78,30 +60,4 @@ void	rgb_validation(t_parsing *parsing)
 	parsing->ceiling_blue = ft_atoi(rgb[2]);
 	ft_free_double_arr(rgb);
 	rgb_range_check(parsing);
-}
-
-void	check_map_syntax(t_parsing *parsing)
-{
-	int	x;
-	int	y;
-	int	orientation;
-
-	x = 0;
-	y = 0;
-	orientation = 0;
-	while (parsing->map[y])
-	{
-		while (parsing->map[y][x])
-		{
-			if (!ft_strchr(" 01NSEW", parsing->map[y][x]))
-				error_exit(ERROR_INVALID_CHAR);
-			if (ft_strchr("NSEW", parsing->map[y][x]))
-				orientation++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	if (orientation > 1)
-		error_exit(ERROR_PLAYER_COUNT);
 }

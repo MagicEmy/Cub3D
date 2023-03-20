@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D_structures.h                                 :+:      :+:    :+:   */
+/*   cub3D_parser.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/19 17:39:05 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:38:38 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_STRUCTURES_H
-# define CUB3D_STRUCTURES_H
+#ifndef CUB3D_PARSER_H
+# define CUB3D_PARSER_H
 
-# include <stdint.h>
-# include <stdlib.h>
+# include "cub3D_defines.h"
+# include "cub3D_structures.h"
+# include "colors.h"
+
 # include "MLX42/MLX42.h"
-
-typedef struct s_goat
-{
-	double	x;
-	double	y;
-	double	angle;
-	double	dist_pp;
-}	t_goat;
-
-typedef struct s_point
-{
-	double	x;
-	double	y;
-}	t_point;
-
-typedef struct s_ray
-{
-	double	x;
-	double	y;
-	double	dist;
-	int		facing;
-}	t_ray;
+# include "libft.h"
 
 typedef struct s_parsing
 {
@@ -68,21 +49,27 @@ typedef struct s_parsing
 	double			player_angle;
 }	t_parsing;
 
-typedef struct s_data
-{
-	mlx_t			*mlx;
-	mlx_image_t		*img;
-	mlx_image_t		*img_mm;	// minimap -> move to bonus
-	unsigned int	floor_clr;
-	unsigned int	ceiling_clr;
-	unsigned int	nsew_clr[4];		// for testing; will be deleted
-	mlx_texture_t	*textures[4];
-	char			**map;
-	size_t			map_width;
-	size_t			map_height;
-	t_goat			*goat;
-	int32_t			cursor_x;
-	int32_t			cursor_y;
-}	t_data;
+/* parsing.c */
+void	info_map_parsing(char *argv, t_data *data);
+
+/* parsing_init.c  */
+void	parsing_to_data(t_data *data, t_parsing *parsing);
+void	parsing_stru_init(t_parsing *parsing);
+
+/* info_validation.c */
+void	texture_acquisition(t_parsing *parsing, t_data *data);
+void	rgb_validation(t_parsing *parsing);
+void	check_map_syntax(t_parsing *parsing);
+
+/* map_equalizer.c */
+void	map_equalizer(t_parsing *parsing);
+
+/* map_validation.c */
+void	map_validation(t_parsing *parsing);
+
+//get_next_line
+char	*get_next_line(int fd);
+char	*gnl_ft_strjoin_free(char *s1, char *s2);
+int		check_where_newline(char *buff, int c);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/15 11:27:37 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/19 16:14:56 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,14 @@ HEADERS		:=	include/cub3D.h	 		\
         include/cub3D_structures.h
 
 SRC			:=	main.c \
-				cube_data_init.c		\
 				parsing.c				\
+				parsing_init.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				info_validation.c		\
 				map_validation.c   		\
 				map_equalizer.c			\
+				textures.c				\
        			casting_rays.c \
 				casting_utils.c \
 				casting_get.c \

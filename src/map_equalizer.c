@@ -6,14 +6,13 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/15 18:17:07 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:39:51 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include <stdlib.h>
 
-void	get_map_size(t_data *data)
+static void	get_map_size(t_parsing *parsing)
 {
 	int		y;
 	size_t	max;
@@ -22,52 +21,53 @@ void	get_map_size(t_data *data)
 	y = 0;
 	max = 0;
 	len = 0;
-	while (data->map[y])
+	while (parsing->map[y])
 	{
-		len = ft_strlen(data->map[y]);
+		len = ft_strlen(parsing->map[y]);
 		if (max < len)
 			max = len;
 		y++;
 	}
-	data->map_width = max;
-	data->map_height = y;
+	parsing->map_width = max;
+	parsing->map_height = y;
 }
 
-static void	copy_and_fill_map(t_data *data, char **new_map, int i)
+static void	copy_and_fill_map(t_parsing *parsing, char **new_map, int i)
 {
 	int	x;
 
 	x = 0;
-	while (data->map[i][x])
+	while (parsing->map[i][x])
 	{
-		new_map[i][x] = data->map[i][x];
+		new_map[i][x] = parsing->map[i][x];
 		x++;
 	}
 	while (new_map[i][x])
 		new_map[i][x++] = ' ';
 }
 
-void	map_equalizer(t_data *data)
+void	map_equalizer(t_parsing *parsing)
 {
 	char	**new_map;
 	int		i;
 	int		x;
 
 	i = 0;
-	new_map = (char **)malloc(sizeof(char *) * (data->map_height + 1));
+	get_map_size(parsing);
+	new_map = (char **)malloc(sizeof(char *) * (parsing->map_height + 1));
 	if (!new_map)
 		error_exit(ERROR_MALLOC);
-	while (data->map[i])
+	while (parsing->map[i])
 	{
 		x = 0;
-		new_map[i] = (char *)malloc(sizeof(char) * (data->map_width + 1));
+		new_map[i] = (char *)malloc(sizeof(char) * (parsing->map_width + 1));
 		if (!new_map[i])
 			error_exit(ERROR_MALLOC);
-		new_map[i][data->map_width] = '\0';
-		copy_and_fill_map(data, new_map, i);
+		new_map[i][parsing->map_width] = '\0';
+		copy_and_fill_map(parsing, new_map, i);
 		i++;
 	}
 	new_map[i] = NULL;
-	ft_free_double_arr(data->map);
-	data->map = new_map;
+	ft_free_double_arr(parsing->map);
+	parsing->map = new_map;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   drawing.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/16 19:21:17 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   drawing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 10:49:12 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/19 16:34:05 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	draw_texture(t_data *data, t_ray *ray, int32_t wall_height, t_point *idx)
 		ray_pos = ray->x - floor(ray->x);
 	if (ray->facing == EAST || ray->facing == WEST)	// special code for WEST to be added
 		ray_pos = ray->y - floor(ray->y);
-	texture = data->texture.north;
+	// texture = data->texture.north;
 	// ONCE THE ARRAY OF TEXTURE POINTERS IS IMPLEMENTED IN T_DATA, UNCOMMENT 
 	// THE BELOW LINE (TO USE THE CORRESPONDING TEXTURES)
-	// texture = data->textures[ray->facing];
+	texture = data->textures[ray->facing];
 	tx = texture->width * ray_pos;
 	i = 0;
 	if (wall_height > IMG_HEIGHT)
@@ -63,7 +63,7 @@ void	draw_scene(t_data *data, t_ray *ray, t_point idx)
 	wall_height = round(data->goat->dist_pp / ray->dist);
 	while (idx.y < ((int)data->img->height - wall_height) / 2 && \
 	idx.y < data->img->height)
-		mlx_put_pixel(data->img, idx.x, idx.y++, data->sky_clr);
+		mlx_put_pixel(data->img, idx.x, idx.y++, data->ceiling_clr);
 	// while (idx.y < ((int)data->img->height + wall_height) / 2 && \
 	// idx.y < data->img->height)
 	// 	mlx_put_pixel(data->img, idx.x, idx.y++, data->nsew_clr[ray->facing]);
