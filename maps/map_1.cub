@@ -1,17 +1,17 @@
 
 
-	NO  ./textures/boss.png	     
+	NO  ./textures/wall_wood_bush_3.png	     
 				
 
-			SO 		./textures/fool.png
+			SO 		./textures/wall_wood_bush_3.png
 				
-		WE 	   ./textures/noo.png
+		WE 	   ./textures/red_bricks_fence.png
 
-   EA   ./textures/orange-wood.png
+   EA   ./textures/redbricks_1.png
 
-   C 173,
+   C 180,200,0
 
-   	F 170,130,0
+   	F 	210,59,104
 
 	
                111111
@@ -23,6 +23,3 @@
        110000000010010000000000000000000111111111
         1111111111111111111111111111111111
               11111111
-			   
-	      
-		        

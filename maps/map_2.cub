@@ -1,12 +1,12 @@
 
-	NO  ./textures/boss.png	     
+	NO  ./textures/colorfull_stones.png	     
 				
 
-			SO 	./textures/boss.png
+			SO 	./textures/red_bricks_fence.png
 				
-		WE 	   ./textures/noo.png
+		WE 	   ./textures/red_bricks_ivy.png
 
-   EA   ./textures/orange-wood.png
+   EA   ./textures/stone_grass.png
 
    C 204,255,255
 
