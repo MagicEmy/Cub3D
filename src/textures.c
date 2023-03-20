@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 18:03:25 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:51:34 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:54:45 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include "cub3D_defines.h"
 #include "MLX42/MLX42.h"
 #include <math.h>
+
+int32_t	get_rgba(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
+}
 
 void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture)
 {

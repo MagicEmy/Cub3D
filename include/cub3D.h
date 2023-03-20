@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:51:12 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:56:31 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
 /* casting_get.c */
-// double	get_x(double y_side, double angle);
-// double	get_y(double x_side, double angle);
 void	get_first_step(t_point *first_step, double angle, int axis, \
 		t_goat *goat);
 void	get_first_step(t_point *first_step, double angle, \

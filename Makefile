@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/20 17:51:02 by dmalacov      ########   odam.nl          #
+#    Updated: 2023/03/20 17:58:16 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRC			:=	main.c \
 				info_validation.c		\
 				map_validation.c   		\
 				map_equalizer.c			\
-				textures.c				\
        			casting_rays.c \
 				casting_utils.c \
 				casting_get.c \
