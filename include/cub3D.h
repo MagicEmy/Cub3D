@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:39:36 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:51:12 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,24 @@ void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \
 		mlx_texture_t *tx);
 /* main.c */
 void	error_exit(char *text);
-/* cube_data_init.c */
-t_data	*cube_data_init(void);	// currently not being used
-/* parsing.c */
-char	*get_line(char *argv, t_data *data);
-// t_data	*cube_data_init(void);
 
-// char	*get_line(char *argv, t_data *data);
-void	cube_check_extension(char *argv);
+/* parsing.c */
 void	info_map_parsing(char *argv, t_data *data);
+
+/* parsing_init.c  */
+void	parsing_to_data(t_data *data, t_parsing *parsing);
+void	parsing_stru_init(t_parsing *parsing);
+
 /* info_validation.c */
-void	texture_acquisition(t_data *data);
-void	rgb_validation(t_data *data);
-void	check_map_syntax(t_data *data);
-void	map_validation(t_data *data);
-void	get_map_size(t_data *data);
-void	map_equalizer(t_data *data);
+void	texture_acquisition(t_parsing *parsing, t_data *data);
+void	rgb_validation(t_parsing *parsing);
+void	check_map_syntax(t_parsing *parsing);
+
+/* map_equalizer.c */
+void	map_equalizer(t_parsing *parsing);
+
+/* map_validation.c */
+void	map_validation(t_parsing *parsing);
 
 //get_next_line
 char	*get_next_line(int fd);

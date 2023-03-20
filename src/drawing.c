@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:46:36 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:50:49 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ t_coord *idx)
 	mlx_texture_t	*tx;
 
 	i = 0;
-	// tx = data->textures[ray->facing];
-	tx = data->texture.west;
+	tx = data->textures[ray->facing];
 	texture_x_coord(&txt, ray, tx);
 	if (wall_height > IMG_HEIGHT)
 		start_ty = round(tx->height * ((wall_height - IMG_HEIGHT) / 2) / \
@@ -52,7 +51,7 @@ void	draw_scene(t_data *data, t_ray *ray, t_coord idx)
 	wall_height = round(data->goat->dist_pp / ray->dist);
 	while (idx.y < ((int)data->img->height - wall_height) / 2 && \
 	idx.y < (int)data->img->height)
-		mlx_put_pixel(data->img, idx.x, idx.y++, data->sky_clr);
+		mlx_put_pixel(data->img, idx.x, idx.y++, data->ceiling_clr);
 	st_draw_texture(data, ray, wall_height, &idx);
 	while (idx.y < HEIGHT)
 		mlx_put_pixel(data->img, idx.x, idx.y++, data->floor_clr);

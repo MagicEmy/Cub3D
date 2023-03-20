@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:57:13 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/20 17:51:25 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "cub3D_structures.h"
 #include <stdlib.h>
 #include <math.h>
-
 
 void	error_exit(char *text)
 {
@@ -28,24 +27,13 @@ void	init(t_data *data, t_goat *goat)
 {
 	goat->dist_pp = WIDTH / 2 * tan(to_rad(FOV));
 	data->floor_clr = 0x3A776Bff;
-	data->sky_clr = 0xC4FFFEff;
+	data->ceiling_clr = 0xC4FFFEff;
 	data->goat = goat;
 	data->nsew_clr[NORTH] = 0xC474EFFF;	// will be removed now that textures work
 	data->nsew_clr[SOUTH] = 0xEF74DDFF;	// will be removed now that textures work
 	data->nsew_clr[EAST] = 0xEF749FFF;	// will be removed now that textures work
 	data->nsew_clr[WEST] = 0xEF8774FF;	// will be removed now that textures work
 	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
-	data->info_file = NULL;
-	data->no_path = NULL;
-	data->so_path = NULL;
-	data->ea_path = NULL;
-	data->we_path = NULL;
-	data->ceiling = NULL;
-	data->floor = NULL;
-	data->set = " \t\v\f\r\n";	// can be local var in the function
-	data->map_start = 0;		// can be local var in the function
-	data->map_end = 0;			// can be local var in the function
-	data->counter = 0;			// can be local var in the function
 }
 
 int32_t	main(int argc, char **argv)
