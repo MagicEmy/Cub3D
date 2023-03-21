@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:51:25 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/21 12:15:11 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int32_t	main(int argc, char **argv)
 	if (!data.mlx)
 		return (EXIT_FAILURE);
 	init(&data, &goat);
-	info_map_parsing(argv[1], &data);
+	parsing(argv[1], &data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img_mm = mlx_new_image(data.mlx, WIDTH / 2, HEIGHT / 4);

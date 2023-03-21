@@ -1,16 +1,16 @@
 
-	NO  ./textures/boss.png	     
+	NO  ./textures/stone_grass.png   
 				
 
-			SO 		./textures/fool.png
+			SO 		./textures/purple_wall.png
 				
-		WE 	   ./textures/noo.png
+		WE 	   ./textures/wolfengoat.png
 
-   EA   ./textures/orange-wood.png
+   EA    ./textures/colorfull_stones.png
 
-   C 220,30,0
+   C 100,149,237
 
-   	F 220,100,0
+   	F 0,100,0
 
 
 11111111111111111111111
