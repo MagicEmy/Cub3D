@@ -105,8 +105,13 @@ void	mouse_hook(double xpos, double ypos, void *param)	// move to bonus
 void	key_hooks(void *param)
 {
 	t_data	*data;
+	// static double	time = 0;
 
 	data = (t_data *)param;
+
+	// time += data->mlx->delta_time;
+	// int position = (int)(time / 3) % 6;
+	// printf("position: %i, time: %f, delta: %f\n", position, time, data->mlx->delta_time);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		return (mlx_close_window(data->mlx));
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))

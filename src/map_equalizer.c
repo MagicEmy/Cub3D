@@ -6,15 +6,38 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/19 17:39:51 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:17:47 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+static int32_t	allignment_left_calc(t_parsing *parsing)
+{
+	int32_t	y;
+	int32_t	x;
+	int32_t	max;
+
+	y = 0;
+	x = 0;
+	while (parsing->map[y][x] == ' ')
+		x++;
+	max = x;
+	while (parsing->map[y])
+	{
+		x = 0;
+		while (parsing->map[y][x] == ' ')
+			x++;
+		if (max > x)
+			max = x;
+		y++;
+	}
+	return (max);
+}
+
 static void	get_map_size(t_parsing *parsing)
 {
-	int		y;
+	int32_t	y;
 	size_t	max;
 	size_t	len;
 
@@ -32,15 +55,19 @@ static void	get_map_size(t_parsing *parsing)
 	parsing->map_height = y;
 }
 
-static void	copy_and_fill_map(t_parsing *parsing, char **new_map, int i)
+static void	copy_and_fill_map(t_parsing *parsing, char **new_map, int32_t i, \
+int32_t start)
 {
-	int	x;
+	int32_t	x;
+	int32_t	z;
 
 	x = 0;
-	while (parsing->map[i][x])
+	z = start;
+	while (parsing->map[i][z])
 	{
-		new_map[i][x] = parsing->map[i][x];
+		new_map[i][x] = parsing->map[i][z];
 		x++;
+		z++;
 	}
 	while (new_map[i][x])
 		new_map[i][x++] = ' ';
@@ -49,25 +76,27 @@ static void	copy_and_fill_map(t_parsing *parsing, char **new_map, int i)
 void	map_equalizer(t_parsing *parsing)
 {
 	char	**new_map;
-	int		i;
-	int		x;
+	int32_t	start;
+	int32_t	i;
 
 	i = 0;
 	get_map_size(parsing);
+	start = allignment_left_calc(parsing);
 	new_map = (char **)malloc(sizeof(char *) * (parsing->map_height + 1));
 	if (!new_map)
 		error_exit(ERROR_MALLOC);
 	while (parsing->map[i])
 	{
-		x = 0;
-		new_map[i] = (char *)malloc(sizeof(char) * (parsing->map_width + 1));
+		new_map[i] = (char *)malloc(sizeof(char) * \
+		(parsing->map_width + 1 - start));
 		if (!new_map[i])
 			error_exit(ERROR_MALLOC);
-		new_map[i][parsing->map_width] = '\0';
-		copy_and_fill_map(parsing, new_map, i);
+		new_map[i][parsing->map_width - start] = '\0';
+		copy_and_fill_map(parsing, new_map, i, start);
 		i++;
 	}
 	new_map[i] = NULL;
 	ft_free_double_arr(parsing->map);
 	parsing->map = new_map;
+	get_map_size(parsing);
 }

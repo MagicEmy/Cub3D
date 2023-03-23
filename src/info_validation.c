@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/19 18:48:46 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:35:00 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	texture_acquisition(t_parsing *parsing, t_data *data)
 {
-	data->textures[NORTH] = NULL;
-	data->textures[SOUTH] = NULL;
-	data->textures[EAST] = NULL;
-	data->textures[WEST] = NULL;
+	ft_memset(data->textures, 0, sizeof(mlx_texture_t) * 4);
 	data->textures[NORTH] = mlx_load_png(parsing->no_path);
 	if (data->textures[NORTH] == NULL)
 		error_exit(ERROR_PATH_TEXTURE);
@@ -32,76 +29,83 @@ void	texture_acquisition(t_parsing *parsing, t_data *data)
 		error_exit(ERROR_PATH_TEXTURE);
 }
 
-static void	rgb_range_check(t_parsing *parsing)
+void	check_rgb_format(char *str)
 {
-	parsing->ceiling_clr = 0;
-	parsing->floor_clr = 0;
-	if (parsing->floor_red < 0 || parsing->floor_green < 0 || \
-	parsing->floor_blue < 0)
+	int32_t		i;
+	int32_t		comma;
+
+	i = 0;
+	comma = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			comma++;
+		i++;
+	}
+	if (comma != 2)
 		error_exit(ERROR_RGB_ERR);
-	if (parsing->floor_red > 255 || parsing->floor_green > 255 || \
-	parsing->floor_blue > 255)
+	i--;
+	if (str[i] == ',' || str[0] == ',')
 		error_exit(ERROR_RGB_ERR);
-	if (parsing->ceiling_red < 0 || parsing->ceiling_green < 0 || \
-	parsing->ceiling_blue < 0)
-		error_exit(ERROR_RGB_ERR);
-	if (parsing->ceiling_red > 255 || parsing->ceiling_green > 255 || \
-	parsing->ceiling_blue > 255)
-		error_exit(ERROR_RGB_ERR);
-	parsing->floor_clr = get_rgba(parsing->floor_red, parsing->floor_green, \
-	parsing->floor_blue, 255);
-	parsing->ceiling_clr = get_rgba(parsing->ceiling_red, \
-	parsing->ceiling_green, parsing->ceiling_blue, 255);
+	while (i > 0)
+	{
+		if (str[i] == ',')
+		{
+			if (str[i - 1] == ',')
+				error_exit(ERROR_RGB_ERR);
+		}
+		i--;
+	}
 }
 
-void	rgb_validation(t_parsing *parsing)
+int32_t	ft_str_is_digit(char *str)
+{
+	int32_t	i;
+
+	i = 0;
+	if (str == NULL)
+		error_exit(ERROR_RGB_ERR);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int32_t	rgb_parsing(char *info, t_parsing *parsing)
 {
 	char	**rgb;
 
 	rgb = NULL;
-	rgb = ft_split(parsing->floor, ',');
+	rgb = ft_split(info, ',');
 	if (!rgb)
 		error_exit(ERROR_MALLOC);
-	if (!rgb[0] || !rgb[1] || !rgb[2])
+	if (!ft_str_is_digit(rgb[0]) || !ft_str_is_digit(rgb[1]) || \
+	!ft_str_is_digit(rgb[2]))
 		error_exit(ERROR_RGB_ERR);
-	parsing->floor_red = ft_atoi(rgb[0]);
-	parsing->floor_green = ft_atoi(rgb[1]);
-	parsing->floor_blue = ft_atoi(rgb[2]);
+	parsing->red = ft_atoi(rgb[0]);
+	parsing->green = ft_atoi(rgb[1]);
+	parsing->blue = ft_atoi(rgb[2]);
 	ft_free_double_arr(rgb);
-	rgb = ft_split(parsing->ceiling, ',');
-	if (!rgb)
-		error_exit(ERROR_MALLOC);
-	if (!rgb[0] || !rgb[1] || !rgb[2])
+	rgb = NULL;
+	if (parsing->red < 0 || parsing->green < 0 || parsing->blue < 0)
 		error_exit(ERROR_RGB_ERR);
-	parsing->ceiling_red = ft_atoi(rgb[0]);
-	parsing->ceiling_green = ft_atoi(rgb[1]);
-	parsing->ceiling_blue = ft_atoi(rgb[2]);
-	ft_free_double_arr(rgb);
-	rgb_range_check(parsing);
+	if (parsing->red > 255 || parsing->green > 255 || parsing->blue > 255)
+		error_exit(ERROR_RGB_ERR);
+	return (get_rgba(parsing->red, parsing->green, parsing->blue, 255));
 }
 
-void	check_map_syntax(t_parsing *parsing)
+void	rgb_validation(t_parsing *parsing)
 {
-	int	x;
-	int	y;
-	int	orientation;
+	int32_t		i;
 
-	x = 0;
-	y = 0;
-	orientation = 0;
-	while (parsing->map[y])
-	{
-		while (parsing->map[y][x])
-		{
-			if (!ft_strchr(" 01NSEW", parsing->map[y][x]))
-				error_exit(ERROR_INVALID_CHAR);
-			if (ft_strchr("NSEW", parsing->map[y][x]))
-				orientation++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	if (orientation > 1)
-		error_exit(ERROR_PLAYER_COUNT);
+	i = 0;
+	parsing->ceiling_clr = 0;
+	parsing->floor_clr = 0;
+	check_rgb_format(parsing->floor);
+	check_rgb_format(parsing->ceiling);
+	parsing->floor_clr = rgb_parsing(parsing->floor, parsing);
+	parsing->ceiling_clr = rgb_parsing(parsing->ceiling, parsing);
 }

@@ -43,7 +43,7 @@ int32_t	main(int argc, char **argv)
 	if (!data.mlx)
 		return (EXIT_FAILURE);
 	init(&data, &goat);
-	info_map_parsing(argv[1], &data);
+	parsing(argv[1], &data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img_mm = mlx_new_image(data.mlx, \
