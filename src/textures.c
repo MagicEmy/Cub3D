@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 18:03:25 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:54:45 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:29:44 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ mlx_texture_t *tx)
 	int32_t	bpp;
 
 	bpp = tx->bytes_per_pixel;
-	mlx_put_pixel(data->img, idx->x, idx->y, \
-		get_rgba(tx->pixels[(txt->y * tx->width + txt->x) * bpp], \
-		tx->pixels[(txt->y * tx->width + txt->x) * bpp + 1], \
-		tx->pixels[(txt->y * tx->width + txt->x) * bpp + 2], \
-		tx->pixels[(txt->y * tx->width + txt->x) * bpp + 3]));
+	if (idx->x >= 0 && idx->x < (int)data->img->width && idx->y >= 0 && \
+	idx->y < (int)data->img->height)
+		mlx_put_pixel(data->img, idx->x, idx->y, \
+			get_rgba(tx->pixels[(txt->y * tx->width + txt->x) * bpp], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 1], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 2], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 3]));
 }

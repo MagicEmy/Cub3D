@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/21 12:15:31 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/23 18:40:41 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
 /* drawing_bonus.c */
 void	draw_minimap(t_data *data);
 void	draw_rays(t_data *data, t_ray *ray);
+/* drawing_get_bonus.c */
+int32_t	get_min(int32_t a, int32_t b);
+void	get_xy_offset(t_data *data);
+
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);

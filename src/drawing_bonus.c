@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:54:12 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:24:36 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,71 +37,93 @@ static void	st_draw_goat(mlx_image_t *img, t_point goat, double angle)
 
 static void	st_wipe_everything(mlx_image_t *img)
 {
-	size_t	x;
-	size_t	y;
+	t_coord	idx;
 
-	y = 0;
-	while (y < img->height)
+	idx.y = 0;
+	while (idx.y < (int)img->height)
 	{
-		x = 0;
-		while (x < img->width)
+		idx.x = 0;
+		while (idx.x < (int)img->width)
 		{
-			mlx_put_pixel(img, x, y, 0x00000040);
-			x++;
+			mlx_put_pixel(img, idx.x, idx.y, 0xFFFFFF85);
+			idx.x++;
 		}
-	y++;
+	idx.y++;
 	}
 }
 
-static void	st_draw_wall_block(mlx_image_t *img, t_point pt)
+static void	st_fill_in_wall_block(mlx_image_t *img, t_point a, t_point b)
+{
+	t_coord	idx;
+
+	idx.y = (int)a.y;
+	while (idx.y++ < b.y)
+	{
+		idx.x = (int)a.x;
+		while (idx.x++ < b.x && idx.x < (int)img->width)
+			mlx_put_pixel(img, idx.x, idx.y, WALL_FILL);
+	}
+}
+
+static void	st_draw_wall_block(mlx_image_t *img, t_coord pt, t_coord *offset)
 {
 	t_point	a;
 	t_point	b;
 	t_point	c;
+	t_point	d;
 
-	a.x = PADDING + PPU * pt.x;
-	a.y = PADDING + PPU * pt.y;
-	b.x = PADDING + PPU * pt.x;
-	b.y = PADDING + PPU * (pt.y + 1);
-	c.x = PADDING + PPU * (pt.x + 1);
-	c.y = PADDING + PPU * pt.y;
-	draw_line(img, a, b, WALL_CLR);
-	draw_line(img, a, c, WALL_CLR);
-	a.x = PADDING + PPU * (pt.x + 1);
-	a.y = PADDING + PPU * (pt.y + 1);
-	draw_line(img, a, b, WALL_CLR);
-	draw_line(img, a, c, WALL_CLR);
+	a.x = PAD + offset->x + PPU * pt.x;
+	a.y = PAD + offset->y + PPU * pt.y;
+	b.x = PAD + offset->x + PPU * pt.x;
+	b.y = PAD + offset->y + PPU * (pt.y + 1);
+	c.x = PAD + offset->x + PPU * (pt.x + 1);
+	c.y = PAD + offset->y + PPU * pt.y;
+	d.x = PAD + offset->x + PPU * (pt.x + 1);
+	d.y = PAD + offset->y + PPU * (pt.y + 1);
+	if (a.x > 0 - PAD && c.x < img->width + PAD && \
+		c.y < img->height + PAD)
+	{
+		st_fill_in_wall_block(img, a, d);
+		draw_line(img, a, b, WALL_CLR);
+		draw_line(img, a, c, WALL_CLR);
+		draw_line(img, d, b, WALL_CLR);
+		draw_line(img, d, c, WALL_CLR);
+	}
 }
 
+/* will be removed */
 void	draw_rays(t_data *data, t_ray *ray)
 {
 	t_point	wall;
 	t_point	goat_pos;
 
-	goat_pos.x = PADDING + PPU * data->goat->x;
-	goat_pos.y = PADDING + PPU * data->goat->y;
-	wall.x = PADDING + PPU * ray->x;
-	wall.y = PADDING + PPU * ray->y;
+	goat_pos.x = PAD + PPU * data->goat->x + data->offset.x;
+	goat_pos.y = PAD + PPU * data->goat->y + data->offset.y;
+	wall.x = PAD + PPU * ray->x + data->offset.x;
+	wall.y = PAD + PPU * ray->y + data->offset.y;
 	draw_line(data->img_mm, goat_pos, wall, 0xFFC30050);
 }
 
 void	draw_minimap(t_data *data)
 {
-	t_point	idx;
+	t_coord	idx;
 	t_point	goat_pos;
 
-	idx.y = 0;
-	goat_pos.x = PADDING + PPU * data->goat->x;
-	goat_pos.y = PADDING + PPU * data->goat->y;
+	if (data->img_mm->width - 2 * PAD < data->map_width * PPU || \
+	data->img_mm->height - 2 * PAD < data->map_height * PPU)
+		get_xy_offset(data);
+	goat_pos.x = PAD + PPU * data->goat->x + data->offset.x;
+	goat_pos.y = PAD + PPU * data->goat->y + data->offset.y;
 	st_wipe_everything(data->img_mm);
 	st_draw_goat(data->img_mm, goat_pos, to_rad(data->goat->angle));
-	while (data->map[(int)idx.y])
+	idx.y = 0;
+	while (data->map[idx.y])
 	{
 		idx.x = 0;
-		while (data->map[(int)idx.y][(int)idx.x])
+		while (data->map[idx.y][idx.x])
 		{
-			if (data->map[(int)idx.y][(int)idx.x] == '1')
-				st_draw_wall_block(data->img_mm, idx);
+			if (data->map[idx.y][idx.x] == '1')
+				st_draw_wall_block(data->img_mm, idx, &data->offset);
 			idx.x++;
 		}
 		idx.y++;

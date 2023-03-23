@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:38:43 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:14:50 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	st_hits_wall(t_data *data, t_ray *ray)
 		return (FALSE);
 }
 
+/* FUNCTION TOO LONG, TO BE REFACTORED */
 /* Digital Differential Analysis - walking along the y-axis */
 static double	st_dda_y_axis(t_ray *ns, t_data *data, double angle)
 {
@@ -63,6 +64,7 @@ static double	st_dda_y_axis(t_ray *ns, t_data *data, double angle)
 		return (ns->dist);
 }
 
+/* FUNCTION TOO LONG, TO BE REFACTORED */
 /* Digital Differential Analysis - walking along the x-axis */
 static double	st_dda_x_axis(t_ray *ew, t_data *data, double angle)
 {
@@ -131,6 +133,8 @@ void	casting_rays(t_data *data)
 	{
 		ray = st_calc_dist_from_wall(data, FOV / 2 - \
 		(double)idx.x * FOV / (WIDTH - 1));
+		if (!ray)
+			error_exit(ERROR_UNEXP);
 		draw_scene(data, ray, idx);
 		// draw_rays(data, ray);	// bonus
 		idx.x++;
