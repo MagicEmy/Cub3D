@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3D_structures.h                                 :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:48:56 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3D_structures.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/22 16:12:13 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ typedef struct s_ray
 	double	dist;
 	int		facing;
 }	t_ray;
+
+typedef struct s_images
+{
+	mlx_image_t		*fire_1;
+	mlx_image_t		*fire_2;
+	mlx_image_t		*fire_3;
+	mlx_image_t		*fire_4;
+	mlx_image_t		*fire_5;
+	mlx_image_t		*fire_6;
+	mlx_image_t		*door_1;
+}	t_images;
 
 typedef struct s_parsing
 {
@@ -83,6 +94,7 @@ typedef struct s_data
 	unsigned int	ceiling_clr;
 	unsigned int	nsew_clr[4];		// for testing; will be deleted
 	mlx_texture_t	*textures[4];
+	t_images		sprites;
 	char			**map;
 	size_t			map_width;
 	size_t			map_height;

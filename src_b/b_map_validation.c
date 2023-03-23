@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation.c                                   :+:      :+:    :+:   */
+/*   b_map_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/22 15:07:16 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:11:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_map_syntax(t_parsing *parsing)
 	{
 		while (parsing->map[y][x])
 		{
-			if (!ft_strchr(" 01NSEW", parsing->map[y][x]))
+			if (!ft_strchr(" 01NSEWD$", parsing->map[y][x]))
 				error_exit(ERROR_INVALID_CHAR);
 			if (ft_strchr("NSEW", parsing->map[y][x]))
 				orientation++;
@@ -34,7 +34,7 @@ void	check_map_syntax(t_parsing *parsing)
 		x = 0;
 		y++;
 	}
-	if (orientation != 1)
+	if (orientation > 1)
 		error_exit(ERROR_PLAYER_COUNT);
 }
 
