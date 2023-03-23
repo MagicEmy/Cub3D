@@ -6,17 +6,17 @@
 #    By: emlicame <emlicame@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/20 17:58:16 by dmalacov      ########   odam.nl          #
+#    Updated: 2023/03/23 18:32:30 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	cub3D
-HEADERS		:=	include/cub3D.h	 		\
-				include/cub3D_defines.h \
-				include/colors.h \
-        include/cub3D_structures.h
+HEADERS		:=	include/cub3D.h	 			\
+				include/cub3D_defines.h 	\
+				include/colors.h 			\
+        		include/cub3D_structures.h
 
-SRC			:=	main.c \
+SRC			:=	main.c 					\
 				parsing.c				\
 				parsing_init.c			\
 				get_next_line.c			\
@@ -24,12 +24,13 @@ SRC			:=	main.c \
 				info_validation.c		\
 				map_validation.c   		\
 				map_equalizer.c			\
-       			casting_rays.c \
-				casting_utils.c \
-				casting_get.c \
-				drawing.c \
-				drawing_bonus.c \
-				hooks.c \
+       			casting_rays.c 			\
+				casting_utils.c 		\
+				casting_get.c 			\
+				drawing.c 				\
+				drawing_bonus.c 		\
+				drawing_get_bonus.c 	\
+				hooks.c 				\
 				textures.c
 # to do: deal with bonus files
 
@@ -59,13 +60,8 @@ RESET	:= \033[0m
 all:	$(NAME)
 	@echo "$(BOLD)$(CYAN)Cube3D Done $(RESET)$(BOLD)$(YELLOW)It's just a 🐐$(RESET)"
 
-#  commented out - version including references to LIBFT
 $(NAME): $(OBJ) $(HEADERS) $(MLX) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
-
-#  without LIBFT - to be deleted once LIBFT is in place
-# $(NAME): $(OBJ) $(HEADERS) $(MLX)
-# 	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) -o $(NAME) 
 
 obj/%.o: src/%.c $(HEADERS)
 	@mkdir -p obj

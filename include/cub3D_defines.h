@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/16 18:33:24 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:24:36 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define WALL_HEIGHT 120
 # define PARALLEL -1
 
-# define WALL_CLR 0x4302C7FF
+# define WALL_CLR 0xFFFFFFFF
+# define WALL_FILL 0x4302C7FF
 
 enum	e_wall_sides
 {
@@ -50,7 +51,7 @@ enum	e_wall_sides
 
 /* for drawing */
 # define PPU 10			// bonus
-# define PADDING 10
+# define PAD 10
 
 /* error handling */
 # define BUFFER_SIZE			1
@@ -65,12 +66,13 @@ enum	e_wall_sides
 # define ERROR_EMPTY_FILE		"Empty file."
 # define ERROR_DOUBLE_ENTRY		"Double entry."
 # define ERROR_NO_RGB			"RGB input missing."
-# define ERROR_RGB_ERR			"wrong RGB input."
-# define ERROR_PATH_TEXTURE		"invalid path to texture."
+# define ERROR_RGB_ERR			"Wrong RGB input."
+# define ERROR_PATH_TEXTURE		"Invalid path to texture."
 # define ERROR_INVALID_CHAR		"Invalid char in map."
 # define ERROR_RAYCAST			"Something went wrong while casting rays."
 # define ERROR_INVALID_MAP		"Invalid map format."
 # define ERROR_INVALID_MAP_W	"Invalid map, map is not enclosed in walls."
 # define ERROR_PLAYER_COUNT		"Amount of Player starting position is not 1."
+# define ERROR_UNEXP			"Unexpected error."
 
 #endif

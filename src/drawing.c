@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:50:49 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:36:04 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ t_coord *idx)
 	else
 		start_ty = 0;
 	txt.y = start_ty;
-	while (idx->y < ((int)data->img->height + wall_height) / 2 && \
-	idx->y < (int)data->img->height && txt.y < (int)tx->height)
+	while (idx->y < ((int)data->img->height + wall_height) / 2 \
+	&& idx->y < (int)data->img->height && txt.y < (int)tx->height \
+	&& txt.x < (int)tx->width)
 	{
 		texture_put_pixel(data, idx, &txt, tx);
 		idx->y++;
