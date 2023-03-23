@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/22 15:10:20 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/23 17:42:45 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_B		:=	b_main.c 				\
 				b_parsing_init.c		\
 				b_get_next_line.c		\
 				b_get_next_line_utils.c	\
-				b_info_validation.c		\
+				b_rgb_validation.c		\
+				b_texture_img_validation.c \
 				b_map_validation.c  	\
 				b_map_equalizer.c		\
        			b_casting_rays.c 		\

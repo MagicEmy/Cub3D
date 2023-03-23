@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info_validation.c                                  :+:      :+:    :+:   */
+/*   b_rgb_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/23 16:35:00 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:43:27 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	texture_acquisition(t_parsing *parsing, t_data *data)
-{
-	ft_memset(data->textures, 0, sizeof(mlx_texture_t) * 4);
-	data->textures[NORTH] = mlx_load_png(parsing->no_path);
-	if (data->textures[NORTH] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[SOUTH] = mlx_load_png(parsing->so_path);
-	if (data->textures[SOUTH] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[EAST] = mlx_load_png(parsing->ea_path);
-	if (data->textures[EAST] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-	data->textures[WEST] = mlx_load_png(parsing->we_path);
-	if (data->textures[WEST] == NULL)
-		error_exit(ERROR_PATH_TEXTURE);
-}
 
 void	check_rgb_format(char *str)
 {
