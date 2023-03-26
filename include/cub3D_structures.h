@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_structures.h                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/23 17:44:59 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_structures.h                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/23 18:33:16 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ typedef struct s_data
 	mlx_image_t		*img_mm;	// minimap -> move to bonus
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
-	unsigned int	nsew_clr[4];		// for testing; will be deleted
 	mlx_texture_t	*textures[4];
 	t_images		sprites;
 	char			**map;
@@ -99,6 +98,7 @@ typedef struct s_data
 	t_goat			*goat;
 	int32_t			cursor_x;
 	int32_t			cursor_y;
+	t_coord			offset;		// move to bonus
 }	t_data;
 
 #endif
