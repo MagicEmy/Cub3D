@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/23 16:35:00 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:01:54 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ void	rgb_validation(t_parsing *parsing)
 	int32_t		i;
 
 	i = 0;
-	parsing->ceiling_clr = 0;
-	parsing->floor_clr = 0;
 	check_rgb_format(parsing->floor);
 	check_rgb_format(parsing->ceiling);
 	parsing->floor_clr = rgb_parsing(parsing->floor, parsing);

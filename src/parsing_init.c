@@ -6,11 +6,21 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:17:52 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/22 16:31:43 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:45:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	parsing_free(t_parsing *parsing)
+{
+	free (parsing->floor);
+	free (parsing->ceiling);
+	free (parsing->no_path);
+	free (parsing->so_path);
+	free (parsing->ea_path);
+	free (parsing->we_path);
+}
 
 void	parsing_to_data(t_data *data, t_parsing *parsing)
 {
@@ -32,12 +42,11 @@ void	parsing_stru_init(t_parsing *parsing)
 	parsing->info_file = NULL;
 	parsing->floor = NULL;
 	parsing->ceiling = NULL;
-	parsing->floor_red = 0;
-	parsing->floor_green = 0;
-	parsing->floor_blue = 0;
-	parsing->ceiling_red = 0;
-	parsing->ceiling_green = 0;
-	parsing->ceiling_blue = 0;
+	parsing->red = 0;
+	parsing->green = 0;
+	parsing->blue = 0;
+	parsing->ceiling_clr = 0;
+	parsing->floor_clr = 0;
 	parsing->no_path = NULL;
 	parsing->so_path = NULL;
 	parsing->ea_path = NULL;

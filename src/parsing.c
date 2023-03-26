@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/21 12:15:19 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:46:16 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ void	parsing(char *argv, t_data *data)
 	map_equalizer(&parsing);
 	map_validation(&parsing);
 	parsing_to_data(data, &parsing);
+	parsing_free(&parsing);
 }

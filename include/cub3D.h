@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/21 12:15:31 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:46:47 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	parsing(char *argv, t_data *data);
 /* parsing_init.c  */
 void	parsing_to_data(t_data *data, t_parsing *parsing);
 void	parsing_stru_init(t_parsing *parsing);
+void	parsing_free(t_parsing *parsing);
 
 /* info_validation.c */
 void	texture_acquisition(t_parsing *parsing, t_data *data);
