@@ -6,13 +6,13 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 19:06:46 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:39:23 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 14:53:47 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/MLX42.h"
 #include "cub3D_defines.h"
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <stdlib.h>
 #include <math.h>
 

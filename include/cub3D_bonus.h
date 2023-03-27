@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_bonus.h                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 10:31:12 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_bonus.h                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/27 15:03:19 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_BONUS_H
 
 # include "cub3D_defines.h"
-# include "cub3D_structures.h"
+# include "cub3D_structures_bonus.h"
 # include "colors.h"
 
 # include "MLX42/MLX42.h"
@@ -24,22 +24,21 @@
 # include <memory.h>
 # include <stdio.h> //remove
 
-/* casting_rays.c */
+/* casting_rays_bonus.c */
 void	casting_rays(t_data *data);
-/* casting_utils.c */
+/* casting_utils_bonus.c */
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
 double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
-/* casting_get.c */
-void	get_first_step(t_point *first_step, double angle, int axis, \
-		t_goat *goat);
-void	get_first_step(t_point *first_step, double angle, \
-int axis, t_goat *goat);
-void	get_steps(t_point *step, double angle, int axis);
+/* casting_get_bonus.c */
+void	get_steps(t_dda_step *step, t_goat *goat, double angle, \
+		int32_t axis);
+void	get_steps_x(t_dda_step *step, double angle, t_goat *goat);
+void	get_steps_y(t_dda_step *step, double angle, t_goat *goat);
 void	get_line_steps(t_point *step, t_point a, t_point b);
-/* drawing.c */
+/* drawing_basic_bonus.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
 /* drawing_bonus.c */
@@ -48,20 +47,19 @@ void	draw_rays(t_data *data, t_ray *ray);
 /* drawing_get_bonus.c */
 int32_t	get_min(int32_t a, int32_t b);
 void	get_xy_offset(t_data *data);
-
-/* hooks.c */
+void	get_img_cleaned(mlx_image_t *img);
+/* hooks_bonus.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
 void	mouse_hook(double xpos, double ypos, void *param);
 void	key_hooks(void *param);
-void	print_goat_info(t_data *data);	// for debugging only
-/* textures.c */
+/* textures_bonus.c */
 int32_t	get_rgba(int r, int g, int b, int a);
 void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture);
 void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \
 		mlx_texture_t *tx);
-/* main.c */
+/* main_bonus.c */
 void	error_exit(char *text);
 
 /* parsing.c */
@@ -83,7 +81,7 @@ void	map_equalizer(t_parsing *parsing);
 /* map_validation.c */
 void	map_validation(t_parsing *parsing);
 
-//get_next_line
+/* get_next_line */
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
 int		check_where_newline(char *buff, int c);
