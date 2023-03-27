@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/26 20:17:18 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/27 15:24:06 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC			:=	main.c 					\
 				parsing_init.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
-				info_validation.c		\
+				rgb_validation.c		\
 				map_validation.c   		\
 				map_equalizer.c			\
        			casting_rays.c 			\
@@ -34,24 +34,7 @@ SRC			:=	main.c 					\
 				drawing_get_bonus.c 	\
 				hooks.c 				\
 				textures.c
-# to do: deal with bonus files
 
-SRC_B		:=	b_main.c 				\
-				b_parsing.c				\
-				b_parsing_init.c		\
-				b_get_next_line.c		\
-				b_get_next_line_utils.c	\
-				b_rgb_validation.c		\
-				b_texture_img_validation.c \
-				b_map_validation.c  	\
-				b_map_equalizer.c		\
-       			b_casting_rays.c 		\
-				b_casting_utils.c 		\
-				b_casting_get.c 		\
-				b_drawing.c 			\
-				b_drawing_bonus.c 		\
-				b_hooks.c 				\
-				b_textures.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
