@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 10:31:12 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:31:19 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_BONUS_H
 
 # include "cub3D_defines.h"
-# include "cub3D_structures.h"
+# include "cub3D_structures_bonus.h"
 # include "colors.h"
 
 # include "MLX42/MLX42.h"
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <memory.h>
-# include <stdio.h> //remove
+# include <stdio.h> // remove
 
 /* casting_rays.c */
 void	casting_rays(t_data *data);

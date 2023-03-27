@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 10:32:25 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:14:09 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,6 @@ typedef struct s_ray
 	int		facing;
 }	t_ray;
 
-typedef struct s_images
-{
-	mlx_image_t		*fire_0;
-	mlx_image_t		*fire_1;
-	mlx_image_t		*fire_2;
-	mlx_image_t		*fire_3;
-	mlx_image_t		*fire_4;
-	mlx_image_t		*fire_5;
-	mlx_image_t		*fire[6];
-	mlx_image_t		*door_1;
-}	t_images;
-
 typedef struct s_parsing
 {
 	char			**map;
@@ -91,7 +79,6 @@ typedef struct s_data
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
 	mlx_texture_t	*textures[4];
-	t_images		sprites;
 	char			**map;
 	size_t			map_width;
 	size_t			map_height;

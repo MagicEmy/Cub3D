@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/26 18:46:16 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:28:42 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_parsing *parsing)
 		error_exit(ERROR_INVALID_MAP);
 	else if (!ft_str_is_space(*line))
 	{
-		*map_line = gnl_ft_strjoin_free(*map_line, *line);
+		*map_line = ft_strjoin_free(*map_line, *line);
 		parsing->map_start = 1;
 	}
 	else if (ft_str_is_space(*line) && parsing->map_start)

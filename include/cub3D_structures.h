@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 10:32:39 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:07:08 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_data
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
 	mlx_texture_t	*textures[4];
-	t_images		sprites;
 	char			**map;
 	size_t			map_width;
 	size_t			map_height;
