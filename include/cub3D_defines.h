@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:24:36 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 13:03:05 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@
 # define WALL_HEIGHT 120
 # define PARALLEL -1
 
-# define WALL_CLR 0xFFFFFFFF
+/* colours */
+# define WALL_OUTLINE 0xFFFFFFFF
 # define WALL_FILL 0x4302C7FF
+# define GOAT_CLR 0xFF00FFFF
 
 enum	e_wall_sides
 {

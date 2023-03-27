@@ -6,13 +6,13 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:39:18 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 14:53:25 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/MLX42.h"
 #include "cub3D_defines.h"
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -28,10 +28,10 @@ static void	st_draw_goat(mlx_image_t *img, t_point goat, double angle)
 	b.y = goat.y - 3 * sin(angle + 3 * M_PI_4);
 	c.x = goat.x + 5 * cos(angle);
 	c.y = goat.y - 5 * sin(angle);
-	draw_line(img, a, c, 0xFF00FFFF);
-	draw_line(img, c, b, 0xFF00FFFF);
-	draw_line(img, goat, b, 0xFF00FFFF);
-	draw_line(img, a, goat, 0xFF00FFFF);
+	draw_line(img, a, c, GOAT_CLR);
+	draw_line(img, c, b, GOAT_CLR);
+	draw_line(img, goat, b, GOAT_CLR);
+	draw_line(img, a, goat, GOAT_CLR);
 }
 
 static void	st_fill_in_wall_block(mlx_image_t *img, t_point a, t_point b)
@@ -66,10 +66,10 @@ static void	st_draw_wall_block(mlx_image_t *img, t_coord pt, t_coord *offset)
 		c.y < img->height + PAD)
 	{
 		st_fill_in_wall_block(img, a, d);
-		draw_line(img, a, b, WALL_CLR);
-		draw_line(img, a, c, WALL_CLR);
-		draw_line(img, d, b, WALL_CLR);
-		draw_line(img, d, c, WALL_CLR);
+		draw_line(img, a, b, WALL_OUTLINE);
+		draw_line(img, a, c, WALL_OUTLINE);
+		draw_line(img, d, b, WALL_OUTLINE);
+		draw_line(img, d, c, WALL_OUTLINE);
 	}
 }
 
