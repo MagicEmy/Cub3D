@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 16:54:47 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:35:02 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 # define WIDTH 640
 # define HEIGHT 480
-# define IMG_WIDTH 640
-# define IMG_HEIGHT 480
 
 /* for calculations */
 # define X_AXIS 0
@@ -75,5 +73,6 @@ enum	e_wall_sides
 # define ERROR_INVALID_MAP_W	"Invalid map, map is not enclosed in walls."
 # define ERROR_PLAYER_COUNT		"Amount of Player starting position is not 1."
 # define ERROR_UNEXP			"Unexpected error."
+# define ERROR_IMG				"Error occured when creating the MLX image."
 
 #endif
