@@ -11,10 +11,12 @@
 # **************************************************************************** #
 
 NAME		:=	cub3D
+
 HEADERS		:=	include/cub3D.h	 			\
 				include/cub3D_defines.h 	\
 				include/colors.h 			\
         		include/cub3D_structures.h
+
 
 SRC			:=	main.c 					\
 				parsing.c				\
@@ -33,6 +35,23 @@ SRC			:=	main.c 					\
 				hooks.c 				\
 				textures.c
 # to do: deal with bonus files
+
+SRC_B		:=	b_main.c 				\
+				b_parsing.c				\
+				b_parsing_init.c		\
+				b_get_next_line.c		\
+				b_get_next_line_utils.c	\
+				b_rgb_validation.c		\
+				b_texture_img_validation.c \
+				b_map_validation.c  	\
+				b_map_equalizer.c		\
+       			b_casting_rays.c 		\
+				b_casting_utils.c 		\
+				b_casting_get.c 		\
+				b_drawing.c 			\
+				b_drawing_bonus.c 		\
+				b_hooks.c 				\
+				b_textures.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
@@ -57,15 +76,26 @@ CYAN	:= \033[36;1m
 WHITE	:= \033[37;1m
 RESET	:= \033[0m
 
+ifdef BONUS
+	OBJ = $(SRC_B:%.c=b_obj/%.o)
+endif
+
 all:	$(NAME)
 	@echo "$(BOLD)$(CYAN)Cube3D Done $(RESET)$(BOLD)$(YELLOW)It's just a 🐐$(RESET)"
 
 $(NAME): $(OBJ) $(HEADERS) $(MLX) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
 
+bonus:	
+	@make BONUS=1
+
 obj/%.o: src/%.c $(HEADERS)
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+b_obj/%.o: src_b/%.c $(HEADERS)
+	@mkdir -p b_obj
+	@$(CC) $(INC) $(CFLAGS) -o $@ -c $<
 
 $(MLX):
 	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
@@ -75,6 +105,7 @@ $(LIBFT):
 
 clean:
 	@rm -rf obj
+	@rm -rf b_obj
 # @rm -rf $(MLX_DIR)/build
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	

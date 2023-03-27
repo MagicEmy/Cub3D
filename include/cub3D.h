@@ -64,7 +64,7 @@ void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \
 void	error_exit(char *text);
 
 /* parsing.c */
-void	info_map_parsing(char *argv, t_data *data);
+void	parsing(char *argv, t_data *data);
 
 /* parsing_init.c  */
 void	parsing_to_data(t_data *data, t_parsing *parsing);

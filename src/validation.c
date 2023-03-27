@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:50:25 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/19 18:52:59 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:18:00 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	rgb_validation(t_parsing *parsing)
 {
 	char	**rgb;
 	int		color;
-	
+
 	rgb = NULL;
 	rgb = ft_split(parsing->floor, ',');
 	if (!rgb)

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:15:08 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 12:48:05 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ typedef struct s_ray
 	int		facing;
 }	t_ray;
 
+typedef struct s_images
+{
+	mlx_image_t		*fire_0;
+	mlx_image_t		*fire_1;
+	mlx_image_t		*fire_2;
+	mlx_image_t		*fire_3;
+	mlx_image_t		*fire_4;
+	mlx_image_t		*fire_5;
+	mlx_image_t		*fire[6];
+	mlx_image_t		*door_1;
+}	t_images;
+
 typedef struct s_dda_step
 {
 	t_point	first;
@@ -57,23 +69,20 @@ typedef struct s_parsing
 	size_t			map_width;
 	size_t			map_height;
 	char			**info_file;
-	int32_t			floor_red;
-	int32_t			floor_green;
-	int32_t			floor_blue;
+	int32_t			red;
+	int32_t			green;
+	int32_t			blue;
 	unsigned int	ceiling_clr;
 	unsigned int	floor_clr;
-	int32_t			ceiling_red;
-	int32_t			ceiling_green;
-	int32_t			ceiling_blue;
 	int32_t			map_start;
 	int32_t			map_end;
 	int32_t			counter;
 	char			*set;
-	char			*ceiling;
 	char			*no_path;
 	char			*so_path;
 	char			*ea_path;
 	char			*we_path;
+	char			*ceiling;
 	char			*floor;
 	double			player_x;
 	double			player_y;
@@ -88,6 +97,7 @@ typedef struct s_data
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
 	mlx_texture_t	*textures[4];
+	t_images		sprites;
 	char			**map;
 	size_t			map_width;
 	size_t			map_height;
