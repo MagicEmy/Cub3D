@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:24:36 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 12:39:18 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "cub3D.h"
 #include <stdlib.h>
 #include <math.h>
-#include <stdio.h>
 
 static void	st_draw_goat(mlx_image_t *img, t_point goat, double angle)
 {
@@ -33,23 +32,6 @@ static void	st_draw_goat(mlx_image_t *img, t_point goat, double angle)
 	draw_line(img, c, b, 0xFF00FFFF);
 	draw_line(img, goat, b, 0xFF00FFFF);
 	draw_line(img, a, goat, 0xFF00FFFF);
-}
-
-static void	st_wipe_everything(mlx_image_t *img)
-{
-	t_coord	idx;
-
-	idx.y = 0;
-	while (idx.y < (int)img->height)
-	{
-		idx.x = 0;
-		while (idx.x < (int)img->width)
-		{
-			mlx_put_pixel(img, idx.x, idx.y, 0xFFFFFF85);
-			idx.x++;
-		}
-	idx.y++;
-	}
 }
 
 static void	st_fill_in_wall_block(mlx_image_t *img, t_point a, t_point b)
@@ -101,7 +83,7 @@ void	draw_rays(t_data *data, t_ray *ray)
 	goat_pos.y = PAD + PPU * data->goat->y + data->offset.y;
 	wall.x = PAD + PPU * ray->x + data->offset.x;
 	wall.y = PAD + PPU * ray->y + data->offset.y;
-	draw_line(data->img_mm, goat_pos, wall, 0xFFC30050);
+	draw_line(data->img_mm, goat_pos, wall, 0xFFC300FF);
 }
 
 void	draw_minimap(t_data *data)
@@ -114,7 +96,7 @@ void	draw_minimap(t_data *data)
 		get_xy_offset(data);
 	goat_pos.x = PAD + PPU * data->goat->x + data->offset.x;
 	goat_pos.y = PAD + PPU * data->goat->y + data->offset.y;
-	st_wipe_everything(data->img_mm);
+	get_img_cleaned(data->img_mm);
 	st_draw_goat(data->img_mm, goat_pos, to_rad(data->goat->angle));
 	idx.y = 0;
 	while (data->map[idx.y])

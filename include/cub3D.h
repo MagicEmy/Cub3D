@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 12:18:23 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:55:30 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
 /* casting_get.c */
-void	get_first_step(t_point *first_step, double angle, int axis, \
-		t_goat *goat);
-void	get_first_step(t_point *first_step, double angle, \
-int axis, t_goat *goat);
-void	get_steps(t_point *step, double angle, int axis);
+void	get_steps(t_dda_step *step, t_goat *goat, double angle, \
+		int32_t axis);
+void	get_steps_x(t_dda_step *step, double angle, t_goat *goat);
+void	get_steps_y(t_dda_step *step, double angle, t_goat *goat);
 void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
@@ -48,7 +47,7 @@ void	draw_rays(t_data *data, t_ray *ray);
 /* drawing_get_bonus.c */
 int32_t	get_min(int32_t a, int32_t b);
 void	get_xy_offset(t_data *data);
-
+void	get_img_cleaned(mlx_image_t *img);
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
