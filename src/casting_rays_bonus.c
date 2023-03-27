@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   casting_rays.c                                     :+:    :+:            */
+/*   casting_rays_bonus.c                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 13:11:22 by dmalacov      ########   odam.nl         */
+/*   Created: 2023/03/27 13:11:02 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/27 13:31:08 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/MLX42.h"
 #include "cub3D_defines.h"
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -101,6 +101,8 @@ void	casting_rays(t_data *data)
 		if (!ray)
 			error_exit(ERROR_UNEXP);
 		draw_scene(data, ray, idx);
+		if (idx.x % 10 == 0 || idx.x % 9 == 0)
+			draw_rays(data, ray);
 		idx.x++;
 	}
 }

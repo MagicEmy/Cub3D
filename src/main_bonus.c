@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   main_bonus.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:44 by dmalacov      ########   odam.nl         */
+/*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/27 14:58:40 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -45,9 +45,16 @@ int32_t	main(int argc, char **argv)
 	parsing(argv[1], &data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
+	data.img_mm = mlx_new_image(data.mlx, \
+	get_min(WIDTH / 2, data.map_width * PPU + 2 * PAD), \
+	get_min(HEIGHT / 4, data.map_height * PPU + 2 * PAD));
+	draw_minimap(&data);
 	casting_rays(&data);
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
+	mlx_image_to_window(data.mlx, data.img_mm, PAD, data.mlx->height - \
+	data.img_mm->height - PAD);
 	mlx_loop_hook(data.mlx, key_hooks, &data);
+	mlx_cursor_hook(data.mlx, mouse_hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	// free what needs to be freed

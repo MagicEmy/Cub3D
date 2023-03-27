@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/27 15:24:06 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/27 15:29:04 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,25 +16,41 @@ HEADERS		:=	include/cub3D.h	 			\
 				include/cub3D_defines.h 	\
 				include/colors.h 			\
         		include/cub3D_structures.h
-
+# HEADERS to be checked/amended
 
 SRC			:=	main.c 					\
-				parsing.c				\
-				parsing_init.c			\
+				casting_get.c 			\
+       			casting_rays.c 			\
+				casting_utils.c 		\
+				drawing.c 				\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				rgb_validation.c		\
-				map_validation.c   		\
-				map_equalizer.c			\
-       			casting_rays.c 			\
-				casting_utils.c 		\
-				casting_get.c 			\
-				drawing.c 				\
-				drawing_bonus.c 		\
-				drawing_get_bonus.c 	\
 				hooks.c 				\
+				info_validation.c		\
+				map_equalizer.c			\
+				map_validation.c   		\
+				parsing.c				\
+				parsing_init.c			\
 				textures.c
 
+#include "cub3D_structures.h"
+SRC_B		:=	main_bonus.c 			\
+				casting_get_bonus.c 	\
+       			casting_rays_bonus.c 	\
+				casting_utils_bonus.c 	\
+				drawing_basic_bonus.c 	\
+				drawing_bonus.c 		\
+				drawing_get_bonus.c 	\
+				get_next_line.c			\
+				get_next_line_utils.c	\
+				hooks_bonus.c 			\
+				info_validation.c		\
+				map_equalizer.c			\
+				map_validation.c  		\
+				parsing.c				\
+				parsing_init.c			\
+				textures_bonus.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
@@ -60,7 +76,7 @@ WHITE	:= \033[37;1m
 RESET	:= \033[0m
 
 ifdef BONUS
-	OBJ = $(SRC_B:%.c=b_obj/%.o)
+	OBJ = $(SRC_B:%.c=obj/%.o)
 endif
 
 all:	$(NAME)
@@ -76,10 +92,6 @@ obj/%.o: src/%.c $(HEADERS)
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
-b_obj/%.o: src_b/%.c $(HEADERS)
-	@mkdir -p b_obj
-	@$(CC) $(INC) $(CFLAGS) -o $@ -c $<
-
 $(MLX):
 	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 
@@ -88,7 +100,6 @@ $(LIBFT):
 
 clean:
 	@rm -rf obj
-	@rm -rf b_obj
 # @rm -rf $(MLX_DIR)/build
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	

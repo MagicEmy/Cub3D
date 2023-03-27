@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:51:41 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 14:49:31 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <memory.h>
-# include <stdio.h>
+# include <stdio.h>	// remove
 
 /* casting_rays.c */
 void	casting_rays(t_data *data);
@@ -41,20 +41,12 @@ void	get_line_steps(t_point *step, t_point a, t_point b);
 /* drawing.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
-/* drawing_bonus.c */
-void	draw_minimap(t_data *data);
-void	draw_rays(t_data *data, t_ray *ray);
-/* drawing_get_bonus.c */
-int32_t	get_min(int32_t a, int32_t b);
-void	get_xy_offset(t_data *data);
-void	get_img_cleaned(mlx_image_t *img);
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
-void	mouse_hook(double xpos, double ypos, void *param);
+// void	mouse_hook(double xpos, double ypos, void *param);
 void	key_hooks(void *param);
-void	print_goat_info(t_data *data);	// for debugging only
 /* textures.c */
 int32_t	get_rgba(int r, int g, int b, int a);
 void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture);
@@ -82,7 +74,7 @@ void	map_equalizer(t_parsing *parsing);
 /* map_validation.c */
 void	map_validation(t_parsing *parsing);
 
-//get_next_line
+/* get_next_line */
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
 int		check_where_newline(char *buff, int c);

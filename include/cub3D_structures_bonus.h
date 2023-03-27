@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_structures_bonus.h                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 10:32:25 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_structures_bonus.h                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/27 14:56:01 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ typedef struct s_images
 	mlx_image_t		*fire[6];
 	mlx_image_t		*door_1;
 }	t_images;
+
+typedef struct s_dda_step
+{
+	t_point	first;
+	t_point	next;
+}	t_dda_step;
 
 typedef struct s_parsing
 {

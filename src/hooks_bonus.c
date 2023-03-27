@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   hooks.c                                            :+:    :+:            */
+/*   hooks_bonus.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/07 17:28:17 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:36 by dmalacov      ########   odam.nl         */
+/*   Created: 2023/03/27 13:12:25 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/27 14:58:33 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -30,6 +30,7 @@ void	go_left_right(int key, t_data *data)
 		data->goat->x += step.x;
 		data->goat->y += step.y;
 	}
+	draw_minimap(data);
 	casting_rays(data);
 }
 
@@ -49,6 +50,7 @@ void	go_fwd_bck(int key, t_data *data)
 		data->goat->x += step.x;
 		data->goat->y += step.y;
 	}
+	draw_minimap(data);
 	casting_rays(data);
 }
 
@@ -66,7 +68,37 @@ void	look_left_right(int key, t_data *data)
 		if (data->goat->angle >= 360)
 			data->goat->angle -= 360;
 	}
+	draw_minimap(data);
 	casting_rays(data);
+}
+
+void	mouse_hook(double xpos, double ypos, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (xpos > 0 && ypos > 0 && xpos < data->img->width && \
+	ypos < data->img->height)
+	{
+		if (xpos > data->cursor_x + 5)
+		{
+			mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
+			data->goat->angle -= 3;
+			if (data->goat->angle < 0)
+				data->goat->angle += 360;
+			draw_minimap(data);
+			casting_rays(data);
+		}
+		else if (xpos < data->cursor_x - 5)
+		{
+			mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
+			data->goat->angle += 3;
+			if (data->goat->angle >= 360)
+				data->goat->angle -= 360;
+			draw_minimap(data);
+			casting_rays(data);
+		}
+	}
 }
 
 void	key_hooks(void *param)
