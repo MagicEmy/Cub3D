@@ -6,12 +6,12 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:40 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:51:09 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
-#include <stdlib.h>
+#include "colors.h"
 #include <math.h>
 
 void	error_exit(char *text)

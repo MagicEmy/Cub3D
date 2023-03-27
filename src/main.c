@@ -6,12 +6,12 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:44 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:58:39 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include <stdlib.h>
+#include "colors.h"
 #include <math.h>
 
 void	error_exit(char *text)
@@ -26,9 +26,6 @@ void	init(t_data *data, t_goat *goat)
 {
 	goat->dist_pp = WIDTH / 2 * tan(to_rad(FOV));
 	data->goat = goat;
-	data->offset.x = 0;
-	data->offset.y = 0;
-	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
 }
 
 int32_t	main(int argc, char **argv)

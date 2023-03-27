@@ -6,13 +6,11 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:03:25 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 15:32:01 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:16:14 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include "cub3D_defines.h"
-#include "MLX42/MLX42.h"
 #include <math.h>
 
 int32_t	get_rgba(int r, int g, int b, int a)

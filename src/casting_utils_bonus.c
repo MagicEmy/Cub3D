@@ -6,13 +6,13 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 11:04:01 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:57:54 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 15:46:25 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "cub3D_structures_bonus.h"
-#include "cub3D_defines.h"
+#include "cub3D_defines_bonus.h"
 
 double	to_rad(double angle)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cub3D_defines.h                                    :+:    :+:            */
+/*   cub3D_defines_bonus.h                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:19:05 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 15:46:00 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:54:47 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_DEFINES_H
-# define CUB3D_DEFINES_H
+#ifndef CUB3D_DEFINES_BONUS_H
+# define CUB3D_DEFINES_BONUS_H
 
 /* general stuff */
 # define TRUE 1
@@ -32,6 +32,11 @@
 # define WALL_HEIGHT 120
 # define PARALLEL -1
 
+/* colours */
+# define WALL_OUTLINE 0xFFFFFFFF
+# define WALL_FILL 0x4302C7FF
+# define GOAT_CLR 0xFF00FFFF
+
 enum	e_wall_sides
 {
 	NORTH,
@@ -44,6 +49,10 @@ enum	e_wall_sides
 # define N 90
 # define W 180
 # define S 270
+
+/* for drawing */
+# define PPU 10
+# define PAD 10
 
 /* error handling */
 # define BUFFER_SIZE			1

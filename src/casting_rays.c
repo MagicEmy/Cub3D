@@ -6,14 +6,11 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 13:11:22 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:06:51 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/MLX42.h"
-#include "cub3D_defines.h"
 #include "cub3D.h"
-#include <stdlib.h>
 #include <math.h>
 
 static int	st_hits_wall(t_data *data, t_ray *ray)

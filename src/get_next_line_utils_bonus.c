@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line_utils.c                              :+:    :+:            */
+/*   get_next_line_utils_bonus.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/01 16:14:41 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 16:51:03 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:50:58 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 #include <string.h>
 
 char	*gnl_ft_strjoin_free(char *s1, char *s2)

@@ -6,12 +6,11 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 13:12:25 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:33 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:51:05 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
-#include <stdlib.h>
 #include <math.h>
 
 void	go_left_right(int key, t_data *data)

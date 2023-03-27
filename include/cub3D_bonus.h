@@ -6,54 +6,54 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 15:30:46 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:15:27 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_BONUS_H
 # define CUB3D_BONUS_H
 
-# include "cub3D_defines.h"
+# include "cub3D_defines_bonus.h"
 # include "cub3D_structures_bonus.h"
-# include "colors.h"
-
-# include "MLX42/MLX42.h"
 # include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <memory.h>
-# include <stdio.h> // remove
 
 /* casting_rays_bonus.c */
 void	casting_rays(t_data *data);
+
 /* casting_utils_bonus.c */
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
 double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
+
 /* casting_get_bonus.c */
 void	get_steps(t_dda_step *step, t_goat *goat, double angle, \
 		int32_t axis);
 void	get_steps_x(t_dda_step *step, double angle, t_goat *goat);
 void	get_steps_y(t_dda_step *step, double angle, t_goat *goat);
 void	get_line_steps(t_point *step, t_point a, t_point b);
+
 /* drawing_basic_bonus.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
+
 /* drawing_bonus.c */
 void	draw_minimap(t_data *data);
 void	draw_rays(t_data *data, t_ray *ray);
+
 /* drawing_get_bonus.c */
 int32_t	get_min(int32_t a, int32_t b);
 void	get_xy_offset(t_data *data);
 void	get_img_cleaned(mlx_image_t *img);
+
 /* hooks_bonus.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
 void	mouse_hook(double xpos, double ypos, void *param);
 void	key_hooks(void *param);
+
 /* textures_bonus.c */
 int32_t	get_rgba(int r, int g, int b, int a);
 void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture);
