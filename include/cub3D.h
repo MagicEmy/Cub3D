@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:49:31 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:06:31 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,35 @@
 
 # include "cub3D_defines.h"
 # include "cub3D_structures.h"
-# include "colors.h"
-
-# include "MLX42/MLX42.h"
 # include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <memory.h>
-# include <stdio.h>	// remove
 
 /* casting_rays.c */
 void	casting_rays(t_data *data);
+
 /* casting_utils.c */
 double	to_rad(double angle);
 int		is_inside_map(t_ray *ray, t_data *data);
 double	dist_to_wall(t_ray *ray, t_goat *goat);
 int		is_accessible(t_data *data, double x, double y);
 int		facing_what(t_point *step, int axis);
+
 /* casting_get.c */
 void	get_steps(t_dda_step *step, t_goat *goat, double angle, \
 		int32_t axis);
 void	get_steps_x(t_dda_step *step, double angle, t_goat *goat);
 void	get_steps_y(t_dda_step *step, double angle, t_goat *goat);
 void	get_line_steps(t_point *step, t_point a, t_point b);
+
 /* drawing.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
+
 /* hooks.c */
 void	go_left_right(int key, t_data *data);
 void	go_fwd_bck(int key, t_data *data);
 void	look_left_right(int key, t_data *data);
-// void	mouse_hook(double xpos, double ypos, void *param);
 void	key_hooks(void *param);
+
 /* textures.c */
 int32_t	get_rgba(int r, int g, int b, int a);
 void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture);

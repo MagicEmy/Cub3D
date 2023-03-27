@@ -6,12 +6,11 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 17:28:17 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:58:36 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:51:07 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include <stdlib.h>
 #include <math.h>
 
 void	go_left_right(int key, t_data *data)

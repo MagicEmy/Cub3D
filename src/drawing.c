@@ -6,16 +6,12 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:36:04 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:07:36 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/MLX42.h"
-#include "cub3D_defines.h"
 #include "cub3D.h"
-#include <stdlib.h>
 #include <math.h>
-#include <stdio.h>
 
 static void	st_draw_texture(t_data *data, t_ray *ray, int32_t wall_height, \
 t_coord *idx)

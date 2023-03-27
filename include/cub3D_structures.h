@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:52:02 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 16:59:02 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ typedef struct s_data
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_image_t		*img_mm;	// minimap -> move to bonus
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
 	mlx_texture_t	*textures[4];
@@ -104,7 +103,6 @@ typedef struct s_data
 	t_goat			*goat;
 	int32_t			cursor_x;
 	int32_t			cursor_y;
-	t_coord			offset;		// move to bonus
 }	t_data;
 
 #endif
