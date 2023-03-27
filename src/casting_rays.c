@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:14:50 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 12:36:10 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "cub3D.h"
 #include <stdlib.h>
 #include <math.h>
-#include <stdio.h>
 
 static int	st_hits_wall(t_data *data, t_ray *ray)
 {
@@ -32,68 +31,34 @@ static int	st_hits_wall(t_data *data, t_ray *ray)
 		return (FALSE);
 }
 
-/* FUNCTION TOO LONG, TO BE REFACTORED */
-/* Digital Differential Analysis - walking along the y-axis */
-static double	st_dda_y_axis(t_ray *ns, t_data *data, double angle)
+static double	st_dda(t_ray *ray, t_data *data, double angle, \
+int32_t axis)
 {
-	t_point	step;
-	t_point	first_step;
-	size_t	i;
+	t_dda_step	step;
+	size_t		i;
 
-	if (angle == 0 || angle == M_PI)
-		return (PARALLEL);
 	i = 1;
-	get_first_step(&first_step, angle, Y_AXIS, data->goat);
-	get_steps(&step, angle, Y_AXIS);
-	ns->facing = facing_what(&step, Y_AXIS);
-	ns->x = data->goat->x + first_step.x;
-	ns->y = data->goat->y + first_step.y;
-	dist_to_wall(ns, data->goat);
-	while (is_inside_map(ns, data))
+	if ((axis == Y_AXIS && (angle == 0 || angle == M_PI)) || \
+	(axis == X_AXIS && (angle == M_PI_2 || angle == 3 * M_PI_2)))
+		return (PARALLEL);
+	get_steps(&step, data->goat, angle, axis);
+	ray->facing = facing_what(&step.next, axis);
+	ray->x = data->goat->x + step.first.x;
+	ray->y = data->goat->y + step.first.y;
+	dist_to_wall(ray, data->goat);
+	while (is_inside_map(ray, data))
 	{
-		if (st_hits_wall(data, ns))
+		if (st_hits_wall(data, ray))
 			break ;
-		ns->x = data->goat->x + first_step.x + i * step.x;
-		ns->y = data->goat->y + first_step.y + i * step.y;
-		dist_to_wall(ns, data->goat);
+		ray->x = data->goat->x + step.first.x + i * step.next.x;
+		ray->y = data->goat->y + step.first.y + i * step.next.y;
+		dist_to_wall(ray, data->goat);
 		i++;
 	}
-	if (ns->dist > 0 && ns->dist < STEP_LENGTH / 5)
-		return (STEP_LENGTH / 5);
+	if (ray->dist > 0 && ray->dist < STEP_LENGTH / 100)
+		return (STEP_LENGTH / 100);
 	else
-		return (ns->dist);
-}
-
-/* FUNCTION TOO LONG, TO BE REFACTORED */
-/* Digital Differential Analysis - walking along the x-axis */
-static double	st_dda_x_axis(t_ray *ew, t_data *data, double angle)
-{
-	t_point	step;
-	t_point	first_step;
-	size_t	i;
-
-	if (angle == M_PI_2 || angle == 3 * M_PI_2)
-		return (PARALLEL);
-	i = 1;
-	get_first_step(&first_step, angle, X_AXIS, data->goat);
-	get_steps(&step, angle, X_AXIS);
-	ew->facing = facing_what(&step, X_AXIS);
-	ew->x = data->goat->x + first_step.x;
-	ew->y = data->goat->y + first_step.y;
-	dist_to_wall(ew, data->goat);
-	while (is_inside_map(ew, data))
-	{
-		if (st_hits_wall(data, ew))
-			break ;
-		ew->x = data->goat->x + first_step.x + i * step.x;
-		ew->y = data->goat->y + first_step.y + i * step.y;
-		dist_to_wall(ew, data->goat);
-		i++;
-	}
-	if (ew->dist > 0 && ew->dist < STEP_LENGTH / 5)
-		return (STEP_LENGTH / 5);
-	else
-		return (ew->dist);
+		return (ray->dist);
 }
 
 static t_ray	*st_calc_dist_from_wall(t_data *data, double ray_angle)
@@ -105,8 +70,8 @@ static t_ray	*st_calc_dist_from_wall(t_data *data, double ray_angle)
 	ns = malloc(sizeof(t_ray));
 	if (!ew || !ns)
 		error_exit(ERROR_MALLOC);
-	ew->dist = st_dda_x_axis(ew, data, to_rad(data->goat->angle + ray_angle));
-	ns->dist = st_dda_y_axis(ns, data, to_rad(data->goat->angle + ray_angle));
+	ew->dist = st_dda(ew, data, to_rad(data->goat->angle + ray_angle), X_AXIS);
+	ns->dist = st_dda(ns, data, to_rad(data->goat->angle + ray_angle), Y_AXIS);
 	if ((ew->dist > ns->dist || ew->dist < 0) && ns->dist >= 0)
 	{
 		ns->dist *= cos(to_rad(ray_angle));
@@ -119,7 +84,7 @@ static t_ray	*st_calc_dist_from_wall(t_data *data, double ray_angle)
 	}
 	else
 		error_exit(ERROR_RAYCAST);
-	return (NULL);	// check
+	return (NULL);
 }
 
 void	casting_rays(t_data *data)
@@ -136,7 +101,8 @@ void	casting_rays(t_data *data)
 		if (!ray)
 			error_exit(ERROR_UNEXP);
 		draw_scene(data, ray, idx);
-		// draw_rays(data, ray);	// bonus
+		if (idx.x % 10 == 0 || idx.x % 9 == 0)
+			draw_rays(data, ray);	// bonus
 		idx.x++;
 	}
 }

@@ -6,62 +6,52 @@
 /*   By: darina <darina@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/28 13:16:58 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 17:25:18 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 12:18:01 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "cub3D.h"
 
-static double	st_get_x(double y_side, double angle)
+void	get_steps_x(t_dda_step *step, double angle, t_goat *goat)
 {
-	return (y_side / tan(angle) * -1);
+	if (angle > M_PI_2 && angle < M_PI_2 * 3)
+	{
+		step->first.x = floor(goat->x) - goat->x;
+		step->next.x = -1;
+	}
+	else if (angle < M_PI_2 || angle > M_PI_2 * 3)
+	{
+		step->first.x = ceil(goat->x) - goat->x;
+		step->next.x = 1;
+	}
+	step->first.y = step->first.x * tan(angle) * -1;
+	step->next.y = step->next.x * tan(angle) * -1;
 }
 
-static double	st_get_y(double x_side, double angle)
+void	get_steps_y(t_dda_step *step, double angle, t_goat *goat)
 {
-	return (x_side * tan(angle) * -1);
+	if ((angle > 0 && angle < M_PI) || angle > 2 * M_PI)
+	{
+		step->first.y = floor(goat->y) - goat->y;
+		step->next.y = -1;
+	}
+	else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
+	{
+		step->first.y = ceil(goat->y) - goat->y;
+		step->next.y = 1;
+	}
+	step->first.x = step->first.y / tan(angle) * -1;
+	step->next.x = step->next.y / tan(angle) * -1;
 }
 
-void	get_first_step(t_point *first_step, double angle, int axis, \
-t_goat *goat)
+void	get_steps(t_dda_step *step, t_goat *goat, double angle, \
+int32_t axis)
 {
 	if (axis == X_AXIS)
-	{
-		if (angle > M_PI_2 && angle < M_PI_2 * 3)
-			first_step->x = floor(goat->x) - goat->x;
-		else if (angle < M_PI_2 || angle > M_PI_2 * 3)
-			first_step->x = ceil(goat->x) - goat->x;
-		first_step->y = st_get_y(first_step->x, angle);
-	}
+		get_steps_x(step, angle, goat);
 	else
-	{
-		if ((angle > 0 && angle < M_PI) || angle > 2 * M_PI)
-			first_step->y = floor(goat->y) - goat->y;
-		else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
-			first_step->y = ceil(goat->y) - goat->y;
-		first_step->x = st_get_x(first_step->y, angle);
-	}
-}
-
-void	get_steps(t_point *step, double angle, int axis)
-{
-	if (axis == X_AXIS)
-	{
-		if (angle > M_PI_2 && angle < M_PI_2 * 3)
-			step->x = -1;
-		else if (angle < M_PI_2 || angle > M_PI_2 * 3)
-			step->x = 1;
-		step->y = st_get_y(step->x, angle);
-	}
-	else
-	{
-		if ((angle > 0 && angle < M_PI) || angle > 2 * M_PI)
-			step->y = -1;
-		else if (angle < 0 || (angle > M_PI && angle < M_PI * 2))
-			step->y = 1;
-		step->x = st_get_x(step->y, angle);
-	}
+		get_steps_y(step, angle, goat);
 }
 
 void	get_line_steps(t_point *step, t_point a, t_point b)
