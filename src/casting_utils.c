@@ -6,14 +6,13 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 11:04:01 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:29:46 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 12:35:46 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "cub3D_structures.h"
 #include "cub3D_defines.h"
-#include <stdio.h>	// delete
 
 double	to_rad(double angle)
 {
