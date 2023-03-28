@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/27 18:42:11 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/28 19:24:08 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC			:=	main.c 					\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				hooks.c 				\
+				info_file_sorting.c		\
 				map_equalizer.c			\
 				map_validation.c   		\
 				parsing.c				\
@@ -46,6 +47,7 @@ SRC_B		:=	main_bonus.c 				\
 				get_next_line_bonus.c		\
 				get_next_line_utils_bonus.c	\
 				hooks_bonus.c 				\
+				info_file_sorting_bonus.c	\
 				map_equalizer_bonus.c		\
 				map_validation_bonus.c  	\
 				parsing_bonus.c				\
@@ -63,7 +65,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-CFLAGS 		+= -g -fsanitize=address
+# CFLAGS 		+= -g -fsanitize=address
 BONUS 		= 0
 
 #//= Colors =//#

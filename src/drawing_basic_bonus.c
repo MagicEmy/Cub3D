@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   drawing_basic_bonus.c                              :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:39:27 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   drawing_basic_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 10:49:12 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/28 13:02:52 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_coord *idx)
 	texture_x_coord(&txt, ray, tx);
 	if (wall_height > (int)data->img->height)
 		start_ty = round(tx->height * ((wall_height - (int)data->img->height) \
-		/ 2) /	wall_height);
+		/ 2) / wall_height);
 	else
 		start_ty = 0;
 	txt.y = start_ty;

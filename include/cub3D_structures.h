@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 19:44:59 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:12:23 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include "MLX42/MLX42.h"
-
 
 typedef struct s_point
 {
@@ -51,7 +50,6 @@ typedef struct s_dda_step
 	t_point	first;
 	t_point	next;
 }	t_dda_step;
-
 
 typedef struct s_parsing
 {

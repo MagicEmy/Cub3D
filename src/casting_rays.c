@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   casting_rays.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/22 10:34:29 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:06:51 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   casting_rays.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 10:34:29 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/28 18:06:01 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	casting_rays(t_data *data)
 		if (!ray)
 			error_exit(ERROR_UNEXP);
 		draw_scene(data, ray, idx);
+		free(ray);
 		idx.x++;
 	}
 }

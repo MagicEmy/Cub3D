@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 18:46:25 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/28 18:18:19 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ void	free_everything(t_data *data)
 	while (data->map[i])
 		free(data->map[i++]);
 	free(data->map);
+	i = 0;
+	while (i < 4)
+		mlx_delete_texture(data->textures[i++]);
+	free(data->textures);
 	free(data->goat);
 }
 
-void	checkleaks()
+void	checkleaks(void)
 {
 	system("leaks -q cub3D");
 }
@@ -62,7 +66,7 @@ int32_t	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);
-	// atexit(checkleaks);
+	atexit(checkleaks);
 	st_init(&data);
 	parsing(argv[1], &data);
 	st_img_init(&data);
@@ -73,6 +77,5 @@ int32_t	main(int argc, char **argv)
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	free_everything(&data);
-	// free what needs to be freed
 	return (EXIT_SUCCESS);
 }

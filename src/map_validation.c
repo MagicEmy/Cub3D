@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 19:16:34 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:01:46 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,8 @@ static void	check_walls_middle(t_parsing *parsing, int y, int x)
 	{
 		if (ft_strchr("NSEW", parsing->map[y][x]))
 		{
-			printf ("player %c\n", parsing->map[y][x]);
 			parsing->player_x = x + 0.5;
 			parsing->player_y = y + 0.5;
-			printf ("Px %f Py %f\n", parsing->player_x, parsing->player_y);
 			if (parsing->map[y][x] == 'E')
 				parsing->player_angle = E;
 			if (parsing->map[y][x] == 'N')

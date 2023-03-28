@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:17:52 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 19:17:47 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:10:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	parsing_to_data(t_data *data, t_parsing *parsing)
 	data->map = parsing->map;
 	data->ceiling_clr = parsing->ceiling_clr;
 	data->floor_clr = parsing->floor_clr;
-	printf ("again Px %f Py %f\n", parsing->player_x, parsing->player_y);
 	data->goat->x = parsing->player_x;
 	data->goat->y = parsing->player_y;
 	data->goat->angle = parsing->player_angle;

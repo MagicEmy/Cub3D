@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:03:25 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 12:54:06 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:27:56 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	texture_acquisition(t_parsing *parsing, t_data *data)
 	data->textures = malloc (sizeof(mlx_texture_t *) * 4);
 	if (!data->textures)
 		error_exit(ERROR_MALLOC);
-	ft_memset(data->textures, 0, sizeof(mlx_texture_t) * 4);
+	ft_memset(data->textures, 0, sizeof(mlx_texture_t *) * 4);
 	data->textures[NORTH] = mlx_load_png(parsing->no_path);
 	if (data->textures[NORTH] == NULL)
 		error_exit(ERROR_PATH_TEXTURE);

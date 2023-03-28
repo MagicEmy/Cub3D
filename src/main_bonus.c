@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main_bonus.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 18:30:44 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/28 16:26:24 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,18 @@ void	free_everything(t_data *data)
 	while (data->map[i])
 		free(data->map[i++]);
 	free(data->map);
+	i = 0;
+	while (i < 4)
+		free(data->textures[i++]);
+	free(data->goat);
 }
 
-void	checkleaks()
+
+void	checkleaks(void)
 {
 	system("leaks -q cub3D");
 }
+
 
 int32_t	main(int argc, char **argv)
 {
@@ -81,6 +87,7 @@ int32_t	main(int argc, char **argv)
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	free_everything(&data);
-	// free what needs to be freed
 	return (EXIT_SUCCESS);
 }
+
+// free what needs to be freed

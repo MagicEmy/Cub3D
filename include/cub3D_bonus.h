@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 17:15:27 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:29:01 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	error_exit(char *text);
 
 /* parsing.c */
 void	parsing(char *argv, t_data *data);
+int32_t	info_file_safety_check(t_parsing *parsing, char *line);
 
 /* parsing_init.c  */
 void	parsing_to_data(t_data *data, t_parsing *parsing);

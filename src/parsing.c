@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 12:28:42 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:28:07 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,10 @@ static void	info_sorting(char **path, t_parsing *parsing)
 	parsing->counter++;
 }
 
-static void	get_file_info(char *line, t_parsing *parsing, int i)
+static void	get_file_info(char *line, t_parsing *parsing)
 {
-	parsing->info_file = ft_split_multi(line, parsing->set);
-	if (!parsing->info_file)
-		error_exit(ERROR_MALLOC);
-	if (!parsing->info_file[0])
+	if (!info_file_safety_check(parsing, line))
 		return ;
-	while (parsing->info_file[i])
-		i++;
-	if (i != 2)
-		error_exit(ERROR_INVALID_INFO);
 	if (ft_strncmp(parsing->info_file[0], "NO", 3) == 0)
 		info_sorting(&parsing->no_path, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "SO", 3) == 0)
@@ -83,7 +76,7 @@ char	*get_line(char *argv, t_parsing *parsing)
 	while (line)
 	{
 		if (parsing->counter < 6)
-			get_file_info(line, parsing, 0);
+			get_file_info(line, parsing);
 		else
 			check_if_valid_format(&line, &map_line, parsing);
 		free(line);
@@ -93,6 +86,7 @@ char	*get_line(char *argv, t_parsing *parsing)
 	close(fd);
 	return (map_line);
 }
+
 
 void	parsing(char *argv, t_data *data)
 {
