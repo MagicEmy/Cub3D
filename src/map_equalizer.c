@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/22 15:17:47 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 19:22:33 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ void	map_equalizer(t_parsing *parsing)
 
 	i = 0;
 	get_map_size(parsing);
+	printf ("1 width %zu height %zu\n", parsing->map_width, parsing->map_height);
 	start = allignment_left_calc(parsing);
+	printf ("start %d\n", start);
 	new_map = (char **)malloc(sizeof(char *) * (parsing->map_height + 1));
 	if (!new_map)
 		error_exit(ERROR_MALLOC);
@@ -99,4 +101,5 @@ void	map_equalizer(t_parsing *parsing)
 	ft_free_double_arr(parsing->map);
 	parsing->map = new_map;
 	get_map_size(parsing);
+	printf ("2 width %zu height %zu\n", parsing->map_width, parsing->map_height);
 }

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/dmalacov/Documents/12_cub3D/MlX42
+# Install script for directory: /Users/emlicame/Documents/Code/Cub3D/MlX42
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/dmalacov/Documents/12_cub3D/MlX42/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/emlicame/Documents/Code/Cub3D/MlX42/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   textures_bonus.c                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/13 18:03:25 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:08:29 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   textures_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/13 18:03:25 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/28 12:55:22 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ mlx_texture_t *tx)
 
 void	texture_acquisition(t_parsing *parsing, t_data *data)
 {
+	data->textures = malloc (sizeof(mlx_texture_t *) * 4);
+	if (!data->textures)
+		error_exit(ERROR_MALLOC);
 	ft_memset(data->textures, 0, sizeof(mlx_texture_t) * 4);
 	data->textures[NORTH] = mlx_load_png(parsing->no_path);
 	if (data->textures[NORTH] == NULL)

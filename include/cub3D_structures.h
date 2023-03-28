@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/27 17:15:56 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/27 19:44:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 # include <stdlib.h>
 # include "MLX42/MLX42.h"
 
-typedef struct s_goat
-{
-	double	x;
-	double	y;
-	double	angle;
-	double	dist_pp;
-}	t_goat;
 
 typedef struct s_point
 {
@@ -45,23 +38,20 @@ typedef struct s_ray
 	int		facing;
 }	t_ray;
 
-typedef struct s_images
+typedef struct s_goat
 {
-	mlx_image_t		*fire_0;
-	mlx_image_t		*fire_1;
-	mlx_image_t		*fire_2;
-	mlx_image_t		*fire_3;
-	mlx_image_t		*fire_4;
-	mlx_image_t		*fire_5;
-	mlx_image_t		*fire[6];
-	mlx_image_t		*door_1;
-}	t_images;
+	double	x;
+	double	y;
+	double	angle;
+	double	dist_pp;
+}	t_goat;
 
 typedef struct s_dda_step
 {
 	t_point	first;
 	t_point	next;
 }	t_dda_step;
+
 
 typedef struct s_parsing
 {
@@ -93,10 +83,10 @@ typedef struct s_data
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	char			**map;
 	unsigned int	floor_clr;
 	unsigned int	ceiling_clr;
-	mlx_texture_t	*textures[4];
-	char			**map;
+	mlx_texture_t	**textures;
 	size_t			map_width;
 	size_t			map_height;
 	t_goat			*goat;
