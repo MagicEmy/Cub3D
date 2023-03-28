@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 16:51:09 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 18:30:44 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,38 @@ void	error_exit(char *text)
 	exit(EXIT_FAILURE);
 }
 
-void	init(t_data *data, t_goat *goat)
+static void	st_init(t_data *data, t_goat *goat)
 {
 	goat->dist_pp = WIDTH / 2 * tan(to_rad(FOV));
 	data->goat = goat;
 	data->offset.x = 0;
 	data->offset.y = 0;
 	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
+}
+
+static void	st_img_init(t_data *data)
+{
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img_mm = mlx_new_image(data->mlx, \
+	get_min(WIDTH / 2, data->map_width * PPU + 2 * PAD), \
+	get_min(HEIGHT / 4, data->map_height * PPU + 2 * PAD));
+	if (!data->img || !data->img_mm)
+		error_exit(ERROR_IMG);
+}
+
+void	free_everything(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (data->map[i])
+		free(data->map[i++]);
+	free(data->map);
+}
+
+void	checkleaks()
+{
+	system("leaks -q cub3D");
 }
 
 int32_t	main(int argc, char **argv)
@@ -41,13 +66,11 @@ int32_t	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);
-	init(&data, &goat);
+	atexit(checkleaks);
+	st_init(&data, &goat);
 	parsing(argv[1], &data);
+	st_img_init(&data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	data.img_mm = mlx_new_image(data.mlx, \
-	get_min(WIDTH / 2, data.map_width * PPU + 2 * PAD), \
-	get_min(HEIGHT / 4, data.map_height * PPU + 2 * PAD));
 	draw_minimap(&data);
 	casting_rays(&data);
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
@@ -57,6 +80,7 @@ int32_t	main(int argc, char **argv)
 	mlx_cursor_hook(data.mlx, mouse_hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
+	free_everything(&data);
 	// free what needs to be freed
 	return (EXIT_SUCCESS);
 }

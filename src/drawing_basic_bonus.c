@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:07:29 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:39:27 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_coord *idx)
 	i = 0;
 	tx = data->textures[ray->facing];
 	texture_x_coord(&txt, ray, tx);
-	if (wall_height > IMG_HEIGHT)
-		start_ty = round(tx->height * ((wall_height - IMG_HEIGHT) / 2) / \
-		wall_height);
+	if (wall_height > (int)data->img->height)
+		start_ty = round(tx->height * ((wall_height - (int)data->img->height) \
+		/ 2) /	wall_height);
 	else
 		start_ty = 0;
 	txt.y = start_ty;

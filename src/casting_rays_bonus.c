@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 13:11:02 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:06:49 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/27 17:44:58 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	casting_rays(t_data *data)
 		draw_scene(data, ray, idx);
 		if (idx.x % 10 == 0 || idx.x % 9 == 0)
 			draw_rays(data, ray);
+		free(ray);
 		idx.x++;
 	}
 }
