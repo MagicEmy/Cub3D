@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 16:26:24 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:33:48 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,17 @@ void	free_everything(t_data *data)
 	free(data->map);
 	i = 0;
 	while (i < 4)
-		free(data->textures[i++]);
+		mlx_delete_texture(data->textures[i++]);
+	free(data->textures);
 	free(data->goat);
 }
 
+// void	checkleaks(void)
+// {
+// 	system("leaks -q cub3D");
+// }
 
-void	checkleaks(void)
-{
-	system("leaks -q cub3D");
-}
-
+	// atexit(checkleaks);
 
 int32_t	main(int argc, char **argv)
 {
@@ -72,7 +73,6 @@ int32_t	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);
-	atexit(checkleaks);
 	st_init(&data, &goat);
 	parsing(argv[1], &data);
 	st_img_init(&data);

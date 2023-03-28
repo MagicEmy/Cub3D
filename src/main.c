@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 18:18:19 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:33:16 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void	free_everything(t_data *data)
 	free(data->goat);
 }
 
-void	checkleaks(void)
-{
-	system("leaks -q cub3D");
-}
+// void	checkleaks(void)
+// {
+// 	system("leaks -q cub3D");
+// }
+	// atexit(checkleaks);
 
 int32_t	main(int argc, char **argv)
 {
@@ -66,7 +67,6 @@ int32_t	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);
-	atexit(checkleaks);
 	st_init(&data);
 	parsing(argv[1], &data);
 	st_img_init(&data);

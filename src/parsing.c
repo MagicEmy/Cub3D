@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 19:28:07 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:34:01 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char	*get_line(char *argv, t_parsing *parsing)
 	close(fd);
 	return (map_line);
 }
-
 
 void	parsing(char *argv, t_data *data)
 {
