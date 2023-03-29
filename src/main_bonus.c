@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/29 14:41:34 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/29 16:40:21 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,6 @@ void	free_everything(t_data *data)
 	free(data->textures);
 	free(data->goat);
 }
-
-// void	checkleaks(void)
-// {
-// 	system("leaks -q cub3D");
-// }
-
-	// atexit(checkleaks);
 
 int32_t	main(int argc, char **argv)
 {

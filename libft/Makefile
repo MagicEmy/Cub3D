@@ -58,38 +58,19 @@ CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 LIBC := ar -rcs
 
-#//= Colors =//#
-BOLD	:= \033[1m
-BLACK	:= \033[30;1m
-RED		:= \033[31;1m
-GREEN	:= \033[32;1m
-YELLOW	:= \033[33;1m
-BLUE	:= \033[34;1m
-MAGENTA	:= \033[35;1m
-CYAN	:= \033[36;1m
-WHITE	:= \033[37;1m
-RESET	:= \033[0m
-
 all: $(NAME)
-	@echo "$(BLUE)Libft Done$(RESET)"
 
 $(NAME): $(OBJ) $(HEADERS)
 	@$(LIBC) $(NAME) $(OBJ)
 
 bonus:	${OBJ} ${OBJBONUS}
 	@$(LIBC) ${NAME} ${OBJ} ${OBJBONUS}
-	@echo "$(BLUE)Libft Bonus Done$(RESET)"
-
-#exec: $(NAME)
-#	$(CC) $(CFLAGS) -o $(NAME) main.c -lft -L. -I
-#	./$(NAME)
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	
 clean:
 	@rm -f $(OBJ) ${OBJBONUS}
-	@echo "$(BLUE)clean$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)

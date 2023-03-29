@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/29 13:33:42 by emlicame         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: emlicame <emlicame@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
+#    Updated: 2023/03/29 16:45:18 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ HEADERS		:=	include/cub3D.h	 				\
 				include/cub3D_defines.h 		\
 				include/colors.h 				\
         		include/cub3D_structures.h
+
 HEADERS_B	:=	include/cub3D_bonus.h	 		\
 				include/cub3D_defines_bonus.h 	\
 				include/colors.h 				\
@@ -65,7 +66,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-CFLAGS 		+= -g -fsanitize=address
+# CFLAGS 		+= -g -fsanitize=address
 BONUS 		= 0
 
 #//= Colors =//#
@@ -85,10 +86,10 @@ all:	$(NAME)
 
 ifeq ($(BONUS),1)
 $(NAME): $(OBJ_B) $(MLX) $(LIBFT)
-	$(CC) $(CFLAGS) $(INC) $(MLX_FLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $(INC) $(MLX_FLAGS) $^ -o $@
 else
 $(NAME): $(OBJ) $(MLX) $(LIBFT)
-	$(CC) $(CFLAGS) $(INC) $(MLX_FLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $(INC) $(MLX_FLAGS) $^ -o $@
 endif
 
 
@@ -113,11 +114,11 @@ $(LIBFT):
 
 clean:
 	@rm -rf obj
-# @rm -rf $(MLX_DIR)/build
-	$(MAKE) fclean -C $(LIBFT_DIR)
+	@make fclean -C $(LIBFT_DIR)
+	@rm -rf $(MLX_DIR)/build
 	
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

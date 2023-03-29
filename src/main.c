@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/29 13:35:17 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/03/29 16:40:29 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,6 @@ void	free_everything(t_data *data)
 	free(data->textures);
 	free(data->goat);
 }
-
-// void	checkleaks(void)
-// {
-// 	system("leaks -q cub3D");
-// }
-	// atexit(checkleaks);
 
 int32_t	main(int argc, char **argv)
 {

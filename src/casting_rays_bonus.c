@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   casting_rays_bonus.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 13:11:02 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 18:04:40 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   casting_rays_bonus.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/27 13:11:02 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/29 16:29:38 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	casting_rays(t_data *data)
 	while (idx.x < WIDTH)
 	{
 		ray = st_calc_dist_from_wall(data, FOV / 2 - \
-		(double)idx.x * FOV / (WIDTH - 1));
+		(double)idx.x * FOV / WIDTH);
 		if (!ray)
 			error_exit(ERROR_UNEXP);
 		draw_scene(data, ray, idx);
