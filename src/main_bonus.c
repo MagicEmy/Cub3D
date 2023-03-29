@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -7,6 +8,15 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
 /*   Updated: 2023/03/29 15:40:35 by emlicame         ###   ########.fr       */
+=======
+/*                                                        ::::::::            */
+/*   main_bonus.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/03/29 14:41:34 by dmalacov      ########   odam.nl         */
+>>>>>>> 30c2723a9da27b1baaae9f9ee6e5d91cf0e63729
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +97,3 @@ int32_t	main(int argc, char **argv)
 	free_everything(&data);
 	return (EXIT_SUCCESS);
 }
-
-// free what needs to be freed
