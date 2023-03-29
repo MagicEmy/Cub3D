@@ -6,7 +6,7 @@
 /*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:07:31 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/03/29 15:45:07 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static void	st_fill_in_wall_block(mlx_image_t *img, t_point a, t_point b)
 	while (idx.y++ < b.y)
 	{
 		idx.x = (int)a.x;
-		while (idx.x++ < b.x && idx.x < (int)img->width)
+		while (idx.x >= 0 && idx.x++ < b.x && idx.x < (int)img->width && \
+		idx.y >= 0 && idx.y < (int)img->height)
 			mlx_put_pixel(img, idx.x, idx.y, WALL_FILL);
 	}
 }
