@@ -6,13 +6,13 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 13:01:32 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:36:15 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int32_t	allignment_left_calc(t_parsing *parsing)
+static int32_t	st_allignment_left_calc(t_parsing *parsing)
 {
 	int32_t	y;
 	int32_t	x;
@@ -35,7 +35,7 @@ static int32_t	allignment_left_calc(t_parsing *parsing)
 	return (max);
 }
 
-static void	get_map_size(t_parsing *parsing)
+static void	st_get_map_size(t_parsing *parsing)
 {
 	int32_t	y;
 	size_t	max;
@@ -55,7 +55,7 @@ static void	get_map_size(t_parsing *parsing)
 	parsing->map_height = y;
 }
 
-static void	copy_and_fill_map(t_parsing *parsing, char **new_map, int32_t i, \
+static void	st_copy_and_fill_map(t_parsing *parsing, char **new_map, int32_t i, \
 int32_t start)
 {
 	int32_t	x;
@@ -80,8 +80,8 @@ void	map_equalizer(t_parsing *parsing)
 	int32_t	i;
 
 	i = 0;
-	get_map_size(parsing);
-	start = allignment_left_calc(parsing);
+	st_get_map_size(parsing);
+	start = st_allignment_left_calc(parsing);
 	new_map = (char **)malloc(sizeof(char *) * (parsing->map_height + 1));
 	if (!new_map)
 		error_exit(ERROR_MALLOC);
@@ -92,11 +92,11 @@ void	map_equalizer(t_parsing *parsing)
 		if (!new_map[i])
 			error_exit(ERROR_MALLOC);
 		new_map[i][parsing->map_width - start] = '\0';
-		copy_and_fill_map(parsing, new_map, i, start);
+		st_copy_and_fill_map(parsing, new_map, i, start);
 		i++;
 	}
 	new_map[i] = NULL;
 	ft_free_double_arr(parsing->map);
 	parsing->map = new_map;
-	get_map_size(parsing);
+	st_get_map_size(parsing);
 }

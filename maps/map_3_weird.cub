@@ -3,6 +3,16 @@
 				
 
 			SO 		./textures/stone_grass.png
+
+
+
+
+
+
+
+
+
+			
 				
 		WE 	   ./textures/goat_on_tree.png
 
@@ -11,7 +21,7 @@
 
    C 		0,139,139
 
-   	F 	245,245,220
+   	F 		245,245,220
 
 
       1111111111111111111111 11111111
