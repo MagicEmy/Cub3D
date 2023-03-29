@@ -1,17 +1,11 @@
 
-	NO  ./textures/stone_grass.png   
-				
+NO ./textures/redbricks_1.png
+SO ./textures/purple_wall.png
+WE ./textures/wolfengoat.png
+EA ./textures/stone_grass.png
 
-			SO 		./textures/purple_wall.png
-				
-		WE 	   ./textures/wolfengoat.png
-
-   EA    ./textures/colorfull_stones.png
-
-   C 100,149,237
-
-   	F 0,100,0
-
+C 0,255,255
+F 128,128,128
 
 11111111111111111111111
 10000000000001000000001

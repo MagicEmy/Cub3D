@@ -1,16 +1,16 @@
 
-	NO  ./textures/wall_wood_bush_3.png	     
+	NO  ./textures/redbricks_1.png	     
 				
 
-			SO 		./textures/stone_grass.png
+			SO 		./textures/purple_wall.png
 				
-		WE 	   ./textures/red_bricks_fence.png
+		WE 	   ./textures/colorfull_stones.png
 
-   EA   ./textures/redbricks_1.png
+   EA   ./textures/wolfengoat.png
 
-   C 180,200,0
+   C 	0,191,255
 
-   	F 	210,59,104
+   	F 		128,0,128
 
 
 11111111111111111111111111111111111111111111111111111

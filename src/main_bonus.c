@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 19:33:48 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:37:15 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ void	error_exit(char *text)
 	exit(EXIT_FAILURE);
 }
 
-static void	st_init(t_data *data, t_goat *goat)
+static void	st_init(t_data *data)
 {
-	goat->dist_pp = WIDTH / 2 * tan(to_rad(FOV));
-	data->goat = goat;
-	data->offset.x = 0;
-	data->offset.y = 0;
-	mlx_get_mouse_pos(data->mlx, &data->cursor_x, &data->cursor_y);
+	data->goat = malloc(sizeof(t_goat));
+	if (!data->goat)
+		error_exit(ERROR_MALLOC);
+	data->goat->dist_pp = WIDTH / 2 * tan(to_rad(FOV));
 }
 
 static void	st_img_init(t_data *data)
