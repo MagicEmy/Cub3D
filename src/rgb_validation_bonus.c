@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/29 15:48:05 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:28:21 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	st_check_rgb_format(char *str)
 	}
 }
 
-int32_t	ft_str_is_digit(char *str)
+static int32_t	st_str_is_digit(char *str)
 {
 	int32_t	i;
 
@@ -65,8 +65,8 @@ static int32_t	st_rgb_parsing(char *info, t_parsing *parsing)
 	rgb = ft_split(info, ',');
 	if (!rgb)
 		error_exit(ERROR_MALLOC);
-	if (!ft_str_is_digit(rgb[0]) || !ft_str_is_digit(rgb[1]) || \
-	!ft_str_is_digit(rgb[2]))
+	if (!st_str_is_digit(rgb[0]) || !st_str_is_digit(rgb[1]) || \
+	!st_str_is_digit(rgb[2]))
 		error_exit(ERROR_RGB_ERR);
 	parsing->red = ft_atoi(rgb[0]);
 	parsing->green = ft_atoi(rgb[1]);

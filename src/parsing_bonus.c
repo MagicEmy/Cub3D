@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/29 15:51:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:32:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	st_info_sorting(char **path, t_parsing *parsing)
 	parsing->counter++;
 }
 
-static void	get_file_info(char *line, t_parsing *parsing)
+static void	st_get_file_info(char *line, t_parsing *parsing)
 {
 	if (!info_file_safety_check(parsing, line))
 		return ;
@@ -44,7 +44,7 @@ static void	get_file_info(char *line, t_parsing *parsing)
 	ft_free_double_arr(parsing->info_file);
 }
 
-static void	check_if_valid_format(char	**line, char **map_line, \
+static void	st_check_if_valid_format(char	**line, char **map_line, \
 t_parsing *parsing)
 {
 	if (!ft_str_is_space(*line) && parsing->map_end)
@@ -76,9 +76,9 @@ static char	*st_get_line(char *argv, t_parsing *parsing)
 	while (line)
 	{
 		if (parsing->counter < 6)
-			get_file_info(line, parsing);
+			st_get_file_info(line, parsing);
 		else
-			check_if_valid_format(&line, &map_line, parsing);
+			st_check_if_valid_format(&line, &map_line, parsing);
 		free(line);
 		line = get_next_line(fd);
 	}

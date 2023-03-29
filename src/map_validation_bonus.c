@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   map_validation_bonus.c                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/13 15:28:00 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/27 16:28:13 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   map_validation_bonus.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/13 15:28:00 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/29 16:34:48 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_map_syntax(t_parsing *parsing)
 		error_exit(ERROR_PLAYER_COUNT);
 }
 
-static void	check_walls_top_bottom(t_parsing *parsing, int y)
+static void	st_check_walls_top_bottom(t_parsing *parsing, int y)
 {
 	int	x;
 
@@ -51,14 +51,14 @@ static void	check_walls_top_bottom(t_parsing *parsing, int y)
 	}
 }
 
-static int	ft_is_map_space(char c)
+static int	st_is_map_space(char c)
 {
 	if (c == ' ' || c == '\n')
 		return (1);
 	return (0);
 }
 
-static void	check_walls_middle(t_parsing *parsing, int y, int x)
+static void	st_check_walls_middle(t_parsing *parsing, int y, int x)
 {
 	if (ft_strchr("0NSEW", parsing->map[y][x]))
 	{
@@ -75,13 +75,13 @@ static void	check_walls_middle(t_parsing *parsing, int y, int x)
 			if (parsing->map[y][x] == 'S')
 				parsing->player_angle = S;
 		}
-		if (ft_is_map_space(parsing->map[y][x + 1]))
+		if (st_is_map_space(parsing->map[y][x + 1]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(parsing->map[y][x - 1]))
+		if (st_is_map_space(parsing->map[y][x - 1]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(parsing->map[y - 1][x]))
+		if (st_is_map_space(parsing->map[y - 1][x]))
 			error_exit(ERROR_INVALID_MAP_W);
-		if (ft_is_map_space(parsing->map[y + 1][x]))
+		if (st_is_map_space(parsing->map[y + 1][x]))
 			error_exit(ERROR_INVALID_MAP_W);
 	}
 }
@@ -92,17 +92,17 @@ void	map_validation(t_parsing *parsing)
 	int	y;
 
 	y = 0;
-	check_walls_top_bottom(parsing, y);
+	st_check_walls_top_bottom(parsing, y);
 	y = 1;
 	while (parsing->map[y + 1] != NULL)
 	{
 		x = 0;
 		while (parsing->map[y][x])
 		{
-			check_walls_middle(parsing, y, x);
+			st_check_walls_middle(parsing, y, x);
 			x++;
 		}
 		y++;
 	}
-	check_walls_top_bottom(parsing, y);
+	st_check_walls_top_bottom(parsing, y);
 }

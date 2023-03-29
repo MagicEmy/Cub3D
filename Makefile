@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/03/29 13:33:42 by emlicame         ###   ########.fr        #
+#    Updated: 2023/03/29 16:39:47 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,38 +21,38 @@ HEADERS_B	:=	include/cub3D_bonus.h	 		\
 				include/colors.h 				\
         		include/cub3D_structures_bonus.h
 
-SRC			:=	main.c 					\
-				casting_get.c 			\
-       			casting_rays.c 			\
-				casting_utils.c 		\
-				drawing.c 				\
-				get_next_line.c			\
-				get_next_line_utils.c	\
-				hooks.c 				\
-				info_file_sorting.c		\
-				map_equalizer.c			\
-				map_validation.c   		\
-				parsing.c				\
-				parsing_init.c			\
-				rgb_validation.c		\
+SRC			:=	main.c 							\
+				casting_get.c 					\
+       			casting_rays.c 					\
+				casting_utils.c 				\
+				drawing.c 						\
+				get_next_line.c					\
+				get_next_line_utils.c			\
+				hooks.c 						\
+				info_file_safety_check.c		\
+				map_equalizer.c					\
+				map_validation.c   				\
+				parsing.c						\
+				parsing_init.c					\
+				rgb_validation.c				\
 				textures.c
 
-SRC_B		:=	main_bonus.c 				\
-				casting_get_bonus.c 		\
-       			casting_rays_bonus.c 		\
-				casting_utils_bonus.c 		\
-				drawing_basic_bonus.c 		\
-				drawing_bonus.c 			\
-				drawing_get_bonus.c 		\
-				get_next_line_bonus.c		\
-				get_next_line_utils_bonus.c	\
-				hooks_bonus.c 				\
-				info_file_sorting_bonus.c	\
-				map_equalizer_bonus.c		\
-				map_validation_bonus.c  	\
-				parsing_bonus.c				\
-				parsing_init_bonus.c		\
-				rgb_validation_bonus.c		\
+SRC_B		:=	main_bonus.c 					\
+				casting_get_bonus.c 			\
+       			casting_rays_bonus.c 			\
+				casting_utils_bonus.c 			\
+				drawing_basic_bonus.c 			\
+				drawing_bonus.c 				\
+				drawing_get_bonus.c 			\
+				get_next_line_bonus.c			\
+				get_next_line_utils_bonus.c		\
+				hooks_bonus.c 					\
+				info_file_safety_check_bonus.c	\
+				map_equalizer_bonus.c			\
+				map_validation_bonus.c  		\
+				parsing_bonus.c					\
+				parsing_init_bonus.c			\
+				rgb_validation_bonus.c			\
 				textures_bonus.c
 
 OBJ			:= $(SRC:%.c=obj/%.o)
