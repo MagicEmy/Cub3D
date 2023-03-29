@@ -6,14 +6,14 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 19:30:06 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:51:30 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
 #include <fcntl.h>
 
-static void	info_sorting(char **path, t_parsing *parsing)
+static void	st_info_sorting(char **path, t_parsing *parsing)
 {
 	if (*path != NULL)
 		error_exit(ERROR_DOUBLE_ENTRY);
@@ -28,17 +28,17 @@ static void	get_file_info(char *line, t_parsing *parsing)
 	if (!info_file_safety_check(parsing, line))
 		return ;
 	if (ft_strncmp(parsing->info_file[0], "NO", 3) == 0)
-		info_sorting(&parsing->no_path, parsing);
+		st_info_sorting(&parsing->no_path, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "SO", 3) == 0)
-		info_sorting(&parsing->so_path, parsing);
+		st_info_sorting(&parsing->so_path, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "EA", 3) == 0)
-		info_sorting(&parsing->ea_path, parsing);
+		st_info_sorting(&parsing->ea_path, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "WE", 3) == 0)
-		info_sorting(&parsing->we_path, parsing);
+		st_info_sorting(&parsing->we_path, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "F", 2) == 0)
-		info_sorting(&parsing->floor, parsing);
+		st_info_sorting(&parsing->floor, parsing);
 	else if (ft_strncmp(parsing->info_file[0], "C", 2) == 0)
-		info_sorting(&parsing->ceiling, parsing);
+		st_info_sorting(&parsing->ceiling, parsing);
 	else
 		error_exit(ERROR_INVALID_INFO);
 	ft_free_double_arr(parsing->info_file);
@@ -58,7 +58,7 @@ t_parsing *parsing)
 		parsing->map_end = 1;
 }
 
-char	*get_line(char *argv, t_parsing *parsing)
+static char	*st_get_line(char *argv, t_parsing *parsing)
 {
 	int		fd;
 	char	*map_line;
@@ -97,7 +97,7 @@ void	parsing(char *argv, t_data *data)
 	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)
 		error_exit(ERROR_MAP_EXTENSION);
 	parsing_stru_init(&parsing);
-	map_line = get_line(argv, &parsing);
+	map_line = st_get_line(argv, &parsing);
 	if (ft_strncmp(map_line, "", 1) == 0)
 		error_exit(ERROR_INVALID_INFO);
 	parsing.map = ft_split(map_line, '\n');

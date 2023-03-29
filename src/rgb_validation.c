@@ -6,13 +6,13 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/27 15:31:52 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:48:32 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	check_rgb_format(char *str)
+static void	st_check_rgb_format(char *str)
 {
 	int32_t		i;
 	int32_t		comma;
@@ -41,7 +41,7 @@ void	check_rgb_format(char *str)
 	}
 }
 
-int32_t	ft_str_is_digit(char *str)
+static int32_t	st_str_is_digit(char *str)
 {
 	int32_t	i;
 
@@ -57,7 +57,7 @@ int32_t	ft_str_is_digit(char *str)
 	return (1);
 }
 
-static int32_t	rgb_parsing(char *info, t_parsing *parsing)
+static int32_t	st_rgb_parsing(char *info, t_parsing *parsing)
 {
 	char	**rgb;
 
@@ -65,8 +65,8 @@ static int32_t	rgb_parsing(char *info, t_parsing *parsing)
 	rgb = ft_split(info, ',');
 	if (!rgb)
 		error_exit(ERROR_MALLOC);
-	if (!ft_str_is_digit(rgb[0]) || !ft_str_is_digit(rgb[1]) || \
-	!ft_str_is_digit(rgb[2]))
+	if (!st_str_is_digit(rgb[0]) || !st_str_is_digit(rgb[1]) || \
+	!st_str_is_digit(rgb[2]))
 		error_exit(ERROR_RGB_ERR);
 	parsing->red = ft_atoi(rgb[0]);
 	parsing->green = ft_atoi(rgb[1]);
@@ -85,8 +85,8 @@ void	rgb_validation(t_parsing *parsing)
 	int32_t		i;
 
 	i = 0;
-	check_rgb_format(parsing->floor);
-	check_rgb_format(parsing->ceiling);
-	parsing->floor_clr = rgb_parsing(parsing->floor, parsing);
-	parsing->ceiling_clr = rgb_parsing(parsing->ceiling, parsing);
+	st_check_rgb_format(parsing->floor);
+	st_check_rgb_format(parsing->ceiling);
+	parsing->floor_clr = st_rgb_parsing(parsing->floor, parsing);
+	parsing->ceiling_clr = st_rgb_parsing(parsing->ceiling, parsing);
 }

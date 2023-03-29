@@ -6,13 +6,13 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 16:09:43 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:48:05 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
 
-void	check_rgb_format(char *str)
+static void	st_check_rgb_format(char *str)
 {
 	int32_t		i;
 	int32_t		comma;
@@ -57,7 +57,7 @@ int32_t	ft_str_is_digit(char *str)
 	return (1);
 }
 
-static int32_t	rgb_parsing(char *info, t_parsing *parsing)
+static int32_t	st_rgb_parsing(char *info, t_parsing *parsing)
 {
 	char	**rgb;
 
@@ -85,8 +85,8 @@ void	rgb_validation(t_parsing *parsing)
 	int32_t		i;
 
 	i = 0;
-	check_rgb_format(parsing->floor);
-	check_rgb_format(parsing->ceiling);
-	parsing->floor_clr = rgb_parsing(parsing->floor, parsing);
-	parsing->ceiling_clr = rgb_parsing(parsing->ceiling, parsing);
+	st_check_rgb_format(parsing->floor);
+	st_check_rgb_format(parsing->ceiling);
+	parsing->floor_clr = st_rgb_parsing(parsing->floor, parsing);
+	parsing->ceiling_clr = st_rgb_parsing(parsing->ceiling, parsing);
 }

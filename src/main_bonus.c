@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/29 13:37:15 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:40:35 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	free_everything(t_data *data)
 
 int32_t	main(int argc, char **argv)
 {
-	t_goat		goat;
 	t_data		data;
 
 	if (!argv || argc != 2)
@@ -72,7 +71,7 @@ int32_t	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "GOAT3D", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);
-	st_init(&data, &goat);
+	st_init(&data);
 	parsing(argv[1], &data);
 	st_img_init(&data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
