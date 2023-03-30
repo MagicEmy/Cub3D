@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:10:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/29 16:36:34 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:39:50 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int32_t start)
 		x++;
 		z++;
 	}
-	while (new_map[i][x])
+	while (x < (int32_t)parsing->map_width - start)
 		new_map[i][x++] = ' ';
 }
 
