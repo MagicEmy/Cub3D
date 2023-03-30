@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   drawing_bonus.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dmalacov <dmalacov@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/07 19:57:36 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/03/29 15:45:07 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   drawing_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 19:57:36 by dmalacov          #+#    #+#             */
+/*   Updated: 2023/03/29 18:39:55 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void	st_draw_wall_block(mlx_image_t *img, t_coord pt, t_coord *offset)
 	}
 }
 
-/* will be removed */
 void	draw_rays(t_data *data, t_ray *ray)
 {
 	t_point	wall;

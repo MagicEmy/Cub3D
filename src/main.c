@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/03/29 16:40:29 by dmalacov      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
+/*   Updated: 2023/03/30 16:59:32 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	st_img_init(t_data *data)
 		error_exit(ERROR_IMG);
 }
 
-void	free_everything(t_data *data)
+static void	st_free_everything(t_data *data)
 {
 	size_t	i;
 
@@ -70,6 +70,6 @@ int32_t	main(int argc, char **argv)
 	mlx_loop_hook(data.mlx, key_hooks, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
-	free_everything(&data);
+	st_free_everything(&data);
 	return (EXIT_SUCCESS);
 }
