@@ -1,0 +1,15 @@
+
+NO ./textures/redbricks_1.png
+SO ./textures/purple_wall.png
+WE ./textures/wolfengoat.png
+EA ./textures/stone_grass.png
+
+C 0,255,255
+F 128,128,128
+
+111111111
+100000001
+100000001
+100000001
+1000N0001
+111111111
