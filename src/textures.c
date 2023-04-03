@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:03:25 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 14:27:56 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/04/03 13:43:15 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,17 @@ mlx_texture_t *tx)
 	bpp = tx->bytes_per_pixel;
 	if (idx->x >= 0 && idx->x < (int)data->img->width && idx->y >= 0 && \
 	idx->y < (int)data->img->height)
+	{
+		printf ("%d r, %d g, %d b, %d a\n", tx->pixels[(txt->y * tx->width + txt->x) * bpp], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 1], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 2], \
+			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 3]);
 		mlx_put_pixel(data->img, idx->x, idx->y, \
 			get_rgba(tx->pixels[(txt->y * tx->width + txt->x) * bpp], \
 			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 1], \
 			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 2], \
 			tx->pixels[(txt->y * tx->width + txt->x) * bpp + 3]));
+	}
 }
 
 void	texture_acquisition(t_parsing *parsing, t_data *data)

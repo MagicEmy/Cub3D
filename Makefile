@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/04/03 13:34:26 by emlicame         ###   ########.fr        #
+#    Updated: 2023/04/03 13:35:38 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC			:=	main.c 							\
        			casting_rays.c 					\
 				casting_utils.c 				\
 				check_map_syntax.c 				\
-				drawing.c 						\
+				drawing_basic.c					\
 				get_next_line.c					\
 				get_next_line_utils.c			\
 				hooks.c 						\
