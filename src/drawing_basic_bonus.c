@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   drawing_basic_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 10:49:12 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 13:02:52 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   drawing_basic_bonus.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/07 10:49:12 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/04/03 13:05:20 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	draw_scene(t_data *data, t_ray *ray, t_coord idx)
 	int32_t	wall_height;
 
 	wall_height = round(data->goat->dist_pp / ray->dist);
-	while (idx.y < ((int)data->img->height - wall_height) / 2 && \
-	idx.y < (int)data->img->height)
+	while (idx.y < (int)data->img->height / 2)
 		mlx_put_pixel(data->img, idx.x, idx.y++, data->ceiling_clr);
-	st_draw_texture(data, ray, wall_height, &idx);
-	while (idx.y < HEIGHT)
+	while (idx.y < (int)data->img->height)
 		mlx_put_pixel(data->img, idx.x, idx.y++, data->floor_clr);
+	idx.y = ((int)data->img->height - wall_height) / 2;
+	st_draw_texture(data, ray, wall_height, &idx);
 }
 
 static int	st_is_inside_img(mlx_image_t *img, double x, double y)

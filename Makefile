@@ -6,7 +6,7 @@
 #    By: emlicame <emlicame@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/29 16:47:46 by dmalacov      ########   odam.nl          #
+#    Updated: 2023/04/03 13:07:45 by dmalacov      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC			:=	main.c 							\
 				casting_get.c 					\
        			casting_rays.c 					\
 				casting_utils.c 				\
-				drawing.c 						\
+				drawing_basic.c 						\
 				get_next_line.c					\
 				get_next_line_utils.c			\
 				hooks.c 						\
@@ -61,7 +61,7 @@ OBJ_B		:= $(SRC_B:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
 MLX 		:= MLX42/build/libmlx42.a
-MLX_FLAGS 	:= -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLX_FLAGS 	:= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
