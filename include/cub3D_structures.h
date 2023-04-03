@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D_structures.h                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:10:08 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 18:12:23 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D_structures.h                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/04/03 17:38:29 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_ray
 	double	x;
 	double	y;
 	double	dist;
-	int		facing;
+	int32_t	facing;
 }	t_ray;
 
 typedef struct s_goat
@@ -80,6 +80,7 @@ typedef struct s_parsing
 typedef struct s_data
 {
 	mlx_t			*mlx;
+	mlx_image_t		*img_bg;
 	mlx_image_t		*img;
 	char			**map;
 	unsigned int	floor_clr;

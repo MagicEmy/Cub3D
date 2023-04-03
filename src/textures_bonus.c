@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures_bonus.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 18:03:25 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/28 14:26:34 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   textures_bonus.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/13 18:03:25 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/04/03 17:16:20 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	texture_x_coord(t_coord *txt, t_ray *ray, mlx_texture_t *texture)
 	if (ray->facing == EAST || ray->facing == WEST)
 		ray_pos = ray->y - floor(ray->y);
 	if (ray->facing == NORTH || ray->facing == EAST)
-		txt->x = texture->width * ray_pos;
+		txt->x = (texture->width - 1) * ray_pos;
 	else
-		txt->x = texture->width * (1 - ray_pos);
+		txt->x = (texture->width - 1) * (1 - ray_pos);
 }
 
 void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \

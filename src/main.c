@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:23:48 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/30 16:59:32 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:23:48 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/04/03 16:49:15 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ static void	st_init(t_data *data)
 
 static void	st_img_init(t_data *data)
 {
+	data->img_bg = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	if (!data->img)
+	if (!data->img || !data->img_bg)
 		error_exit(ERROR_IMG);
 }
 
@@ -65,7 +66,9 @@ int32_t	main(int argc, char **argv)
 	parsing(argv[1], &data);
 	st_img_init(&data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+	draw_bckground(&data);
 	casting_rays(&data);
+	mlx_image_to_window(data.mlx, data.img_bg, 0, 0);
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
 	mlx_loop_hook(data.mlx, key_hooks, &data);
 	mlx_loop(data.mlx);

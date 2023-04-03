@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 19:27:02 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3D.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/04/03 16:47:58 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	get_steps_x(t_dda_step *step, double angle, t_goat *goat);
 void	get_steps_y(t_dda_step *step, double angle, t_goat *goat);
 void	get_line_steps(t_point *step, t_point a, t_point b);
 
-/* drawing.c */
+/* drawing_basic.c */
 void	draw_scene(t_data *data, t_ray *ray, t_coord idx);
 void	draw_line(mlx_image_t *img, t_point a, t_point b, int32_t clr);
+void	draw_bckground(t_data *data);
 
 /* hooks.c */
 void	go_left_right(int key, t_data *data);

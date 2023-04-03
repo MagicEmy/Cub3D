@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 13:13:21 by dmalacov          #+#    #+#             */
-/*   Updated: 2023/03/30 16:59:11 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main_bonus.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/27 13:13:21 by dmalacov      #+#    #+#                 */
+/*   Updated: 2023/04/03 16:55:06 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ static void	st_init(t_data *data)
 
 static void	st_img_init(t_data *data)
 {
+	data->img_bg = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img_mm = mlx_new_image(data->mlx, \
 	get_min(WIDTH / 2, data->map_width * PPU + 2 * PAD), \
 	get_min(HEIGHT / 4, data->map_height * PPU + 2 * PAD));
-	if (!data->img || !data->img_mm)
+	if (!data->img || !data->img_mm || !data->img_bg)
 		error_exit(ERROR_IMG);
 }
 
@@ -69,7 +70,9 @@ int32_t	main(int argc, char **argv)
 	st_img_init(&data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	draw_minimap(&data);
+	draw_bckground(&data);
 	casting_rays(&data);
+	mlx_image_to_window(data.mlx, data.img_bg, 0, 0);
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
 	mlx_image_to_window(data.mlx, data.img_mm, PAD, data.mlx->height - \
 	data.img_mm->height - PAD);
