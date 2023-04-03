@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:16:55 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/28 19:29:01 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:08:04 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,37 @@ void	texture_put_pixel(t_data *data, t_coord *idx, t_coord *txt, \
 /* main_bonus.c */
 void	error_exit(char *text);
 
-/* parsing.c */
+/* parsing_bonus.c */
 void	parsing(char *argv, t_data *data);
+
+/* info_file_safety_check_bonus.c */
 int32_t	info_file_safety_check(t_parsing *parsing, char *line);
 
-/* parsing_init.c  */
+/* parsing_init_bonus.c  */
 void	parsing_to_data(t_data *data, t_parsing *parsing);
 void	parsing_stru_init(t_parsing *parsing);
 void	parsing_free(t_parsing *parsing);
 
-/* info_validation.c */
+/* textures_bonus.c */
 void	texture_acquisition(t_parsing *parsing, t_data *data);
+
+/* rgb_validation_bonus.c  */
 void	rgb_validation(t_parsing *parsing);
+
+/* check_map_syntax_bonus.c */
 void	check_map_syntax(t_parsing *parsing);
 
-/* map_equalizer.c */
+/* map_equalizer_bonus.c */
 void	map_equalizer(t_parsing *parsing);
 
-/* map_validation.c */
+/* map_validation_bonus.c */
 void	map_validation(t_parsing *parsing);
 
 /* get_next_line */
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
+
+/* get_next_line_utils.c */
 int		check_where_newline(char *buff, int c);
 
 #endif
