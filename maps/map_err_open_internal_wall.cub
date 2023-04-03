@@ -1,12 +1,12 @@
 
-	NO  ./textures/boss.png	     
+	NO  ./textures/purple_wall.png  
 				
 
 			SO 		./textures/fool.png
 				
-		WE 	   ./textures/noo.png
+		WE 	   ./textures/goat_on_tree.png
 
-   EA   ./textures/orange-wood.png
+   EA   ./textures/colorfull_stones.png
 
    C 	0,139,139
 

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/31 15:36:23 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:17:29 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	parsing(char *argv, t_data *data)
 {
 	t_parsing	parsing;
 	char		*map_line;
-	int			len;
+	size_t		len;
 
-	len = ft_strlen(argv) - 5;
+	len = ft_strlen(argv);
 	if (len < 4)
 		error_exit(ERROR_MAP_EXTENSION);
 	if (ft_strncmp(&argv[len - 4], ".cub", 4) != 0)

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: emlicame <emlicame@student.42.fr>            +#+                      #
-#                                                    +#+                       #
-#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
-#    Updated: 2023/03/29 16:47:46 by dmalacov      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
+#    Updated: 2023/04/03 13:02:54 by emlicame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC			:=	main.c 							\
 				casting_get.c 					\
        			casting_rays.c 					\
 				casting_utils.c 				\
+				check_map_syntax.c 				\
 				drawing.c 						\
 				get_next_line.c					\
 				get_next_line_utils.c			\
@@ -42,6 +43,7 @@ SRC_B		:=	main_bonus.c 					\
 				casting_get_bonus.c 			\
        			casting_rays_bonus.c 			\
 				casting_utils_bonus.c 			\
+				check_map_syntax_bonus.c		\
 				drawing_basic_bonus.c 			\
 				drawing_bonus.c 				\
 				drawing_get_bonus.c 			\
@@ -66,7 +68,7 @@ MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-# CFLAGS 		+= -g -fsanitize=address
+CFLAGS 		+= -g -fsanitize=address
 BONUS 		= 0
 
 #//= Colors =//#
