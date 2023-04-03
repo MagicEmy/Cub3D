@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 12:16:55 by emlicame      #+#    #+#                 */
-/*   Updated: 2023/04/03 16:47:58 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/04/03 18:08:40 by dmalacov      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	error_exit(char *text);
 
 /* parsing.c */
 void	parsing(char *argv, t_data *data);
+
+/* info_file_safety_check.c */
 int32_t	info_file_safety_check(t_parsing *parsing, char *line);
 
 /* parsing_init.c  */
@@ -62,9 +64,13 @@ void	parsing_to_data(t_data *data, t_parsing *parsing);
 void	parsing_stru_init(t_parsing *parsing);
 void	parsing_free(t_parsing *parsing);
 
-/* info_validation.c */
+/* textures.c */
 void	texture_acquisition(t_parsing *parsing, t_data *data);
+
+/* rgb_validation.c  */
 void	rgb_validation(t_parsing *parsing);
+
+/* check_map_syntax.c */
 void	check_map_syntax(t_parsing *parsing);
 
 /* map_equalizer.c */
@@ -76,6 +82,8 @@ void	map_validation(t_parsing *parsing);
 /* get_next_line */
 char	*get_next_line(int fd);
 char	*gnl_ft_strjoin_free(char *s1, char *s2);
+
+/* get_next_line_utils.c */
 int		check_where_newline(char *buff, int c);
 
 #endif

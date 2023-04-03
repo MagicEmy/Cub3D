@@ -1,7 +1,7 @@
 
 NO ./textures/redbricks_1.png
 SO ./textures/purple_wall.png
-WE ./textures/wolfengoat.png
+WE ./textures/door/door_1.png
 EA ./textures/tree.png
 
 C 0,255,255
