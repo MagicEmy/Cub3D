@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:01:24 by emlicame          #+#    #+#             */
-/*   Updated: 2023/04/03 13:01:28 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:41:47 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	check_map_syntax(t_parsing *parsing)
 {
-	int	x;
-	int	y;
-	int	orientation;
+	int32_t	x;
+	int32_t	y;
+	int32_t	orientation;
 
 	x = 0;
 	y = 0;

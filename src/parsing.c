@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:40:34 by emlicame          #+#    #+#             */
-/*   Updated: 2023/04/03 12:05:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:40:36 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_parsing *parsing)
 
 static char	*st_get_line(char *argv, t_parsing *parsing)
 {
-	int		fd;
+	int32_t	fd;
 	char	*map_line;
 	char	*line;
 
