@@ -6,7 +6,7 @@
 /*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/28 01:24:36 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2023/02/13 12:26:17 by W2Wizard      ########   odam.nl         */
+/*   Updated: 2023/03/28 16:34:17 by W2Wizard      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static void mlx_render_images(mlx_t* mlx)
 	while (imglst)
 	{
 		mlx_image_t* image;
-		if (!(image = imglst->content))
-			return ((void)mlx_error(MLX_INVIMG));
+		if (!(image = imglst->content)) {
+			mlx_error(MLX_INVIMG);
+			return;
+		}
+
 		glBindTexture(GL_TEXTURE_2D, ((mlx_image_ctx_t*)image->context)->texture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->width, image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->pixels);
 		imglst = imglst->next;
@@ -103,7 +106,7 @@ void mlx_loop(mlx_t* mlx)
 		glfwGetWindowSize(mlx->window, &(mlx->width), &(mlx->height));
 
 		if ((mlx->width > 1 || mlx->height > 1))
-			mlx_update_matrix(mlx, mlx->width, mlx->height);
+			mlx_update_matrix(mlx);
 
 		mlx_exec_loop_hooks(mlx);
 		mlx_render_images(mlx);

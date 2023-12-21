@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/21 12:19:59 by emlicame          #+#    #+#              #
-#    Updated: 2023/04/04 12:12:47 by emlicame         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: emlicame <emlicame@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/02/21 12:19:59 by emlicame      #+#    #+#                  #
+#    Updated: 2023/12/21 12:58:51 by emlicame      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,9 @@ OBJ_B		:= $(SRC_B:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
 MLX 		:= MLX42/build/libmlx42.a
-MLX_FLAGS 	:= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+# MLX_FLAGS 	:= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit // flags for MacOs
+# flags for Linunx
+MLX_FLAGS 	:= -ldl -lglfw -pthread -lm  
 MLX_DIR 	:= MlX42/
 INC			:=	-I include -I libft -I $(MLX_DIR)include
 CC			= gcc

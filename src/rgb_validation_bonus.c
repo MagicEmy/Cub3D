@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rgb_validation_bonus.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 16:57:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/03/31 16:21:39 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   rgb_validation_bonus.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/07 16:57:53 by emlicame      #+#    #+#                 */
+/*   Updated: 2023/12/21 12:34:29 by emlicame      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ static int32_t	st_rgb_parsing(char *info, t_parsing *parsing)
 
 void	rgb_validation(t_parsing *parsing)
 {
-	int32_t		i;
 
-	i = 0;
 	st_check_rgb_format(parsing->floor);
 	st_check_rgb_format(parsing->ceiling);
 	parsing->floor_clr = st_rgb_parsing(parsing->floor, parsing);

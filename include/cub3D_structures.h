@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/23 13:10:08 by dmalacov      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:38:29 by dmalacov      ########   odam.nl         */
+/*   Updated: 2023/12/21 12:34:08 by emlicame      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdint.h>
 # include <stdlib.h>
-# include "MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_point
 {
