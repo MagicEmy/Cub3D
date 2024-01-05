@@ -12,71 +12,71 @@
 
 NAME		:=	cub3D
 
-HEADERS		:=	include/cub3D.h	 				\
-				include/cub3D_defines.h 		\
-				include/colors.h 				\
+HEADERS		:=	include/cub3D.h	 			\
+			include/cub3D_defines.h 		\
+			include/colors.h 			\
         		include/cub3D_structures.h
 
 HEADERS_B	:=	include/cub3D_bonus.h	 		\
-				include/cub3D_defines_bonus.h 	\
-				include/colors.h 				\
+			include/cub3D_defines_bonus.h 		\
+			include/colors.h 			\
         		include/cub3D_structures_bonus.h
 
-SRC			:=	main.c 							\
-				casting_get.c 					\
-       			casting_rays.c 					\
-				casting_utils.c 				\
-				check_map_syntax.c 				\
-				drawing_basic.c					\
-				get_next_line.c					\
-				get_next_line_utils.c			\
-				hooks.c 						\
-				info_file_safety_check.c		\
-				map_equalizer.c					\
-				map_validation.c   				\
-				parsing.c						\
-				parsing_init.c					\
-				rgb_validation.c				\
-				textures.c
+SRC		:=	main.c 					\
+			casting_get.c 				\
+			casting_rays.c 				\
+			casting_utils.c 			\
+			check_map_syntax.c 			\
+			drawing_basic.c				\
+			get_next_line.c				\
+			get_next_line_utils.c			\
+			hooks.c 				\
+			info_file_safety_check.c		\
+			map_equalizer.c				\
+			map_validation.c   			\
+			parsing.c				\
+			parsing_init.c				\
+			rgb_validation.c			\
+			textures.c
 
-SRC_B		:=	main_bonus.c 					\
-				casting_get_bonus.c 			\
-       			casting_rays_bonus.c 			\
-				casting_utils_bonus.c 			\
-				check_map_syntax_bonus.c		\
-				drawing_basic_bonus.c 			\
-				drawing_bonus.c 				\
-				drawing_get_bonus.c 			\
-				get_next_line_bonus.c			\
-				get_next_line_utils_bonus.c		\
-				hooks_bonus.c 					\
-				info_file_safety_check_bonus.c	\
-				map_equalizer_bonus.c			\
-				map_validation_bonus.c  		\
-				parsing_bonus.c					\
-				parsing_init_bonus.c			\
-				rgb_validation_bonus.c			\
-				textures_bonus.c
+SRC_B		:=	main_bonus.c 				\
+			casting_get_bonus.c 			\
+			casting_rays_bonus.c 			\
+			casting_utils_bonus.c 			\
+			check_map_syntax_bonus.c		\
+			drawing_basic_bonus.c 			\
+			drawing_bonus.c 			\
+			drawing_get_bonus.c 			\
+			get_next_line_bonus.c			\
+			get_next_line_utils_bonus.c		\
+			hooks_bonus.c 				\
+			info_file_safety_check_bonus.c		\
+			map_equalizer_bonus.c			\
+			map_validation_bonus.c  		\
+			parsing_bonus.c				\
+			parsing_init_bonus.c			\
+			rgb_validation_bonus.c			\
+			textures_bonus.c
 
-OBJ			:= $(SRC:%.c=obj/%.o)
-OBJ_B		:= $(SRC_B:%.c=obj/%.o)
-LIBFT		:= libft/libft.a
-LIBFT_DIR	:= libft/
-MLX 		:= MLX42/build/libmlx42.a
-# MLX_FLAGS 	:= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit // flags for MacOs
+OBJ		:= 	$(SRC:%.c=obj/%.o)
+OBJ_B		:= 	$(SRC_B:%.c=obj/%.o)
+LIBFT		:= 	libft/libft.a
+LIBFT_DIR	:= 	libft/
+MLX 		:= 	MLX42/build/libmlx42.a
+# MLX_FLAGS 	:= 	-lglfw3 -framework Cocoa -framework OpenGL -framework IOKit // flags for MacOs
 # flags for Linunx
-MLX_FLAGS 	:= -ldl -lglfw -pthread -lm  
-MLX_DIR 	:= MlX42/
-INC			:=	-I include -I libft -I $(MLX_DIR)include
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-CFLAGS 		+= -g -fsanitize=address
-BONUS 		= 0
+MLX_FLAGS 	:= 	-ldl -lglfw -pthread -lm  
+MLX_DIR 	:= 	MLX42/
+INC		:= 	-I include -I libft -I $(MLX_DIR)include
+CC		= 	gcc
+CFLAGS		= 	-Wall -Wextra -Werror
+CFLAGS 		+= 	-g -fsanitize=address
+BONUS 		= 	0
 
 #//= Colors =//#
 BOLD	:= \033[1m
 BLACK	:= \033[30;1m
-RED		:= \033[31;1m
+RED	:= \033[31;1m
 GREEN	:= \033[32;1m
 YELLOW	:= \033[33;1m
 BLUE	:= \033[34;1m
